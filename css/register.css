@@ -1,0 +1,118 @@
+.register-msg {
+	padding-top: 50px;
+	font-size: 62px;
+	margin-bottom: 20px;
+	font-family: New Century Schoolbook, serif;
+	font-variant: small-caps;
+}
+
+.alert-danger{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: red;
+	width: 350px;
+	padding: 20px 0 20px 100px;
+	font-size: 16px;
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 200;
+	text-align: justify;
+}
+.register-page {
+	position: relative;
+	background-image: url("../../images/collage.jpg");
+	background-repeat: no-repeat;
+	background-size: 70%;
+	background-position: center;
+	width: 100%;
+	height: 65%;
+}
+
+.container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.register-form {
+	position: absolute;
+	top: 50px;
+	bottom: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(255,255,255,0.9);
+	width: 450px;
+	height: 450px;
+	font-family: New Century Schoolbook, serif;
+	font-size: 25px;
+	font-weight: 900;
+}
+
+.click-logo-msg {
+	color: #FE2E64;
+	font-size: 20px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.choose-mail {
+	padding-top: 20px;
+}
+
+.mail {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 300;
+	font-size: 14px;
+	text-align: center;
+	padding: 20px 30px;
+	color: black;
+}
+
+.error-register-msg {
+ font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L;
+ font-size: 16px;
+ padding: 15px 25px;
+ text-align: center;
+ color: red;
+}
+
+.mail img {
+	border-radius: 1000px;
+}
+
+.hashtag-msg {
+	font-family: Brush Script MT, cursive;
+	font-size: 55px;
+	text-align: center;
+	padding: 10px 0;
+}
+
+input{
+	text-align:center;
+}
+
+.input-register {
+	border: 1px solid black;
+	height: 25px;
+	font-size: 14px;
+	color: black;
+	width: 250px;
+}
+
+.register-submit:hover {
+	background-color: rgba(81, 202, 188, 0.7);
+}
+
+.register-submit {
+	text-align: center;
+	padding: 5px 10px;
+	border: none;
+	height: 30px;
+	width: 254px;
+	background-color: rgb(81, 202, 188);
+	font-size: 16px;
+}

@@ -1,10 +1,3 @@
-<?php
-//verifie qu'une session n'est pas deja en cours
-if (session_status() == PHP_SESSION_NONE) {
-	session_start();
-}
-// session_start();
-?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,11 +14,17 @@ if (session_status() == PHP_SESSION_NONE) {
 				<a class="user-input" href="./register.php">S'Inscrire</a>
 		<?php endif;?>
 		</div>
-		<?php if (isset($_SESSION['flash'])): ?>
-			<?php foreach ($_SESSION['flash'] as $type => $message): ?>
-			<div class="alert alert-<?= $type;?>">
-				<?= $message; ?>
+		<?php
+		if (isset($_SESSION['success'])):?>
+			<div class="success">
+				<?= $_SESSION['success'] ?>
 			</div>
-			<?php endforeach; ?>
-			<?php unset($_SESSION['flash']); ?>
+			<?php unset($_SESSION['success']); ?>
+		<?php endif; ?>
+		<?php
+		if (isset($_SESSION['danger'])):?>
+			<div class="danger">
+				<?= $_SESSION['danger']?>
+			</div>
+			<?php unset($_SESSION['danger']); ?>
 		<?php endif; ?>

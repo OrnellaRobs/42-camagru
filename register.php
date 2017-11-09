@@ -1,5 +1,4 @@
 <?php require 'inc/header.php'; ?>
-
 <?php
 require_once './inc/functions.php';
 if (!empty($_POST))
@@ -51,7 +50,7 @@ if (!empty($_POST))
 		if (mail($_POST['email'], $objet, $content, $entetes))
 		{
 			echo '<script>alert("Email envoyé")</script>';
-			$_SESSION['flash']['success'] = "Un email de confirmation a été envoyé pour valider le compte";
+			$_SESSION['success'] = "Un email de confirmation a été envoyé pour valider le compte";
 			header('Loction: login.php');
 		}
 		else {

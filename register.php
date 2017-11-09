@@ -33,12 +33,18 @@ if (!empty($_POST))
 		$errors['password'] = "Le mot de passe n'est pas valide";
 	}
 	if (empty($errors)) {
-		$req = $pdo->prepare("INSERT INTO User SET name = ?, username = ?, password = ?, email = ?, confirmation_token = ?");
+		$req = $pdo->prepare("INSERT INTO User SET name = :name, username = :username, password = :password, email = :email, confirmation_token = :token");
 		$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 		$token = str_random(60);
 		// echo '<pre>'.print_r($token, true).'</pre>';
 		// die();
-		$req->execute([$_POST['name'], $_POST['username'], $password, $_POST['email'], $token]);
+		$req->execute([
+			'name' => $_POST['name'],
+			'username' => $_POST['username'],
+			'password'=> $password,
+			'email' => $_POST['email'],
+			'token' => $token
+		]);
 		$user_id = $pdo->lastInsertId();
 		$entetes =
 		'Content-type: text/html; charset=utf-8' . "\r\n" .
@@ -63,7 +69,7 @@ if (!empty($_POST))
 }
 ?>
 <?php	if (!empty($errors)): ?>
-	<div class="alert-danger">
+	<div class="danger">
 		<p>Le formulaire n'est pas rempli correctement</p>
 		<?php foreach($errors as $error):?>
 			<li><?=$error;?></li>

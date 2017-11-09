@@ -4,7 +4,7 @@ check_session();
 logged_only();
 if (!empty($_POST))
 {
-	if ($_POST['password'] != $_POST['confirm-password']) {
+	if (empty($_POST['password']) || $_POST['password'] != $_POST['confirm-password']) {
 		$_SESSION['danger'] = "Les mots de passes ne correspondent pas";
 	}
 	else {

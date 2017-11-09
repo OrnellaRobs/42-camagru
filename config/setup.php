@@ -41,7 +41,9 @@ if (isset($_POST['create'])) {
 			password VARCHAR(255) NOT NULL,
 			email VARCHAR(255) NOT NULL,
 			confirmation_token varchar(60) NULL,
-			confirmation_at DateTime NULL
+			confirmation_at DateTime NULL,
+			reset_token VARCHAR(60) NULL,
+			reset_at DateTime NULL
 		)";
 		$dbh->exec($sql);
 		echo "<script type= 'text/javascript'>alert('Table User Created Successfully');</script>";

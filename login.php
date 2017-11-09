@@ -32,8 +32,5 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 	<input class="input-login" type="password" name="password" title="password" placeholder="Mot de Passe"/><br/>
 	<input class="login-submit" type="submit" value="Se Connecter"><br/>
 	<a href="forget.php">(J'ai oublié mon mot de passe)</>
-	<br/><label>
-		<input type="checkbox" name="remember" value="1"/>Se souvenir de moi</a>
-	</label>
 </form>
 <?php require 'inc/footer.php'; ?>

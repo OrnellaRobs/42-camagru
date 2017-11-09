@@ -10,6 +10,7 @@
 		<div class="header">
 			<?php if (isset($_SESSION['auth'])): ?>
 				<a class="user-input" href="./logout.php">Se Déconnecter</a>
+				<a class="user-input" href="">Galerie</a>
 			<?php else: ?>
 				<a class="user-input" href="./register.php">S'Inscrire</a>
 		<?php endif;?>

@@ -15,7 +15,11 @@ if (session_status() == PHP_SESSION_NONE) {
 	<body>
 		<div class="all-page">
 		<div class="header">
-			<a class="user-input" href="./register.php">S'Inscrire</a>
+			<?php if (isset($_SESSION['auth'])): ?>
+				<a class="user-input" href="./logout.php">Se Déconnecter</a>
+			<?php else: ?>
+				<a class="user-input" href="./register.php">S'Inscrire</a>
+		<?php endif;?>
 		</div>
 		<?php if (isset($_SESSION['flash'])): ?>
 			<?php foreach ($_SESSION['flash'] as $type => $message): ?>

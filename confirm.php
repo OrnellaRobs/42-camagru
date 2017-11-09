@@ -10,6 +10,7 @@ if ($user && $user->confirmation_token == $token)
 {
 	$req = $pdo->prepare('UPDATE User SET confirmation_token = NULL, confirmation_at = NOW() WHERE id = ?');
 	$req->execute([$user_id]);
+	$_SESSION['flash']['success'] = "Votre compte a bien été validé";
 	$_SESSION['auth'] = $user;
 	header('Location: account.php');
 }

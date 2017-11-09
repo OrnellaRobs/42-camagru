@@ -37,7 +37,7 @@ if (isset($_POST['create'])) {
 		$sql = "CREATE TABLE User (
 			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 			name VARCHAR(255) NOT NULL,
-			login VARCHAR(255) NOT NULL,
+			username VARCHAR(255) NOT NULL,
 			password VARCHAR(255) NOT NULL,
 			email VARCHAR(255) NOT NULL,
 			confirmation_token varchar(60) NULL,

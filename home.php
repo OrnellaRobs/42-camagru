@@ -70,11 +70,16 @@ logged_only();
 			canvas.getContext('2d').drawImage(video, 0, 0, width, height);
 			var data = canvas.toDataURL('image/png');
 			photo.setAttribute('src', data);
+			sendData(data, 0);
 		}
 		startbutton.addEventListener('click', function(ev){
 			takepicture();
 			ev.preventDefault();
 		}, false);
+		function sendData(data, type)
+		{
+			console.log("OK");
+		}
 	})();
 	</script>
 	<?php require 'inc/footer.php'; ?>

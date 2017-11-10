@@ -1,6 +1,6 @@
 <?php
 require 'inc/functions.php';
-// check_session();
+check_session();
 check_already_login();
 if (!empty($_POST) && !empty($_POST['email']))
 {

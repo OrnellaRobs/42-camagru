@@ -1,4 +1,3 @@
-<?php require 'inc/header.php'; ?>
 <?php
 require_once './inc/functions.php';
 if (!empty($_POST))
@@ -55,19 +54,16 @@ if (!empty($_POST))
 		$content = "Afin de finaliser ton inscription, il te suffit de cliquer sur ce lien:\n\nhttp://localhost:8080/Camagru-Grafik-Art/confirm.php?id=$user_id&token=$token";
 		if (mail($_POST['email'], $objet, $content, $entetes))
 		{
-			echo '<script>alert("Email envoyé")</script>';
 			$_SESSION['success'] = "Un email de confirmation a été envoyé pour valider le compte";
 			header('Loction: login.php');
 		}
 		else {
 			echo '<script>alert(" Email PAS envoyé")</script>';
 		}
-		// header('Location: end-register.php');
 	}
-	// echo '<pre>'.print_r($errors, true).'</pre>';
-
 }
 ?>
+<?php require 'inc/header.php'; ?>
 <?php	if (!empty($errors)): ?>
 	<div class="danger">
 		<p>Le formulaire n'est pas rempli correctement</p>

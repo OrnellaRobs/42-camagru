@@ -18,7 +18,7 @@ if (!empty($_POST))
 }
 require 'inc/header.php';
 ?>
-<h1>Bonjour <?= $_SESSION['auth']->username; ?></h1>
+<h1>Bonjour <?= $_SESSION['auth']->name; ?></h1>
 <form action="" method="post">
 	<div class="form-group">
 		<input type="password" name="password" placeholder="Changer de mot de passe"/>

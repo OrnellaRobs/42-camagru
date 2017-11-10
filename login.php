@@ -1,4 +1,13 @@
 <?php
+require 'inc/functions.php';
+check_session();
+if (isset($_SESSION['auth']))
+{
+	echo "ok";
+	$_SESSION['danger'] = "Vous êtes déjà connecté";
+	header('Location: account.php');
+	exit();
+}
 if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 {
 	require_once 'inc/db.php';
@@ -18,7 +27,6 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 	}
 	else
 		$_SESSION['danger'] = "Identifiant/Email ou mot de passe inccorects";
-
 }
 
 ?>

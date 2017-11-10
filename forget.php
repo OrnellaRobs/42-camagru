@@ -30,7 +30,7 @@ if (!empty($_POST) && !empty($_POST['email']))
 		}
 	}
 	else {
-		$_SESSION['danger'] = "Aucun compte ne correspond à cet adresse mail";
+		$_SESSION['danger'] = "Aucun compte ne correspond à cette adresse mail";
 	}
 }
 ?>

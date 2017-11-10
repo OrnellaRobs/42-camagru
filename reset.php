@@ -1,6 +1,5 @@
 <?php
-if (isset($_GET['id']) && isset($_GET['token']))
-{
+if (isset($_GET['id']) && isset($_GET['token'])):
 	require 'inc/db.php';
 	require 'inc/functions.php';
 	$req = $pdo->prepare('SELECT * FROM User WHERE id = ? AND reset_token IS NOT NULL AND reset_token = ? AND reset_at > DATE_SUB(NOW(), INTERVAL 30 MINUTE)');
@@ -22,14 +21,13 @@ if (isset($_GET['id']) && isset($_GET['token']))
 	}
 	else {
 		session_start();
-		$_SESSION['danger'] = "Ce token n'est pas valide";
-		header('Location: login.php');
+		$_SESSION['danger'] = "Ce lien n'est pas valide";
+		header('Location: index.php');
+		exit();
 	}
-}
 ?>
 
 <?php require 'inc/header.php'; ?>
-
 <h1>REINITIALISER MON MOT DE PASSE</h1>
 
 <form action="" method="post">
@@ -41,4 +39,7 @@ if (isset($_GET['id']) && isset($_GET['token']))
 	</div>
 	<input class="login-submit" type="submit" value="Changer mon mot de passe"><br/>
 </form>
+<?php else:?>
+	<?php header('Location: index.php'); ?>
+<?php endif;?>
 <?php require 'inc/footer.php'; ?>

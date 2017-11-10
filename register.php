@@ -1,5 +1,7 @@
 <?php
-require_once './inc/functions.php';
+require 'inc/functions.php';
+check_session();
+check_already_login();
 if (!empty($_POST))
 {
 	$errors = array();
@@ -55,7 +57,7 @@ if (!empty($_POST))
 		if (mail($_POST['email'], $objet, $content, $entetes))
 		{
 			$_SESSION['success'] = "Un email de confirmation a été envoyé pour valider le compte";
-			header('Loction: login.php');
+			header('Location: index.php');
 		}
 		else {
 			echo '<script>alert(" Email PAS envoyé")</script>';

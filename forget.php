@@ -1,4 +1,7 @@
 <?php
+require 'inc/functions.php';
+// check_session();
+check_already_login();
 if (!empty($_POST) && !empty($_POST['email']))
 {
 	require_once 'inc/db.php';

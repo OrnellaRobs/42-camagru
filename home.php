@@ -2,32 +2,21 @@
 require 'inc/functions.php';
 check_session();
 logged_only();
-if (!empty($_POST))
-{
-	if (empty($_POST['password']) || $_POST['password'] != $_POST['confirm-password']) {
-		$_SESSION['danger'] = "Les mots de passes ne correspondent pas";
-	}
-	else {
-		$user_id = $_SESSION['auth']->id;
-		$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-		require_once 'inc/db.php';
-		$req = $pdo->prepare('UPDATE User SET password = ?');
-		$req->execute([$password]);
-		$_SESSION['success'] = "Votre mot de passe a bien été mis à jour";
-	}
-}
 ?>
 <?php require 'inc/header.php'; ?>
 <h1>Bonjour <?= $_SESSION['auth']->name; ?></h1>
+<label for="">
+	<input type="radio" name="choix" value="1">
+		<img src="images/donut.png" title="donut.png" width="60px"/>
+	<input type="radio" name="choix" value="2">
+		<img src="images/pizza.png" title="donut.png" width="80px"/>
+	<input type="radio" name="choix" value="3">
+		<img src="images/pow.png" title="donut.png" width="60px"/>
+</label>
 <video id="video"></video>
 <button id="startbutton">Prendre une photo</button>
 <canvas id="canvas"></canvas>
 <!-- <img src="http://placekitten.com/g/320/261" id="photo" alt="photo"> -->
-<label for="">
-	<INPUT type="radio" name="choix" value="1">donut.png
-	<INPUT type="radio" name="choix" value="2">best-choice.png
-	<INPUT type="radio" name="choix" value="3">pow.png
-</label>
 <script>
 (function() {
 	var streaming = false,

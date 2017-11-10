@@ -22,6 +22,10 @@
 			<?php if ($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/register.php" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/forget.php"): ?>
 				<a class="user-input" href="./index.php">Se Connecter</a>
 			<?php endif;?>
+			<!--BONUS-->
+			<!-- <?php if ($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/home.php"): ?>
+				<a class="user-input" href="account.php">Compte</a>
+			<?php endif;?> -->
 		</div>
 		<?php
 		if (isset($_SESSION['success'])):?>

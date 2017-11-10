@@ -26,7 +26,7 @@ function check_already_login() {
 	if (isset($_SESSION['auth']))
 	{
 		$_SESSION['danger'] = "Vous êtes déjà connecté";
-		header('Location: account.php');
+		header('Location: home.php');
 		exit();
 	}
 }

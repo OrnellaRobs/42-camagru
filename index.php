@@ -16,7 +16,7 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 		session_start();
 		$_SESSION['auth'] = $user;
 		$_SESSION['success'] = "Vous êtes maintenant connecté";
-		header('Location: account.php');
+		header('Location: home.php');
 		exit();
 	}
 	else

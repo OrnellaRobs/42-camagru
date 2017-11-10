@@ -12,7 +12,7 @@ if ($user && $user->confirmation_token == $token)
 	$req->execute([$user_id]);
 	$_SESSION['success'] = "Votre compte a bien été validé";
 	$_SESSION['auth'] = $user;
-	header('Location: account.php');
+	header('Location: home.php');
 }
 else {
 	$_SESSION['danger'] = "Ce token n'est plus valide";

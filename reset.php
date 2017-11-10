@@ -14,7 +14,7 @@ if (isset($_GET['id']) && isset($_GET['token'])):
 			session_start();
 			$_SESSION['success'] = "Votre mot de passe a bien été mis à jour";
 			$_SESSION['auth'] = $user;
-			header('Location: account.php');
+			header('Location: home.php');
 			exit();
 		}
 

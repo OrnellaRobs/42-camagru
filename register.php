@@ -37,8 +37,6 @@ if (!empty($_POST))
 		$req = $pdo->prepare("INSERT INTO User SET name = :name, username = :username, password = :password, email = :email, confirmation_token = :token");
 		$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 		$token = str_random(60);
-		// echo '<pre>'.print_r($token, true).'</pre>';
-		// die();
 		$req->execute([
 			'name' => $_POST['name'],
 			'username' => $_POST['username'],

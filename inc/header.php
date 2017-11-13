@@ -4,9 +4,9 @@
 	<meta charset="utf-8">
 	<title>CAMAGRU</title>
 	<link rel="stylesheet" type="text/css" href="./css/header.css">
+	<link rel="stylesheet" type="text/css" href="./css/home.css">
 </head>
 <body>
-	<div class="all-page">
 		<div class="header">
 			<?php if (($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/index.php" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/forget.php") && !isset($_SESSION['auth'])):?>
 				<a class="user-input" href="./register.php">S'Inscrire</a>

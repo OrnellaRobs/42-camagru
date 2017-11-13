@@ -10,26 +10,16 @@ var_dump($_POST);
 <div class="wrapper-filter-webcam">
 	<label for="" class="choose-filter">
 		<input type="radio" name="filtre" value="1">
-			<img src="images/donut.png" title="donut.png" width="60px"/>
+		<img src="images/donut.png" title="donut.png" width="60px"/>
 		<input type="radio" name="filtre" value="2">
-			<img src="images/pizza.png" title="pizza.png" width="80px"/>
+		<img src="images/pizza.png" title="pizza.png" width="80px"/>
 		<input type="radio" name="filtre" value="3">
-			<img src="images/pow.png" title="pow.png" width="60px"/>
+		<img src="images/pow.png" title="pow.png" width="60px"/>
 	</label>
 	<video id="video" class="webcam-live"></video>
-	<button id="startbutton" onclick="sendData(1, 2)">Prendre une photo</button>
+	<button id="startbutton"> Prendre une photo</button>
 </div>
 <canvas id="canvas"></canvas>
 <img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
 <script type="text/javascript" src="./webcam.js"></script>
-<!-- <script>
-function sendData(data, type)
-{
-	var xhttp = new XMLHttpRequest();
-		xhttp.open('POST', 'home.php', true);
-		xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xhttp.send("data=" + data);
-	window.location.reload();
-}
-</script> -->
 <?php require 'inc/footer.php'; ?>

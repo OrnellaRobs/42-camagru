@@ -50,15 +50,19 @@
 			canvas.getContext('2d').drawImage(video, 0, 0, width, height);
 			var data = canvas.toDataURL('image/png');
 			photo.setAttribute('src', data);
-			sendData(data, 0);
+			sendData(data);
 		}
-		function sendData(data, type)
+		function sendData(data)
 		{
 			var xhttp = new XMLHttpRequest();
-				xhttp.open('POST', 'home.php', true);
-				xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-				xhttp.send("data=" + data);
-			window.location.reload();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("startbutton").innerHTML = this.responseText;
+				}
+			}
+			xhttp.open("POST", "home.php", true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send("name=" + data);
 		}
 		startbutton.addEventListener('click', function(ev){
 			takepicture();

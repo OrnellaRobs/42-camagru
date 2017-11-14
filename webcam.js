@@ -62,7 +62,7 @@
 			}
 			xhttp.open("POST", "home.php", true);
 			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send("name=" + data);
+			xhttp.send("data=" + data);
 		}
 		startbutton.addEventListener('click', function(ev){
 			takepicture();

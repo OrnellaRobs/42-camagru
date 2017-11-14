@@ -3,7 +3,27 @@ require 'inc/functions.php';
 check_session();
 logged_only();
 
-var_dump($_POST);
+if (!empty($_POST))
+{
+	$directory = './photos';
+	if (!file_exists($directory))
+	mkdir($directory, 0777, true);
+	$get_data = explode(',', $_POST['data']);
+	$img_details = $get_data[0];
+	$img_encoded = $get_data[1];
+
+	$img_details_without_base64 = explode(';', $img_details);
+	$img_type = explode('/', $img_details_without_base64[0]);
+
+	$today = new DateTime();
+	$date = $today->getTimestamp();
+
+	$user = $_SESSION['auth']->username;
+	$output_file_with_type = $user."-".$date.".".$img_type[1];
+	$img_decoded = base64_decode($img_encoded);
+	$filename = "$directory/$output_file_with_type";
+	file_put_contents($filename, $img_decoded);
+}
 ?>
 <?php require 'inc/header.php'; ?>
 <h1>Bonjour <?= $_SESSION['auth']->name; ?></h1>

@@ -54,18 +54,28 @@
 		}
 		function sendData(data)
 		{
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					document.getElementById("startbutton").innerHTML = this.responseText;
-				}
-			}
-			xhttp.open("POST", "home.php", true);
-			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send("data=" + data);
+			// var xhttp = new XMLHttpRequest();
+			// xhttp.onreadystatechange = function() {
+			// 	if (this.readyState == 4 && this.status == 200) {
+			// 		document.getElementById("startbutton").innerHTML = this.responseText;
+			// 	}
+			// }
+			// xhttp.open("POST", "get-webcam-photo.php", true);
+			// xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			// xhttp.send("data=" + data);
+			var xml = new XMLHttpRequest()
+			xml.open('POST', 'get-webcam-photo.php', true);
+			xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xml.send("data=" + data);
 		}
-		startbutton.addEventListener('click', function(ev){
-			takepicture();
-			ev.preventDefault();
-		}, false);
-	})();
+			// 	xml.onload = function()
+			// {
+			// 	var response = xml.responseText;
+			// 	photo.src = response;
+			// 	console.log(response);
+			// }
+			startbutton.addEventListener('click', function(ev){
+				takepicture();
+				ev.preventDefault();
+			}, false);
+		})();

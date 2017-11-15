@@ -5,24 +5,20 @@ logged_only();
 
 if (!empty($_POST))
 {
-	$directory = './photos';
-	if (!file_exists($directory))
-	mkdir($directory, 0777, true);
-	$get_data = explode(',', $_POST['data']);
-	$img_details = $get_data[0];
-	$img_encoded = $get_data[1];
-
-	$img_details_without_base64 = explode(';', $img_details);
-	$img_type = explode('/', $img_details_without_base64[0]);
-
-	$today = new DateTime();
-	$date = $today->getTimestamp();
-
-	$user = $_SESSION['auth']->username;
-	$output_file_with_type = $user."-".$date.".".$img_type[1];
-	$img_decoded = base64_decode($img_encoded);
-	$filename = "$directory/$output_file_with_type";
-	file_put_contents($filename, $img_decoded);
+	// $directory = "/photos";
+	// if (!file_exists($directory))
+	// 	mkdir($directory, 0777, true);
+	$img = $_POST['data'];
+	$get_img_data = explode(',', $img);
+	$get_img_type_without_base64 = explode(';', $get_img_data[0]);
+	$get_img_type = explode('/', $get_img_type_without_base64[0]);
+	$type = $get_img_type[1];
+	$img = $get_img_data[1];
+	$img = str_replace(' ', '+', $img);
+	$filedata = base64_decode($img);
+	$filepath = "./photos/";
+	$filename = $filepath . $_SESSION['auth']->username ."-". time() . '.' . $type;
+	file_put_contents($filename, $filedata);
 }
 ?>
 <?php require 'inc/header.php'; ?>

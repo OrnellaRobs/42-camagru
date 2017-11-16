@@ -59,14 +59,18 @@
 			xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			xml.send("data=" + data);
 		}
-			// 	xml.onload = function()
-			// {
-			// 	var response = xml.responseText;
-			// 	photo.src = response;
-			// 	console.log(response);
-			// }
-			startbutton.addEventListener('click', function(ev){
-				takepicture();
-				ev.preventDefault();
-			}, false);
-		})();
+		// 	xml.onload = function()
+		// {
+		// 	var response = xml.responseText;
+		// 	photo.src = response;
+		// 	console.log(response);
+		// }
+		startbutton.addEventListener('click', function(ev){
+			takepicture();
+			ev.preventDefault();
+		}, false);
+	})();
+	function getFilter(num)
+	{
+		console.log(num);
+	}

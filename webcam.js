@@ -58,6 +58,7 @@
 			xml.open('POST', 'get-webcam-photo.php', true);
 			xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			xml.send("data=" + data);
+			console.log(getFilter());
 		}
 		// 	xml.onload = function()
 		// {
@@ -72,5 +73,10 @@
 	})();
 	function getFilter(num)
 	{
-		console.log(num);
+		// console.log(num);
+		// console.log = function(num){
+		// 	logMessages.push(num);
+		// 	logBak.call(console, num);
+		// }
+		return (num);
 	}

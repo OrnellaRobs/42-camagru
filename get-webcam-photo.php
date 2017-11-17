@@ -15,7 +15,8 @@ if (!empty($_POST))
 	$filedata = base64_decode($img);
 	$filepath = "./photos/";
 	$filter = $_POST["filter"];
-	$filename = $filepath . $filter . "-" . $_SESSION['auth']->username ."-". time() . '.' . $type;
+	$date_photo = time();
+	$filename = $filepath . $filter . "-" . $_SESSION['auth']->username ."-". $date_photo . '.' . $type;
 	file_put_contents($filename, $filedata);
 	//SUPERPOSER DEUX IMAGES
 	header ("Content-type: image/png");
@@ -40,7 +41,13 @@ if (!empty($_POST))
 	imagecopy($destination, $source, $destination_x, $destination_y, 0, 0, $largeur_source, $hauteur_source);
 
 	imagepng($destination, "photos/new.png");
-
+	require_once 'inc/db.php';
+	$req = $pdo->prepare("INSERT INTO Photos UserOwnerID = :userOwner, Date_Photo :date_photo, Photo_info = :photo_info");
+	$req->execute([
+		'userOwner' => $_SESSION['auth']->username,
+		'date_photo' => $date_photo,
+		'photo_info' => //sendIMAGEblob a rechercher sur GOOGLE,
+	]);
 	imagedestroy($source);
 	imagedestroy($destination);
 	// imagedestroy($source);

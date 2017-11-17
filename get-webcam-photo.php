@@ -14,8 +14,37 @@ if (!empty($_POST))
 	$img = str_replace(' ', '+', $img);
 	$filedata = base64_decode($img);
 	$filepath = "./photos/";
-	$filename = $filepath . $_SESSION['auth']->username ."-". time() . '.' . $type;
+	$filter = $_POST["filter"];
+	$filename = $filepath . $filter . "-" . $_SESSION['auth']->username ."-". time() . '.' . $type;
 	file_put_contents($filename, $filedata);
+	//SUPERPOSER DEUX IMAGES
+	header ("Content-type: image/png");
+	if ($filter == "1")
+		$source = imagecreatefrompng("./images/DONUT.png");
+	else if ($filter == "2")
+		$source = imagecreatefrompng("./images/pizza.png");
+	else if ($filter == "3")
+		$source = imagecreatefrompng("./images/POW.png");
+	$largeur_source = imagesx($source);
+	$hauteur_source = imagesy($source);
+	imagealphablending($source, true);
+	imagesavealpha($source, true);
+
+	$destination = imagecreatefrompng("$filename");
+	$largeur_destination = imagesx($destination);
+	$hauteur_destination = imagesy($destination);
+
+	$destination_x = ($largeur_destination - $largeur_source)/2;
+	$destination_y = ($hauteur_destination - $hauteur_source)/2;
+
+	imagecopy($destination, $source, $destination_x, $destination_y, 0, 0, $largeur_source, $hauteur_source);
+
+	imagepng($destination, "photos/new.png");
+
+	imagedestroy($source);
+	imagedestroy($destination);
+	// imagedestroy($source);
+	//METTRE DANS TABLEAU PHOTOS DANS LA DB
 	exit();
 }
 ?>

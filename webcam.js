@@ -1,13 +1,16 @@
-(function() {
-	var streaming = false,
+var streaming = false,
 	video = document.querySelector('#video'),
 	cover        = document.querySelector('#cover'),
 	canvas       = document.querySelector('#canvas'),
 	photo        = document.querySelector('#photo'),
 	startbutton  = document.querySelector('#startbutton'),
+	filter       = 0,
 	width = 520,
 	height = 0;
-
+	function getFilter(num)
+	{
+		filter = num;
+	}
 	navigator.getMedia = ( navigator.getUserMedia ||
 		navigator.webkitGetUserMedia ||
 		navigator.mozGetUserMedia ||
@@ -57,8 +60,7 @@
 			var xml = new XMLHttpRequest();
 			xml.open('POST', 'get-webcam-photo.php', true);
 			xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-			xml.send("data=" + data);
-			console.log(getFilter());
+			xml.send("data=" + data + "&filter=" + filter);
 		}
 		// 	xml.onload = function()
 		// {
@@ -70,13 +72,3 @@
 			takepicture();
 			ev.preventDefault();
 		}, false);
-	})();
-	function getFilter(num)
-	{
-		// console.log(num);
-		// console.log = function(num){
-		// 	logMessages.push(num);
-		// 	logBak.call(console, num);
-		// }
-		return (num);
-	}

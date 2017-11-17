@@ -8,11 +8,11 @@ logged_only();
 <h1>Bonjour <?= $_SESSION['auth']->name; ?></h1>
 <form action="" method="POST">
 	<div class="wrapper-filter-webcam">
-		<label><input type="radio" name="filter" value="1" onClick="getFilter(1);"></label>
+		<label><input id="1" type="radio" name="filter" value="1" onClick="getFilter(1);"></label>
 		<img src="images/donut.png" title="donut.png" width="60px"/>
-		<label><input type="radio" name="filter" value="2" onClick="getFilter(2);"></label>
+		<label><input id="2" type="radio" name="filter" value="2" onClick="getFilter(2);"></label>
 		<img src="images/pizza.png" title="pizza.png" width="80px"/>
-		<label><input type="radio" name="filter" value="3" onClick="getFilter(3);"/></label>
+		<label><input id="3" type="radio" name="filter" value="3" onClick="getFilter(3);"/></label>
 		<img src="images/pow.png" title="pow.png" width="60px"/>
 	<video id="video" class="webcam-live"></video>
 	<button id="startbutton">Prendre une photo</button>

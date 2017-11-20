@@ -41,15 +41,16 @@ if (!empty($_POST))
 	imagecopy($destination, $source, $destination_x, $destination_y, 0, 0, $largeur_source, $hauteur_source);
 
 	imagepng($destination, "photos/new.png");
+
+	imagedestroy($source);
+	imagedestroy($destination);
 	require_once 'inc/db.php';
-	$req = $pdo->prepare("INSERT INTO Photos UserOwnerID = :userOwner, Date_Photo :date_photo, Photo_info = :photo_info");
+	$req = $pdo->prepare("INSERT INTO Photos SET UserOwnerID = :userOwner, Date_Photo = :date_photo, Photo_info = :photo_info");
 	$req->execute([
 		'userOwner' => $_SESSION['auth']->username,
 		'date_photo' => $date_photo,
 		'photo_info' => //sendIMAGEblob a rechercher sur GOOGLE,
 	]);
-	imagedestroy($source);
-	imagedestroy($destination);
 	// imagedestroy($source);
 	//METTRE DANS TABLEAU PHOTOS DANS LA DB
 	exit();

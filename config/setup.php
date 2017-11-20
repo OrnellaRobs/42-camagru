@@ -56,11 +56,12 @@ if (isset($_POST['create'])) {
 	try {
 		$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "CREATE TABLE Photos (
-			UserOwnerID INT NOT NULL,
-		 	PhotoID INT NOT NULL,
-			Date_Photo DateTime DEFAULT CURRENT_TIMESTAMP,
-			Photo_info blob NOT NULL
+		$sql = "CREATE TABLE photos (
+			username INT NOT NULL,
+		 	photo_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+			-- date_photo DateTime DEFAULT CURRENT_TIMESTAMP,
+			photo_type VARCHAR(4) NOT NULL
+			-- photo_blob blob NOT NULL
 		)";
 		$dbh->exec($sql);
 		echo "<script type= 'text/javascript'>alert('Table Photos Created Successfully');</script>";
@@ -73,11 +74,11 @@ if (isset($_POST['create'])) {
 	try {
 		$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "CREATE TABLE Comments (
-			UserCommentID INT NOT NULL,
-			PhotoID INT NOT NULL,
-			Date_Comment DateTime DEFAULT CURRENT_TIMESTAMP,
-			Comment varchar(255) NOT NULL
+		$sql = "CREATE TABLE comments (
+			usercomment_id INT NOT NULL,
+			photo_id INT NOT NULL,
+			date_Comment DateTime DEFAULT CURRENT_TIMESTAMP,
+			comment varchar(255) NOT NULL
 		)";
 		$dbh->exec($sql);
 		echo "<script type= 'text/javascript'>alert('Table Comments Created Successfully');</script>";
@@ -90,10 +91,10 @@ if (isset($_POST['create'])) {
 	try {
 		$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "CREATE TABLE LikePhoto (
-			UserLikeID INT NOT NULL,
-			Date_Like DateTime DEFAULT CURRENT_TIMESTAMP,
-			PhotoID INT NOT NULL
+		$sql = "CREATE TABLE likePhoto (
+			userlike_id INT NOT NULL,
+			date_like DateTime DEFAULT CURRENT_TIMESTAMP,
+			photo_id INT NOT NULL
 		)";
 		$dbh->exec($sql);
 		echo "<script type= 'text/javascript'>alert('Table Like Created Successfully');</script>";

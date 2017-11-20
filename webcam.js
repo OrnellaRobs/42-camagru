@@ -4,7 +4,7 @@ var streaming = false,
 	canvas       = document.querySelector('#canvas'),
 	photo        = document.querySelector('#photo'),
 	startbutton  = document.querySelector('#startbutton'),
-	filter       = 0,
+	filter       = 1,
 	width = 520,
 	height = 0;
 	function getFilter(num)

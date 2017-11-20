@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!empty($_POST))
+if (!empty($_POST) && isset($_POST['data']))
 {
 	// $directory = "/photos";
 	// if (!file_exists($directory))
@@ -21,11 +21,11 @@ if (!empty($_POST))
 	//SUPERPOSER DEUX IMAGES
 	header ("Content-type: image/png");
 	if ($filter == "1")
-		$source = imagecreatefrompng("./images/DONUT.png");
+	$source = imagecreatefrompng("./images/DONUT.png");
 	else if ($filter == "2")
-		$source = imagecreatefrompng("./images/pizza.png");
+	$source = imagecreatefrompng("./images/pizza.png");
 	else if ($filter == "3")
-		$source = imagecreatefrompng("./images/POW.png");
+	$source = imagecreatefrompng("./images/POW.png");
 	$largeur_source = imagesx($source);
 	$hauteur_source = imagesy($source);
 	imagealphablending($source, true);
@@ -39,20 +39,32 @@ if (!empty($_POST))
 	$destination_y = ($hauteur_destination - $hauteur_source)/2;
 
 	imagecopy($destination, $source, $destination_x, $destination_y, 0, 0, $largeur_source, $hauteur_source);
-
-	imagepng($destination, "photos/new.png");
+	$img_fusion = "photos/new.png";
+	imagepng($destination, $img_fusion);
 
 	imagedestroy($source);
 	imagedestroy($destination);
-	require_once 'inc/db.php';
-	$req = $pdo->prepare("INSERT INTO Photos SET UserOwnerID = :userOwner, Date_Photo = :date_photo, Photo_info = :photo_info");
+	require_once './inc/db.php';
+	$req = $pdo->prepare("INSERT INTO `photos` SET username = :username, photo_type = :photo_type");
 	$req->execute([
-		'userOwner' => $_SESSION['auth']->username,
-		'date_photo' => $date_photo,
-		'photo_info' => //sendIMAGEblob a rechercher sur GOOGLE,
+		'username' => $_SESSION['auth']->username,
+		'photo_type'=> $type
 	]);
-	// imagedestroy($source);
+	// try
+	// {
+	// 	require_once './inc/db.php';
+	// 	$req = $pdo->prepare('INSERT INTO photos (username, date_photo, photo_type) VALUES (:username, NOW(), :phototype)');
+	// 	$req->execute(array(
+	// 		':username' => $_SESSION['auth']->username,
+	// 		':phototype' => $type
+	// 	));
+	// }
+	// catch (                                                PDOException $e)
+	// {
+	// 	echo "Couldn't write in Database: " . $e->getMessage();
+	// }
 	//METTRE DANS TABLEAU PHOTOS DANS LA DB
-	exit();
+	// exit();
 }
 ?>
+<!--  -->

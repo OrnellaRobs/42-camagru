@@ -44,6 +44,8 @@ if (!empty($_POST) && isset($_POST['data']))
 
 	imagedestroy($source);
 	imagedestroy($destination);
+	unlink($filename);
+	rename("photos/new.png", $filename);
 	try {
 		require_once './inc/db.php';
 		// $req = $pdo->prepare('INSERT INTO photos (user_id, date_photo, photo_type, photo_blob) VALUES (:user_id, NOW() , :phototype, :photoblob)');
@@ -55,16 +57,15 @@ if (!empty($_POST) && isset($_POST['data']))
 		$req->execute([
 			'user_id' => $_SESSION['auth']->id,
 			':phototype' => $type,
-			':photoblob' => "new.png"
+			':photoblob' => $filename
 		]);
 		echo "<script type= 'text/javascript'>alert('Insert into Table photos success');</script>";
-		exit();
 	}
 	catch(PDOException $e)
 	{
 		echo "<script type= 'text/javascript'>alert('Insert into Table photos failed \t".$e->getMessage()."\n');</script>";
-		exit();
 	}
+
 }
 ?>
 <!--  -->

@@ -68,7 +68,7 @@ var streaming = false,
 		// 	photo.src = response;
 		// 	console.log(response);
 		// }
-		startbutton.addEventListener('click', function(ev){
-			takepicture();
-			ev.preventDefault();
-		}, false);
+		// startbutton.addEventListener('click', function(ev){
+		// 	takepicture();
+		// 	ev.preventDefault();
+		// }, false);

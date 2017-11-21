@@ -57,11 +57,11 @@ if (isset($_POST['create'])) {
 		$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "CREATE TABLE photos (
-			username INT NOT NULL,
+			user_id INT NOT NULL,
 		 	photo_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-			-- date_photo DateTime DEFAULT CURRENT_TIMESTAMP,
-			photo_type VARCHAR(4) NOT NULL
-			-- photo_blob blob NOT NULL
+			date_photo DateTime DEFAULT CURRENT_TIMESTAMP,
+			photo_type VARCHAR(4) NOT NULL,
+			photo_blob blob NOT NULL
 		)";
 		$dbh->exec($sql);
 		echo "<script type= 'text/javascript'>alert('Table Photos Created Successfully');</script>";
@@ -77,7 +77,7 @@ if (isset($_POST['create'])) {
 		$sql = "CREATE TABLE comments (
 			usercomment_id INT NOT NULL,
 			photo_id INT NOT NULL,
-			date_Comment DateTime DEFAULT CURRENT_TIMESTAMP,
+			date_comment DateTime DEFAULT CURRENT_TIMESTAMP,
 			comment varchar(255) NOT NULL
 		)";
 		$dbh->exec($sql);

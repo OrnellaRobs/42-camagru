@@ -56,6 +56,7 @@ if (!empty($_POST))
 		{
 			$_SESSION['success'] = "Un email de confirmation a été envoyé pour valider le compte";
 			header('Location: index.php');
+			exit();
 		}
 		else {
 			echo '<script>alert(" Email PAS envoyé")</script>';

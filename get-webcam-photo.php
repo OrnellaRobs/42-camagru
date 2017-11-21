@@ -39,25 +39,20 @@ if (!empty($_POST) && isset($_POST['data']))
 	$destination_x = ($largeur_destination - $largeur_source)/2;
 	$destination_y = ($hauteur_destination - $hauteur_source)/2;
 	imagecopy($destination, $source, $destination_x, $destination_y, 0, 0, $largeur_source, $hauteur_source);
-	$img_fusion = "photos/new.png";
+	$img_fusion = "photos/new" . $type;
 	imagepng($destination, $img_fusion);
 
 	imagedestroy($source);
 	imagedestroy($destination);
 	unlink($filename);
-	rename("photos/new.png", $filename);
+	rename("photos/new" . $type, $filename);
 	try {
 		require_once './inc/db.php';
-		// $req = $pdo->prepare('INSERT INTO photos (user_id, date_photo, photo_type, photo_blob) VALUES (:user_id, NOW() , :phototype, :photoblob)');
-		// $req->execute(array(
-		// 	':user_id' => $_SESSION['auth']->id,
-		// 	':phototype' => $type,
-		// 	':photoblob' => "new.png"
-		$req = $pdo->prepare("INSERT INTO photos SET user_id = :user_id, date_photo = NOW() , photo_type = :phototype, photo_blob = :photoblob");
+		$req = $pdo->prepare("INSERT INTO photos SET user_id = :user_id, date_photo = NOW() , photo_type = :phototype, photo_path = :photopath");
 		$req->execute([
 			'user_id' => $_SESSION['auth']->id,
 			':phototype' => $type,
-			':photoblob' => $filename
+			':photopath' => $filename
 		]);
 		echo "<script type= 'text/javascript'>alert('Insert into Table photos success');</script>";
 	}

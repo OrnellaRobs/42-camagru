@@ -1,0 +1,7 @@
+function like() {
+
+}
+
+function comment() {
+	
+}

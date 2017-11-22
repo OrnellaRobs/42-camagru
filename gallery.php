@@ -5,7 +5,7 @@ logged_only();
 
 require 'inc/header.php';
 ?>
-<h1>Les photos des autres utilisateurs <?= 	$_SESSION['auth']->name; ?></h1>
+<h1>Les photos des autres utilisateurs</h1>
 <div class="wrapper-filter-webcam">
 	<?php
 	require_once './inc/db.php';
@@ -16,7 +16,10 @@ require 'inc/header.php';
 	foreach ($result as $elem)
 	{
 		echo '<img src="'.$elem.'" height="200px" />';
+		echo '<img src="images/like.png" width="30px" onClick="like();"/>';
+		echo '<img src="images/comment.png" width="50px" onClick="comment();"/>';
 	}
 	?>
 </div>
+<script type="text/javascript" src="./set-gallery.js"></script>
 <?php require 'inc/footer.php'; ?>

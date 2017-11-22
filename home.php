@@ -14,9 +14,22 @@ logged_only();
 		<img src="images/pizza.png" title="pizza.png" width="80px"/>
 		<label><input id="3" type="radio" name="filter" value="3" onClick="getFilter(3);"/></label>
 		<img src="images/pow.png" title="pow.png" width="60px"/>
-	<video id="video" class="webcam-live"></video>
-	<button id="startbutton">Prendre une photo</button>
-</div>
+		<video id="video" class="webcam-live"></video>
+		<button id="startbutton">Prendre une photo</button>
+	</div>
+	<div class="wrapper-filter-webcam">
+		<!-- <img src="./photos/ornellarobs/1-ornellarobs-1511356037.png" height="200px"/> -->
+		<?php
+		require_once './inc/db.php';
+		$req = $pdo->prepare('SELECT photo_path FROM photos WHERE user_id = ?');
+		$req->execute([$_SESSION['auth']->id]);
+		$user = $req->fetch();
+		var_dump($user);
+		// echo $user->photo_path."<br/>";
+		// $image_data = $user->photo_path;
+		// echo '<img src="'.$image_data.'." alt="" />';
+		?>
+	</div>
 </form>
 <canvas id="canvas" style="display:none;"></canvas>
 <!-- <img src="http://placekitten.com/g/320/261" id="photo" alt="photo"> -->

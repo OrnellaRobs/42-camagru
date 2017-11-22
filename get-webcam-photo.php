@@ -3,8 +3,10 @@ session_start();
 if (!empty($_POST) && isset($_POST['data']))
 {
 	// $directory = "/photos";
-	// if (!file_exists($directory))
-	// 	mkdir($directory, 0777, true);
+	$user_name = $_SESSION['auth']->username;
+	$user_directory = "./photos/".$user_name . "/";
+	if (!file_exists($user_directory))
+		mkdir($user_directory, 0777, true);
 	$img = $_POST['data'];
 	$get_img_data = explode(',', $img);
 	$get_img_type_without_base64 = explode(';', $get_img_data[0]);
@@ -13,20 +15,18 @@ if (!empty($_POST) && isset($_POST['data']))
 	$img = $get_img_data[1];
 	$img = str_replace(' ', '+', $img);
 	$filedata = base64_decode($img);
-	$filepath = "./photos/";
 	$filter = $_POST["filter"];
 	$date_photo = time();
-	$photo_blob = $filter . "-" . $_SESSION['auth']->username ."-". $date_photo . '.' . $type;
-	$filename = $filepath . $filter . "-" . $_SESSION['auth']->username ."-". $date_photo . '.' . $type;
+	$filename = $user_directory . $filter . "-" . $_SESSION['auth']->username ."-". $date_photo . '.' . $type;
 	file_put_contents($filename, $filedata);
 	//SUPERPOSER DEUX IMAGES
 	header ("Content-type: image/png");
 	if ($filter == "1")
-	$source = imagecreatefrompng("./images/DONUT.png");
+		$source = imagecreatefrompng("./images/DONUT.png");
 	else if ($filter == "2")
-	$source = imagecreatefrompng("./images/pizza.png");
+		$source = imagecreatefrompng("./images/pizza.png");
 	else if ($filter == "3")
-	$source = imagecreatefrompng("./images/POW.png");
+		$source = imagecreatefrompng("./images/POW.png");
 	$largeur_source = imagesx($source);
 	$hauteur_source = imagesy($source);
 	imagealphablending($source, true);

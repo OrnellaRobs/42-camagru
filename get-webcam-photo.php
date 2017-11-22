@@ -60,7 +60,9 @@ if (!empty($_POST) && isset($_POST['data']))
 	{
 		echo "<script type= 'text/javascript'>alert('Insert into Table photos failed \t".$e->getMessage()."\n');</script>";
 	}
-
+	// echo "ORNELLA";
+	header('Location: home.php');
+	// exit();
 }
 ?>
 <!--  -->

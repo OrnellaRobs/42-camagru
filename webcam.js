@@ -57,10 +57,12 @@ var streaming = false,
 		}
 		function sendData(data)
 		{
+			console.log("AVANT");
 			var xml = new XMLHttpRequest();
 			xml.open('POST', 'get-webcam-photo.php', true);
 			xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			xml.send("data=" + data + "&filter=" + filter);
+			window.location.reload();
 		}
 		// 	xml.onload = function()
 		// {
@@ -68,7 +70,3 @@ var streaming = false,
 		// 	photo.src = response;
 		// 	console.log(response);
 		// }
-		// startbutton.addEventListener('click', function(ev){
-		// 	takepicture();
-		// 	ev.preventDefault();
-		// }, false);

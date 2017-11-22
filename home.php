@@ -18,16 +18,15 @@ logged_only();
 		<button id="startbutton">Prendre une photo</button>
 	</div>
 	<div class="wrapper-filter-webcam">
-		<!-- <img src="./photos/ornellarobs/1-ornellarobs-1511356037.png" height="200px"/> -->
 		<?php
 		require_once './inc/db.php';
 		$req = $pdo->prepare('SELECT photo_path FROM photos WHERE user_id = ?');
 		$req->execute([$_SESSION['auth']->id]);
-		$user = $req->fetch();
-		var_dump($user);
-		// echo $user->photo_path."<br/>";
-		// $image_data = $user->photo_path;
-		// echo '<img src="'.$image_data.'." alt="" />';
+		$result = $req->fetchAll(PDO::FETCH_COLUMN, 0);
+		foreach ($result as $elem)
+		{
+			echo '<img src="'.$elem.'" height="200px" />';
+		}
 		?>
 	</div>
 </form>

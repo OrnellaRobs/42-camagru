@@ -6,7 +6,7 @@ logged_only();
 require 'inc/header.php';
 ?>
 <h1>Les photos des autres utilisateurs</h1>
-<div class="wrapper-filter-webcam">
+<div class="wrapper-user-photo">
 	<?php
 	require_once './inc/db.php';
 	$req = $pdo->prepare('SELECT photo_path FROM photos');

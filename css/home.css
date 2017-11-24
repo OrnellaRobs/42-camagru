@@ -17,7 +17,14 @@
 	margin: 15px;
 }
 
-input
-{
+.wrapper-user-photo {
+	border: 2px solid red;
+	display: inline-flex;
+	/* flex-direction: column; */
+	align-items: center;
+	flex-wrap: wrap;
+}
 
+.container {
+	display: flex;
 }

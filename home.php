@@ -6,7 +6,7 @@ logged_only();
 ?>
 <?php require 'inc/header.php'; ?>
 <h1>Bonjour <?= $_SESSION['auth']->name; ?></h1>
-<form action="" method="POST">
+<form class="container" action="" method="POST">
 	<div class="wrapper-filter-webcam">
 		<label><input id="1" type="radio" name="filter" value="1" checked onClick="getFilter(1);"></label>
 		<img src="images/donut.png" title="donut.png" width="60px"/>
@@ -17,7 +17,7 @@ logged_only();
 		<video id="video" class="webcam-live"></video>
 		<button id="startbutton">Prendre une photo</button>
 	</div>
-	<div class="wrapper-filter-webcam">
+	<div class="wrapper-user-photo">
 		<?php
 		require_once './inc/db.php';
 		$req = $pdo->prepare('SELECT photo_path FROM photos WHERE user_id = ?');

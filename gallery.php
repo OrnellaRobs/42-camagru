@@ -40,8 +40,11 @@ require 'inc/header.php';
 
 		// echo "<img src='images/heart-4.png' width='23px' onClick='toggle(this, ".$elem.");'>";
 		// echo "<a href='like.php'><img src='images/heart-4.png' width='23px'></a>";
-		echo "<a href='comment.php'><img src='images/comment.png' width='50px'></a>";
+		echo "<a href='comment.php?pic=" . $elem . "'><img src='images/comment.png' width='50px'></a>";
 
+		echo "<form  method='post' action='comment.php'>
+		<input type='text' name='commentaire'>
+		</form>";
 
 		// $i++;
 	}

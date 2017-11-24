@@ -8,18 +8,45 @@ require 'inc/header.php';
 <h1>Les photos des autres utilisateurs</h1>
 <div class="wrapper-user-photo">
 	<?php
-	require_once './inc/db.php';
-	$req = $pdo->prepare('SELECT photo_path FROM photos');
+	require './inc/db.php';
+	$photos_per_page = 4;
+	$req = $pdo->prepare('SELECT photo_path FROM photos ORDER BY date_photo');
 	$req->execute();
 	$result = $req->fetchAll(PDO::FETCH_COLUMN, 0);
-	// var_dump($result);
+	$count = count($result);
+	// echo $count;
+	// $req = $pdo->prepare('SELECT photo_path(*) AS photo from photos');
+	// $req->execute();
+	// $articles = $req->fetch(PDO::FETCH_ASSOC);
+	// $total_articles = $articles['photo'];
+	// $nombredepage = ceil($total_articles/$photos_per_page);
+	$nombredepage = ceil($count / $photos_per_page);
+	// echo $nombredepage;
+	if (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page']>0 && $_GET['page']<= $nombredepage)
+	{
+		$page=intval($_GET['page']);
+	}
+	else
+	{
+		$page=1;
+	}
+	// echo "<br/>".$page;
+
+	// $req->execute();
+	$i = 0;
 	foreach ($result as $elem)
 	{
 		echo '<img src="'.$elem.'" height="200px" />';
-		echo '<img src="images/like.png" width="30px" onClick="like();"/>';
-		echo '<img src="images/comment.png" width="50px" onClick="comment();"/>';
+
+		// echo "<img src='images/heart-4.png' width='23px' onClick='toggle(this, ".$elem.");'>";
+		// echo "<a href='like.php'><img src='images/heart-4.png' width='23px'></a>";
+		echo "<a href='comment.php'><img src='images/comment.png' width='50px'></a>";
+
+
+		// $i++;
 	}
+
+	echo '</div>';
+	echo '<script type="text/javascript" src="set-gallery.js"></script>';
+	require 'inc/footer.php';
 	?>
-</div>
-<script type="text/javascript" src="./set-gallery.js"></script>
-<?php require 'inc/footer.php'; ?>

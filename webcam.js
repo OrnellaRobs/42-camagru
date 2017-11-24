@@ -57,7 +57,6 @@ var streaming = false,
 		}
 		function sendData(data)
 		{
-			console.log("AVANT");
 			var xml = new XMLHttpRequest();
 			xml.open('POST', 'get-webcam-photo.php', true);
 			xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

@@ -29,7 +29,7 @@ $allphotoliked = $req->fetchAll(PDO::FETCH_COLUMN, 0);
 	 {
 	// 	$liked = 0;
 	 	echo '<img src="'.$elem->photo_path.'" height="200px" />';
-		echo $elem->photo_id."<br/>";
+		echo $elem->photo_path."<br/>";
 
 		$liked = false;
 		foreach ($allphotoliked as $photo) {
@@ -43,9 +43,8 @@ $allphotoliked = $req->fetchAll(PDO::FETCH_COLUMN, 0);
 			echo "<img class='liked' src='images/heart-3.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
 		else
 			echo "<img class='unliked' src='images/heart-4.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
-
-// onClick='toggle(\"$elem\", \"$photo\", \"$liked\");'>";
-		// foreach ($allphotoliked as $photo) {
+		echo "<a href='comment.php?url= $elem->photo_path'><img src='images/comment.png' width='40px'></a>";
+// onClick='toggle(		// foreach ($allphotoliked as $photo) {
 			// var_dump($photo);
 		// }
 

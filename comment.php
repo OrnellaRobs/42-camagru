@@ -3,18 +3,17 @@ require 'inc/functions.php';
 check_session();
 logged_only();
 require 'inc/header.php';
-if (!empty($_GET) && isset($_GET['pic']))
+if (!empty($_GET) && isset($_GET['url']))
 {
-	$img = $_GET['pic'];
-	echo '<img src="'.$img.'" height="500px" />';
+	echo '<img src= "'. $_GET["url"] .'">';
 }
 ?>
 <form method="post" action="">
 
 <p>
-    On insèrera ici les éléments de notre formulaire.
+    Votre commentaire :
 </p>
-<input type="text" value="OK">
-
+<input type="text">
+<input type="submit" value="Envoyer">
 </form>
 <?php require 'inc/footer.php'; ?>

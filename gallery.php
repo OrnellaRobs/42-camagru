@@ -38,7 +38,7 @@ require 'inc/header.php';
 	{
 		echo '<img src="'.$elem.'" height="200px" />';
 
-		// echo "<img src='images/heart-4.png' width='23px' onClick='toggle(this, ".$elem.");'>";
+		echo "<img id='heart' src='images/heart-4.png' width='23px' onClick='toggle(\"$elem\");'>";
 		// echo "<a href='like.php'><img src='images/heart-4.png' width='23px'></a>";
 		echo "<a href='comment.php?pic=" . $elem . "'><img src='images/comment.png' width='50px'></a>";
 

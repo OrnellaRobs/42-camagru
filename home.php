@@ -19,13 +19,20 @@ logged_only();
 	</div>
 	<div class="wrapper-user-photo">
 		<?php
-		require_once './inc/db.php';
-		$req = $pdo->prepare('SELECT photo_path FROM photos WHERE user_id = ?');
-		$req->execute([$_SESSION['auth']->id]);
-		$result = $req->fetchAll(PDO::FETCH_COLUMN, 0);
-		foreach ($result as $elem)
+		require './inc/db.php';
+		try
 		{
-			echo '<img src="'.$elem.'" height="200px" />';
+			$req = $pdo->prepare('SELECT photo_path FROM photos WHERE user_id = ?');
+			$req->execute([$_SESSION['auth']->id]);
+			$result = $req->fetchAll(PDO::FETCH_COLUMN, 0);
+			foreach ($result as $elem)
+			{
+				echo '<img src="'.$elem.'" height="200px" />';
+			}
+		}
+		catch (PDOException $e)
+		{
+			echo "fail";
 		}
 		?>
 	</div>

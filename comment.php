@@ -7,6 +7,10 @@ if (!empty($_GET) && isset($_GET['url']))
 {
 	echo '<img src= "'. $_GET["url"] .'">';
 }
+if (!empty($_POST))
+{
+	var_dump($_POST);
+}
 ?>
 <form method="post" action="">
 
@@ -16,4 +20,5 @@ if (!empty($_GET) && isset($_GET['url']))
 <input type="text">
 <input type="submit" value="Envoyer">
 </form>
+
 <?php require 'inc/footer.php'; ?>

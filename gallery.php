@@ -36,9 +36,8 @@ require 'inc/header.php';
 			echo "<img class='liked' src='images/heart-3.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
 		else
 			echo "<img class='unliked' src='images/heart-4.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
-		echo "<a href='comment.php?url= $elem->photo_path'><img src='images/comment.png' width='40px'></a>";
+		echo "<a href='comment.php?url=$elem->photo_path&photoid=$elem->photo_id'><img src='images/comment.png' width='40px'></a>";
 	}
 	?>
 </div>
 <script type="text/javascript" src="set-gallery.js"></script>
-

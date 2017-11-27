@@ -27,7 +27,10 @@ logged_only();
 			$result = $req->fetchAll(PDO::FETCH_COLUMN, 0);
 			foreach ($result as $elem)
 			{
+				echo '<div class="photo-user">';
 				echo '<img src="'.$elem.'" height="200px" />';
+				echo "<input type='button' value='Supprimer' onClick='deletePhoto(\"$elem\");'>";
+				echo '</div>';
 			}
 		}
 		catch (PDOException $e)
@@ -39,5 +42,5 @@ logged_only();
 </form>
 <canvas id="canvas" style="display:none;"></canvas>
 <!-- <img src="http://placekitten.com/g/320/261" id="photo" alt="photo"> -->
-<script type="text/javascript" src="./webcam.js"></script>
+<script type="text/javascript" src="./deletePhoto.js"></script>
 <?php require 'inc/footer.php'; ?>

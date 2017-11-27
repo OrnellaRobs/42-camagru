@@ -5,6 +5,12 @@
 	align-items: center;
 }
 
+.photo-user {
+	display: inline-flex;
+	flex-direction: column;
+	/*background-color: blue;*/
+}
+
 .choose-filter {
 	margin: 15px;
 }
@@ -28,3 +34,4 @@
 .container {
 	display: flex;
 }
+

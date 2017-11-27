@@ -7,12 +7,10 @@ require './inc/db.php';
 
 if (!empty($_GET) && isset($_GET['url']) && isset($_GET['photoid']))
 {
-	var_dump($_GET);
 	echo '<img src= "'. $_GET["url"] .'">';
 }
 if (!empty($_POST))
 {
-	var_dump($_POST);
 	$userid = $_SESSION['auth']->id;
 	$username = $_SESSION['auth']->username;
 	$req = $pdo->prepare('INSERT INTO comments SET usercomment_id = :userid, photo_id = :photoid,
@@ -28,17 +26,12 @@ if (!empty($_POST))
 		'photoid' => $_GET['photoid']
 	]);
 	$getownerphoto = $requser->fetch();
-	echo "<br/> ID OF THE OWNER OF THE PHOTO:";
-	var_dump($getownerphoto);
 	// //SECOND REQUEST TO SEND A MAIL TO THE OWNER OF THE PHOTO COMMENTED
 	$reqmail = $pdo->prepare('SELECT email FROM user WHERE id = :userid');
 	$reqmail->execute([
 		'userid' => $getownerphoto->user_id
 	]);
 	$getmail = $reqmail->fetch();
-	echo "<br/> OWNER MAIL:";
-	var_dump($getmail);
-	echo "<br/> USERNAME=".$username;
 	$commentaire = $_POST['commentaire'];
 	$entetes =
 	'Content-type: text/html; charset=utf-8' . "\r\n" .
@@ -67,12 +60,11 @@ if (!empty($_POST))
 	<!-- <input type="text">
 	<input type="submit" value="Envoyer"> -->
 </form>
-
+<h1>Autres commentaires sur cette photo: </h1>
 <?php
-	$req = $pdo->prepare('SELECT comment FROM comments');
-	$req->execute();
+	$req = $pdo->prepare('SELECT comment FROM comments WHERE photo_id = :photoid');
+	$req->execute(['photoid' => $_GET['photoid']]);
 	$allComments = $req->fetchAll(PDO::FETCH_COLUMN, 0);
-	var_dump($allComments);
 	foreach($allComments as $Comments)
 	{
 		echo '<div class="">';

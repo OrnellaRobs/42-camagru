@@ -38,3 +38,4 @@ require 'inc/header.php';
 	?>
 </div>
 <script type="text/javascript" src="set-gallery.js"></script>
+<?php require 'inc/footer.php'; ?>

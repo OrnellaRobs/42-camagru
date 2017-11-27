@@ -16,7 +16,6 @@ if (!empty($_POST) && isset($_POST['photoid']) && isset($_POST['like']))
 			'userwholiked' => $user_id,
 			'photoid' => $_POST['photoid']
 		]);
-		echo "insert";
 	}
 	else if ($_POST['like'] == 0)
 	{
@@ -25,7 +24,6 @@ if (!empty($_POST) && isset($_POST['photoid']) && isset($_POST['like']))
 			'photoid' => $_POST['photoid'],
 			'userwholiked' => $user_id
 		]);
-		echo "delete";
 	}
 }
 ?>

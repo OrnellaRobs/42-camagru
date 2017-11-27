@@ -42,5 +42,6 @@ logged_only();
 </form>
 <canvas id="canvas" style="display:none;"></canvas>
 <!-- <img src="http://placekitten.com/g/320/261" id="photo" alt="photo"> -->
+<script type="text/javascript" src="./webcam.js"></script>
 <script type="text/javascript" src="./deletePhoto.js"></script>
 <?php require 'inc/footer.php'; ?>

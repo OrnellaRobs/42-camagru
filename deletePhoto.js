@@ -4,6 +4,7 @@ function deletePhoto(photo) {
 		var xml = new XMLHttpRequest();
 		xml.open('POST', 'deletePhoto.php', true);
 		xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xml.send("photo_path" + photo);
+		xml.send("photo_path=" + photo);
+		window.location.reload();
 	}
 }

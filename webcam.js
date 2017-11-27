@@ -61,7 +61,9 @@ var streaming = false,
 			xml.open('POST', 'get-webcam-photo.php', true);
 			xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			xml.send("data=" + data + "&filter=" + filter);
-			window.location.reload();
+			xml.onload = function () {
+				window.location.reload();
+			};
 		}
 		// 	xml.onload = function()
 		// {

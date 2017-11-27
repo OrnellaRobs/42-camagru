@@ -22,14 +22,16 @@ logged_only();
 		require './inc/db.php';
 		try
 		{
+			$userid = $_SESSION['auth']->id;
 			$req = $pdo->prepare('SELECT photo_path FROM photos WHERE user_id = ?');
-			$req->execute([$_SESSION['auth']->id]);
+			$req->execute([$userid]);
+
 			$result = $req->fetchAll(PDO::FETCH_COLUMN, 0);
 			foreach ($result as $elem)
 			{
 				echo '<div class="photo-user">';
 				echo '<img src="'.$elem.'" height="200px" />';
-				echo "<input type='button' value='Supprimer' onClick='deletePhoto(\"$elem\");'>";
+				echo "<input type='button' value='Supprimer' onClick='deletePhoto(\"$elem\", \"$userid\");'>";
 				echo '</div>';
 			}
 		}

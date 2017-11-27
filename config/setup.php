@@ -61,6 +61,7 @@ if (isset($_POST['create'])) {
 		 	photo_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 			date_photo DateTime DEFAULT CURRENT_TIMESTAMP,
 			photo_type VARCHAR(4) NOT NULL,
+			filter INT NOT NULL,
 			photo_path VARCHAR(255) NOT NULL
 		)";
 		$dbh->exec($sql);

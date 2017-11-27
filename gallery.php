@@ -5,11 +5,20 @@ logged_only();
 
 require 'inc/header.php';
 ?>
+<h1>Afficher selon les filtres :</h1>
+<a href="gallery.php?filter=donut"><img src="./images/DONUT.png" width="100px"></a>
+<a href="gallery.php?filter=pizza"><img src="./images/pizza.png" width="100px"></a>
+<a href="gallery.php?filter=pow"><img src="./images/POW.png" width="100px"></a>
+<?php if (!empty($_GET))
+{
+	
+}
+?>
+<?php if (empty($_GET)):?>
 <h1>Les photos des autres utilisateurs</h1>
 <div class="wrapper-user-photo">
 	<?php
 	require './inc/db.php';
-	$photos_per_page = 4;
 	$req = $pdo->prepare('SELECT * FROM photos ORDER BY date_photo');
 	$req->execute();
 	$result = $req->fetchAll();
@@ -39,5 +48,6 @@ require 'inc/header.php';
 	}
 	?>
 </div>
+<?php endif; ?>
 <script type="text/javascript" src="set-gallery.js"></script>
 <?php require 'inc/footer.php'; ?>

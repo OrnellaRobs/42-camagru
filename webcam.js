@@ -65,9 +65,3 @@ var streaming = false,
 				window.location.reload();
 			};
 		}
-		// 	xml.onload = function()
-		// {
-		// 	var response = xml.responseText;
-		// 	photo.src = response;
-		// 	console.log(response);
-		// }

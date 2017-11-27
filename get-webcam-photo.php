@@ -48,21 +48,14 @@ if (!empty($_POST) && isset($_POST['data']))
 	rename("photos/new" . $type, $filename);
 	// try {
 	require_once './inc/db.php';
-	$req = $pdo->prepare("INSERT INTO photos SET user_id = :user_id, date_photo = NOW() , photo_type = :phototype, photo_path = :photopath");
+	$req = $pdo->prepare("INSERT INTO photos SET user_id = :user_id, date_photo = NOW() , photo_type = :phototype, filter = :filter, photo_path = :photopath");
 	$req->execute([
 		'user_id' => $_SESSION['auth']->id,
 		':phototype' => $type,
+		':filter' => $filter,
 		':photopath' => $filename
 	]);
 	header('Location: home.php');
-	// echo "<script type= 'text/javascript'>alert('Insert into Table photos success');</script>";
-	// }
-	// catch(PDOException $e)
-	// {
-	// 	echo "<script type= 'text/javascript'>alert('Insert into Table photos failed \t".$e->getMessage()."\n');</script>";
-	// }
-	// echo "ORNELLA";
-	// exit();
 }
 ?>
 <!--  -->

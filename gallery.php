@@ -14,7 +14,6 @@ require 'inc/header.php';
 	$req->execute();
 	$result = $req->fetchAll();
 
-	$i = 0;
 	$user_id = $_SESSION['auth']->id;
 	$req = $pdo->prepare('SELECT photo_id FROM likephoto WHERE userlike_id = :userlikeid');
 	$req->execute(['userlikeid' => $user_id]);
@@ -23,7 +22,6 @@ require 'inc/header.php';
 	foreach ($result as $elem)
 	{
 	 	echo '<img src="'.$elem->photo_path.'" height="200px" />';
-
 		$liked = false;
 		foreach ($allphotoliked as $photo) {
 			if ($photo === $elem->photo_id) {
@@ -31,7 +29,6 @@ require 'inc/header.php';
 				break;
 			}
 		}
-
 		if ($liked == true)
 			echo "<img class='liked' src='images/heart-3.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
 		else

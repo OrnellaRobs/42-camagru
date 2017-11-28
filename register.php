@@ -6,8 +6,9 @@ if (!empty($_POST))
 {
 	$errors = array();
 	require_once './inc/db.php';
-	if (empty($_POST['username']) || !preg_match('/^[a-zA-Z0-9_]+$/', $_POST['username'])) {
-		$errors['username'] = "L'identifiant n'est pas valide";
+	if (empty($_POST['username']) || !preg_match('/^[a-zA-Z0-9_]+$/', $_POST['username']) || strlen($_POST['username']) < 6) {
+		$str = (strlen($_POST['username']) < 6) ? "L'identifiant doit avoir au moins 6 caractères" : "L'identifiant n'est pas valide";
+		$errors['username'] = $str;
 	}
 	else {
 		$req = $pdo->prepare('SELECT id FROM User WHERE username = ?');

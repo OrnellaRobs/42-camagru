@@ -30,3 +30,20 @@ function check_already_login() {
 		exit();
 	}
 }
+
+function password_check_alphanum($str)
+{
+	$size = strlen($str);
+	$i = 0;
+	$num = 0;
+	$alpha = 0;
+	while ($i < $size)
+	{
+		if ($str[$i] >= '0' && $str[$i] <= '9')
+			$num = 1;
+		else if ($str[$i] >= 'A' && $str[$i] <= 'Z' || $str[$i] >= 'a' && $str[$i] <= 'z')
+			$alpha = 1;
+		$i++;
+	}
+	return $alpha == 1 && $num == 1 ? true : false;
+}

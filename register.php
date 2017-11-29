@@ -31,8 +31,10 @@ if (!empty($_POST))
 			$errors['email'] = 'Cet e-mail est déjà pris';
 		}
 	}
-	if (empty($_POST['password']) || $_POST['password'] != $_POST['password-confirm']) {
-		$errors['password'] = "Le mot de passe n'est pas valide";
+	if (empty($_POST['password']) || $_POST['password'] != $_POST['password-confirm'] || strlen($_POST['password']) < 4 || !password_check_alphanum($_POST['password'])) {
+		$str = (strlen($_POST['password']) < 4) ? "Le mot de passe doit avoir au moins 4 caractères dont des chiffres et des lettres" : "Le mot de passe n'est pas valide";
+		$str = (!password_check_alphanum($_POST['password'])) ? "Le mot de passe doit contenir des lettres ainsi que des chiffres" : $str;
+		$errors['password'] = $str;
 	}
 	if (empty($errors)) {
 		$req = $pdo->prepare("INSERT INTO User SET name = :name, username = :username, password = :password, email = :email, confirmation_token = :token");

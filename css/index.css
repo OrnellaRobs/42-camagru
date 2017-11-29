@@ -1,0 +1,75 @@
+.all-page-login {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	align-items: center;
+	height: 90%;
+}
+.connect-msg {
+	margin-top: 10px;
+	font-size: 62px;
+	font-family: New Century Schoolbook, serif;
+	font-variant: small-caps;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.background-login {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 600px;
+	height: 600px;
+	background-image: url(https://s11.favim.com/orig/160423/white-decoration-pics-tumblr-Favim.com-4240111.jpeg);
+	border-radius: 2000px;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.form-login {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(255,255,255,0.8);
+	width: 300px;
+	height: 300px;
+	border-radius: 1000px;
+}
+
+#img-login {
+	margin: 10px 0;
+}
+.input-login {
+	border: 1px solid black;
+	margin: 2px;
+	width: 180px;
+	height: 30px;
+	font-size: 14px;
+	margin-left: 15px;
+	text-align: center;
+}
+
+.login-submit:hover {
+	background-color: rgba(81, 202, 188, 0.5);
+}
+.login-submit {
+	padding: 3px 8px;
+	border: none;
+	height: 30px;
+	background-color: rgba(81, 202, 188, 0.8);
+	font-size: 16px;
+}
+
+.forget-password {
+	text-decoration: none;
+	text-align: center;
+	background-color: black;
+	padding-top: 2.5px;
+	color: white;
+	height: 25px;
+	width: 230px;
+	/*border: 2px solid red;*/
+	border-radius: 15px;
+}

@@ -20,19 +20,26 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 		exit();
 	}
 	else
-		$_SESSION['danger'] = "Identifiant/Email ou mot de passe inccorects";
+	$_SESSION['danger'] = "Identifiant/Email ou mot de passe inccorects";
 }
 
 ?>
 
 <?php require 'inc/header.php'; ?>
-
-<h1>SE CONNECTER</h1>
-
-<form class="form-login" action="" method="post">
-	<input class="input-login" type="text" name="username" title="identifiant" placeholder="Identifiant ou Email"/><br/>
-	<input class="input-login" type="password" name="password" title="password" placeholder="Mot de Passe"/><br/>
-	<input class="login-submit" type="submit" value="Se Connecter"><br/>
-	<a href="forget.php">(J'ai oublié mon mot de passe)</>
-</form>
-<?php require 'inc/footer.php'; ?>
+<div class="all-page-login">
+	<div class="connect-msg">
+		Connecte-Toi
+		<center><img src="images/arrow2.png" width="80px"/></center>
+	</div>
+	<div class="background-login">
+		<form class="form-login" action="" method="post">
+			<img id="img-login" src="images/logo.png" width="90px;"/>
+			<input class="input-login" type="text" name="username" title="identifiant" placeholder="Identifiant ou Email"/><br/>
+			<input class="input-login" type="password" name="password" title="password" placeholder="Mot de Passe"/><br/>
+			<input class="login-submit" type="submit" value="Se Connecter"><br/>
+		</form>
+	</div>
+	<a class="forget-password" href="forget.php">J'ai oublié mon mot de passe ?</>
+		
+	</div>
+	<?php require 'inc/footer.php'; ?>

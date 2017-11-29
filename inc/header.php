@@ -5,6 +5,7 @@
 	<title>CAMAGRU</title>
 	<link rel="stylesheet" type="text/css" href="./css/header.css">
 	<link rel="stylesheet" type="text/css" href="./css/home.css">
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
 </head>
 <body>
 	<div class="header">
@@ -24,7 +25,7 @@
 			<a class="user-input" href="./register.php">S'Inscrire</a>
 		<?php endif;?>
 		<!-- <?php echo $_SERVER['REQUEST_URI']?> -->
-		<?php if ($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/register.php" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/forget.php" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/gallery.php"): ?>
+		<?php if ($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/register.php" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/forget.php" || ($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/gallery.php" && !isset($_SESSION['auth']))):  ?>
 			<a class="user-input" href="./index.php">Se Connecter</a>
 		<?php endif;?>
 		<!--BONUS-->

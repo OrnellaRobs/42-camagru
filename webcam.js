@@ -22,7 +22,7 @@ function get_img_upload(img)
 		img_upload = img;
 	}
 	else
-		upload = 0;
+	upload = 0;
 	// console.log(img);
 	// sendData(img, upload);
 }
@@ -79,14 +79,31 @@ if (upload == 0)
 	}
 	function sendData(data, upload)
 	{
-		console.log(data);
-		console.log(upload);
-
-		// var xml = new XMLHttpRequest();
-		// xml.open('POST', 'get-webcam-photo.php', true);
-		// xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		// xml.send("data=" + data + "&filter=" + filter);
-		// xml.onload = function () {
-		// 	window.location.reload();
-		// };
+		var img_data;
+		console.log("OK");
+		if (upload == 1)
+		{
+			const reader = new FileReader();
+			const file = data.files[0];
+			reader.onload = function(upload) {
+				img_data = upload.target.result;
+				var xml = new XMLHttpRequest()
+				xml.open('POST', 'get-webcam-photo.php', true);
+				xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				xml.send("data=" + img_data + "&filter=" + filter);
+				xml.onload = function () {
+					window.location.reload();
+				}
+			};
+			reader.readAsDataURL(file);
+		}
+		else {
+			var xml = new XMLHttpRequest()
+			xml.open('POST', 'get-webcam-photo.php', true);
+			xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xml.send("data=" + data + "&filter=" + filter);
+			xml.onload = function () {
+				window.locati
+			}
+		}
 	}

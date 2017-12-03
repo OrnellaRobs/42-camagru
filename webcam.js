@@ -1,16 +1,33 @@
 var streaming = false,
-	video = document.querySelector('#video'),
-	cover        = document.querySelector('#cover'),
-	canvas       = document.querySelector('#canvas'),
-	photo        = document.querySelector('#photo'),
-	startbutton  = document.querySelector('#startbutton'),
-	filter       = 1,
-	width = 520,
-	height = 0;
-	function getFilter(num)
+video = document.querySelector('#video'),
+cover        = document.querySelector('#cover'),
+canvas       = document.querySelector('#canvas'),
+photo        = document.querySelector('#photo'),
+startbutton  = document.querySelector('#startbutton'),
+sendbutton   = document.querySelector('#sendbutton'),
+filter       = 1,
+img_upload,
+upload = 0,
+width = 520,
+height = 0;
+function getFilter(num)
+{
+	filter = num;
+}
+function get_img_upload(img)
+{
+	if(img.length != 0)
 	{
-		filter = num;
+		upload = 1;
+		img_upload = img;
 	}
+	else
+		upload = 0;
+	// console.log(img);
+	// sendData(img, upload);
+}
+if (upload == 0)
+{
 	navigator.getMedia = ( navigator.getUserMedia ||
 		navigator.webkitGetUserMedia ||
 		navigator.mozGetUserMedia ||
@@ -47,21 +64,29 @@ var streaming = false,
 			takepicture();
 			ev.preventDefault();
 		}, false);
+		sendbutton.addEventListener('click', function(ev){
+			sendData(img_upload, upload);
+			ev.preventDefault();
+		},false);
 		function takepicture() {
 			canvas.width = width;
 			canvas.height = height;
 			canvas.getContext('2d').drawImage(video, 0, 0, width, height);
 			var data = canvas.toDataURL('image/png');
 			// photo.setAttribute('src', data);
-			sendData(data);
+			sendData(data, upload);
 		}
-		function sendData(data)
-		{
-			var xml = new XMLHttpRequest();
-			xml.open('POST', 'get-webcam-photo.php', true);
-			xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-			xml.send("data=" + data + "&filter=" + filter);
-			xml.onload = function () {
-				window.location.reload();
-			};
-		}
+	}
+	function sendData(data, upload)
+	{
+		console.log(data);
+		console.log(upload);
+
+		// var xml = new XMLHttpRequest();
+		// xml.open('POST', 'get-webcam-photo.php', true);
+		// xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		// xml.send("data=" + data + "&filter=" + filter);
+		// xml.onload = function () {
+		// 	window.location.reload();
+		// };
+	}

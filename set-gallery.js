@@ -1,6 +1,4 @@
 function toggle(obj, photoid) {
-	console.log(obj.className);
-	console.log(photoid);
 	var like;
 	if (obj.className == "liked") {
 		obj.className = "unliked";

@@ -55,7 +55,7 @@ if (!empty($_POST) && isset($_POST['data']))
 		':filter' => $filter,
 		':photopath' => $filename
 	]);
-	header('Location: home.php');
+	// header('Location: home.php');
 }
 ?>
 <!--  -->

@@ -5,6 +5,23 @@ check_session();
 
 require 'inc/header.php';
 require './inc/db.php';
+$photo_per_page = 6;
+$request = $pdo->prepare('SELECT * FROM photos ORDER BY date_photo DESC');
+$request->execute();
+$get_all = $request->fetchAll();
+$count_photos = count($get_all);
+$count_pages = ceil($count_photos / $photo_per_page);
+if (isset($_GET['page']) && !empty($_GET['page']) && ctype_digit($_GET['page']))
+{
+	if ($_GET['page'] > $count_pages)
+		$current = $count_pages;
+	else
+		$current = $_GET['page'];
+}
+else
+	$current = 1;
+$start = ($current - 1) * $photo_per_page;
+
 if (isset($_SESSION['auth']))
 {
 	$user_id = $_SESSION['auth']->id;
@@ -14,44 +31,15 @@ if (isset($_SESSION['auth']))
 }
 ?>
 <h1>Afficher selon les filtres :</h1>
-<a href="gallery.php?filter=1"><img src="./images/DONUT.png" width="100px"></a>
-<a href="gallery.php?filter=2"><img src="./images/pizza.png" width="100px"></a>
-<a href="gallery.php?filter=3"><img src="./images/POW.png" width="100px"></a><br/>
-<?php if (!empty($_GET))
-{
-	$request = $pdo->prepare('SELECT * FROM photos WHERE filter = :filter');
-	$request->execute(['filter' => $_GET['filter']]);
-	$allPhotoWithFilter = $request->fetchAll();
-	foreach($allPhotoWithFilter as $filter) {
-		echo '<div class="">';
-		echo '<img src="'.$filter->photo_path.'" height="200px" />';
-		$liked = false;
-		if (isset($_SESSION['auth']))
-		{
-			foreach ($allphotoliked as $photo) {
-				if ($photo === $filter->photo_id) {
-					$liked = true;
-					break;
-				}
-			}
-			if ($liked == true)
-			echo "<img class='liked' src='images/heart-3.png' width='23px' onClick='toggle(this,\"$filter->photo_id\");'>";
-			else
-			echo "<img class='unliked' src='images/heart-4.png' width='23px' onClick='toggle(this,\"$filter->photo_id\");'>";
-			echo "<a href='comment.php?url=$filter->photo_path&photoid=$filter->photo_id'><img src='images/comment.png' width='40px'></a>";
-			echo '</div>';
-		}
-	}
-}
-?>
-<?php if (empty($_GET)):?>
+<a href="filter.php?filter=1"><img src="./images/DONUT.png" width="100px"></a>
+<a href="filter.php?filter=2"><img src="./images/pizza.png" width="100px"></a>
+<a href="filter.php?filter=3"><img src="./images/POW.png" width="100px"></a><br/>
 	<h1>Les photos des autres utilisateurs</h1>
 	<div class="wrapper-user-photo">
 		<?php
-		$req = $pdo->prepare('SELECT * FROM photos ORDER BY date_photo');
+		$req = $pdo->prepare('SELECT * FROM photos ORDER BY date_photo DESC LIMIT '.$start.','.$photo_per_page.'');
 		$req->execute();
 		$result = $req->fetchAll();
-
 		foreach ($result as $elem)
 		{
 			echo '<div class="">';
@@ -73,8 +61,13 @@ if (isset($_SESSION['auth']))
 				echo '</div>';
 			}
 		}
+		echo "<br/><br/>";
+		for ($i=1; $i<=$count_pages; $i++) {
+			echo '<a href="gallery.php?page='.$i.'">'.$i.'</a> ';
+			if ($i < $count_pages)
+				echo "-";
+		}
 		?>
 	</div>
-<?php endif; ?>
 <script type="text/javascript" src="set-gallery.js"></script>
 <?php require 'inc/footer.php'; ?>

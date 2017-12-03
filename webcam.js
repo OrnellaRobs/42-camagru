@@ -23,8 +23,6 @@ function get_img_upload(img)
 	}
 	else
 	upload = 0;
-	// console.log(img);
-	// sendData(img, upload);
 }
 if (upload == 0)
 {

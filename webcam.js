@@ -14,13 +14,28 @@ function getFilter(num)
 {
 	filter = num;
 }
+function isInArray(extensions, extension) {
+	return extensions.indexOf(extension.toLowerCase()) > -1;
+}
 function get_img_upload(img)
 {
-	if(img.length != 0)
+	if (img.length != 0)
 	{
-
-		upload = 1;
-		img_upload = img;
+		var name = img.files[0].name;
+		console.log(name);
+		var res = name.split('.');
+		var nb_elem = res.length;
+		var extension = res[nb_elem - 1];
+		var allowedExtensions = ["png", "jpg", "jpeg"];
+		if (!isInArray(allowedExtensions, extension))
+		{
+			upload = 0;
+			alert("Le fichier sélectionné n'est pas une image");
+		}
+		else {
+			upload = 1;
+			img_upload = img;
+		}
 	}
 	else
 	upload = 0;

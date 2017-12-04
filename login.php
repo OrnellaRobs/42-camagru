@@ -3,7 +3,6 @@ require 'inc/functions.php';
 check_session();
 if (isset($_SESSION['auth']))
 {
-	echo "ok";
 	$_SESSION['danger'] = "Vous êtes déjà connecté";
 	header('Location: account.php');
 	exit();

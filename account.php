@@ -2,8 +2,38 @@
 require 'inc/functions.php';
 check_session();
 logged_only();
+require 'inc/header.php';
+	if (!empty($_POST))
+	{
+		if (isset($_POST['name']) && $_POST['name'] != "" && isset($_POST['confirm-name']) && $_POST['confirm-name'] != "")
+		{
+			if ($_POST['name'] != $_POST['confirm-name'])
+			{
+				$_SESSION['danger'] = "Les nouveaux noms ne correspondent pas";
+				header('Location: account.php');
+				exit();
+			}
+			require_once 'inc/db.php';
+			$user_id = $_SESSION['auth']->id;
+			$req = $pdo->prepare('UPDATE User SET name = :name WHERE id = :id');
+			$req->execute([
+				'name' => $_POST['name'],
+				'id' => $user_id
+			]);
+			$request = $pdo->prepare('SELECT * FROM User WHERE id = :id');
+			$request->execute(['id' => $user_id]);
+			$user = $request->fetch();
+			$_SESSION['auth'] = $user;
+			$_SESSION['success'] = "Votre nom a bien été mis à jour";
+			header('Location: account.php');
+			exit();
+		}
+		if (isset($_POST['email']) && $_POST['email'] != "")
+			echo "EMAIL<br/>";
+		if (isset($_POST['password']) && $_POST['password'] != "")
+			echo "PASSWORD<br/>";
+	}
 ?>
-<?php require 'inc/header.php'; ?>
 
 <!-- if (!empty($_POST))
 {
@@ -21,8 +51,13 @@ $_SESSION['success'] = "Votre mot de passe a bien été mis à jour";
 }
 ?> -->
 <!--precedemment a mettre dans home.php-->
+<!-- <?php var_dump($_SESSION['auth']);?> -->
+<h1>Informations</h1>
+Nom: <?= $_SESSION['auth']->name; ?><br/>
+Username: <?= $_SESSION['auth']->username; ?><br/>
+Email: <?= $_SESSION['auth']->email; ?><br/>
 <h1>Modifier mon nom</h1>
-<form action="account.php" method="post">
+<form action="" method="post">
 	<div class="form-group">
 		<input type="text" name="name" placeholder="Nouveau nom"/>
 	</div>

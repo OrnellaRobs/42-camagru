@@ -29,7 +29,14 @@ require 'inc/header.php';
 			exit();
 		}
 		if (isset($_POST['email']) && $_POST['email'] != "")
-			echo "EMAIL<br/>";
+		{
+			if ($_POST['email'] != $_POST['confirm-email'])
+			{
+				$_SESSION['danger'] = "Les nouveaux emails ne correspondent pas";
+				// header('Location: account.php');
+				// exit();
+			}
+		}
 		if (isset($_POST['password']) && $_POST['password'] != "")
 			echo "PASSWORD<br/>";
 	}

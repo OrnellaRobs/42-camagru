@@ -20,19 +20,22 @@ if (!empty($_POST) && isset($_POST['data']))
 	$filename = $user_directory . $filter . "-" . $_SESSION['auth']->username ."-". $date_photo . '.' . $type;
 	file_put_contents($filename, $filedata);
 	//SUPERPOSER DEUX IMAGES
-	header ("Content-type: image/png");
+	// header ("Content-type: image/png");
+	header("Content-type: image");
 	if ($filter == "1")
-	$source = imagecreatefrompng("./images/DONUT.png");
+		$source = imagecreatefrompng("./images/DONUT.png");
 	else if ($filter == "2")
-	$source = imagecreatefrompng("./images/pizza.png");
+		$source = imagecreatefrompng("./images/pizza.png");
 	else if ($filter == "3")
-	$source = imagecreatefrompng("./images/POW.png");
+		$source = imagecreatefrompng("./images/POW.png");
 	$largeur_source = imagesx($source);
 	$hauteur_source = imagesy($source);
 	imagealphablending($source, true);
 	imagesavealpha($source, true);
-
-	$destination = imagecreatefrompng("$filename");
+	if ($type == "png")
+		$destination = imagecreatefrompng("$filename");
+	else if ($type == "jpeg" || $type == "jpg")
+		$destination = imagecreatefromjpeg("$filename");
 	$largeur_destination = imagesx($destination);
 	$hauteur_destination = imagesy($destination);
 
@@ -46,7 +49,6 @@ if (!empty($_POST) && isset($_POST['data']))
 	imagedestroy($destination);
 	unlink($filename);
 	rename("photos/new" . $type, $filename);
-	// try {
 	require_once './inc/db.php';
 	$req = $pdo->prepare("INSERT INTO photos SET user_id = :user_id, date_photo = NOW() , photo_type = :phototype, filter = :filter, photo_path = :photopath");
 	$req->execute([

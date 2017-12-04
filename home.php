@@ -15,7 +15,7 @@ logged_only();
 		<label><input id="3" type="radio" name="filter" value="3" onClick="getFilter(3);"/></label>
 		<img src="images/pow.png" title="pow.png" width="60px"/>
 		<video id="video" class="webcam-live"></video>
-		<label><input type="file" name="img" onchange="get_img_upload(this)"/></label>
+		<label><input type="file" name="MAX_FILE_SIZE" value=50000 name="img" onchange="get_img_upload(this)"/></label>
 		<button id="sendbutton">Envoyer la photo</button>
 		<button id="startbutton">Prendre une photo</button>
 	</div>
@@ -42,7 +42,6 @@ logged_only();
 			else
 				$current = 1;
 			$start = ($current - 1) * $photo_per_page;
-			echo $count_pages;            //
 
 			$req = $pdo->prepare('SELECT photo_path FROM photos WHERE user_id = ? ORDER BY date_photo DESC LIMIT '.$start.','.$photo_per_page.'');
 			$req->execute([$userid]);

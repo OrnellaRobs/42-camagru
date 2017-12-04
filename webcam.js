@@ -18,11 +18,18 @@ function get_img_upload(img)
 {
 	if(img.length != 0)
 	{
+
 		upload = 1;
 		img_upload = img;
 	}
 	else
 	upload = 0;
+}
+function check_img_extension(img)
+{
+	var length = img.length;
+	var start = length - 4;
+	var end = length;
 }
 if (upload == 0)
 {
@@ -101,7 +108,7 @@ if (upload == 0)
 			xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			xml.send("data=" + data + "&filter=" + filter);
 			xml.onload = function () {
-				window.locati
+				window.location.reload();
 			}
 		}
 	}

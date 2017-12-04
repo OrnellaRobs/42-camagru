@@ -22,7 +22,6 @@ function get_img_upload(img)
 	if (img.length != 0)
 	{
 		var name = img.files[0].name;
-		console.log(name);
 		var res = name.split('.');
 		var nb_elem = res.length;
 		var extension = res[nb_elem - 1];

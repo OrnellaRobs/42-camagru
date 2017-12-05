@@ -11,7 +11,6 @@ if (!empty($_POST) && !empty($_POST['email']))
 	$user = $req->fetch();
 	if ($user)
 	{
-		session_start();
 		$reset_token = str_random(60);
 		$req = $pdo->prepare('UPDATE User SET reset_token = ?, reset_at = NOW() WHERE id = ?');
 		$req->execute([$reset_token, $user->id]);

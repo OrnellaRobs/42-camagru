@@ -20,7 +20,7 @@ if (!empty($_POST) && isset($_POST['data']))
 	$filename = $user_directory . $filter . "-" . $_SESSION['auth']->username ."-". $date_photo . '.' . $type;
 	file_put_contents($filename, $filedata);
 	//SUPERPOSER DEUX IMAGES
-	// header ("Content-type: image/png");
+	header ("Content-type: image/png");
 	header("Content-type: image");
 	if ($filter == "1")
 		$source = imagecreatefrompng("./images/DONUT.png");
@@ -36,6 +36,8 @@ if (!empty($_POST) && isset($_POST['data']))
 		$destination = imagecreatefrompng("$filename");
 	else if ($type == "jpeg" || $type == "jpg")
 		$destination = imagecreatefromjpeg("$filename");
+	// else if ($type == "gif")
+	// 	$destination = imagecreatefromgif("$filename");
 	$largeur_destination = imagesx($destination);
 	$hauteur_destination = imagesy($destination);
 

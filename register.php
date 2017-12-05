@@ -37,7 +37,7 @@ if (!empty($_POST))
 		$errors['password'] = $str;
 	}
 	if (empty($errors)) {
-		$req = $pdo->prepare("INSERT INTO User SET name = :name, username = :username, password = :password, email = :email, confirmation_token = :token");
+		$req = $pdo->prepare("INSERT INTO User SET name = :name, username = :username, password = :password, email = :email, confirmation_token = :token, mail_comments = :mail_comments");
 		$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 		$token = str_random(60);
 		$req->execute([
@@ -45,7 +45,8 @@ if (!empty($_POST))
 			'username' => $_POST['username'],
 			'password'=> $password,
 			'email' => $_POST['email'],
-			'token' => $token
+			'token' => $token,
+			'mail_comments' => 1
 		]);
 		$user_id = $pdo->lastInsertId();
 		$entetes =

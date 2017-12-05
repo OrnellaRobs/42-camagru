@@ -26,6 +26,7 @@ function get_img_upload(img)
 		var nb_elem = res.length;
 		var extension = res[nb_elem - 1];
 		var allowedExtensions = ["png", "jpg", "jpeg"];
+		console.log(extension);
 		if (!isInArray(allowedExtensions, extension))
 		{
 			upload = 0;
@@ -84,7 +85,8 @@ if (upload == 0)
 			ev.preventDefault();
 		}, false);
 		sendbutton.addEventListener('click', function(ev){
-			sendData(img_upload, upload);
+			if (upload == 1)
+				sendData(img_upload, upload);
 			ev.preventDefault();
 		},false);
 		function takepicture() {

@@ -16,6 +16,7 @@ function update_user($user_id) {
 $name = 0;
 $email = 0;
 $password = 0;
+$mail_comments = 0;
 $errors = array();
 if (!empty($_POST))
 {
@@ -45,7 +46,21 @@ if (!empty($_POST))
 		else
 			$password = 1;
 	}
-	if (empty($errors) && ($name || $email || $password))
+	if (isset($_POST['mail-comments']) && $_POST['mail-comments'] != "")
+	{
+		$answer = ($_POST['mail-comments'] == 1) ? 1 : 0;
+		$req = $pdo->prepare('SELECT mail_comments FROM User WHERE id = :id');
+		$req->execute(['id' => $user_id]);
+		$user = $req->fetch();
+		if ($user->mail_comments == $_POST['mail-comments'])
+		{
+			$str = ($answer == 1) ? "Vous avez déjà choisi l'option recevoir un mail lorsqu'un utilisteur commence une de vos photos" : "Vous avez déjà choisi l'option de ne pas recevoir de mail lorsqu'un utilisateur commente une de vos photos";
+			$errors['mail-comments'] = $str;
+		}
+		else
+			$mail_comments = 1;
+	}
+	if (empty($errors) && ($name || $email || $password || $mail_comments))
 	{
 		if ($name) {
 			$req1 = $pdo->prepare('UPDATE User SET name = :name WHERE id = :id');
@@ -69,6 +84,15 @@ if (!empty($_POST))
 				'id' => $user_id
 			]);
 		}
+		if ($mail_comments)
+		{
+			echo "UPD-comments";
+			$req4 = $pdo->prepare('UPDATE User SET mail_comments = :mail_comments WHERE id = :id');
+			$req4->execute([
+				'mail_comments' => $_POST['mail-comments'],
+				'id' => $user_id
+			]);
+		}
 		update_user($user_id);
 		$_SESSION['success'] = "Vos informations ont bien été mis à jour";
 		header('Location: account.php');
@@ -89,8 +113,9 @@ if (!empty($_POST))
 Nom: <?= $_SESSION['auth']->name; ?><br/>
 Username: <?= $_SESSION['auth']->username; ?><br/>
 Email: <?= $_SESSION['auth']->email; ?><br/>
-<h1>Modifier mon nom</h1>
+
 <form action="" method="post">
+	<h1>Modifier mon nom</h1>
 	<div class="form-group">
 		<input type="text" name="name" placeholder="Nouveau nom"/>
 	</div>
@@ -111,6 +136,13 @@ Email: <?= $_SESSION['auth']->email; ?><br/>
 	<div class="form-group">
 		<input type="password" name="confirm-password" placeholder="Confirmation du nouveau mot de passe"/>
 	</div>
+	<h1>Modifier les options des commentaires</h1>
+	<div class="form-group">
+	<label><input id="1" type="radio" name="mail-comments" value="1"> Oui, je souhaite recevoir un mail lorsqu'un utilisateur a commenté une de mes photos</label>
+</div>
+<div class="form-group">
+	<label><input id="2" type="radio" name="mail-comments" value="0"> Non, je ne souhaite pas recevoir de mail lorsqu'un utilisateur a commenté une de mes photos</label>
+</div>
 	<input class="login-submit" type="submit" value="Sauvergarder les modifications"><br/>
 </form>
 <?php require 'inc/footer.php'; ?>

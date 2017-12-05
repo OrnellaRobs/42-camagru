@@ -3,62 +3,88 @@ require 'inc/functions.php';
 check_session();
 logged_only();
 require 'inc/header.php';
-	if (!empty($_POST))
+require 'inc/db.php';
+$user_id = $_SESSION['auth']->id;
+
+function update_user($user_id) {
+	require 'inc/db.php';
+	$request = $pdo->prepare('SELECT * FROM User WHERE id = :id');
+	$request->execute(['id' => $user_id]);
+	$user = $request->fetch();
+	$_SESSION['auth'] = $user;
+}
+$name = 0;
+$email = 0;
+$password = 0;
+$errors = array();
+if (!empty($_POST))
+{
+	if (isset($_POST['name']) && $_POST['name'] != "" && isset($_POST['confirm-name']) && $_POST['confirm-name'] != "")
 	{
-		if (isset($_POST['name']) && $_POST['name'] != "" && isset($_POST['confirm-name']) && $_POST['confirm-name'] != "")
-		{
-			if ($_POST['name'] != $_POST['confirm-name'])
-			{
-				$_SESSION['danger'] = "Les nouveaux noms ne correspondent pas";
-				header('Location: account.php');
-				exit();
-			}
-			require_once 'inc/db.php';
-			$user_id = $_SESSION['auth']->id;
-			$req = $pdo->prepare('UPDATE User SET name = :name WHERE id = :id');
-			$req->execute([
+		if ($_POST['name'] != $_POST['confirm-name'])
+			$errors['name'] = "Les noms ne correspondent pas";
+		else
+			$name = 1;
+	}
+	if (isset($_POST['email']) && $_POST['email'] != "" && isset($_POST['confirm-email']) && $_POST['confirm-email'] != "")
+	{
+		$req = $pdo->prepare('SELECT id FROM User WHERE email = ?');
+		$req->execute([$_POST['email']]);
+		$user = $req->fetch();
+		if ($user)
+			$errors['email-exist'] = "Cet email est déjà pris";
+		else if ($_POST['email'] != $_POST['confirm-email'])
+			$errors['email'] = "Les emails ne correspondent pas";
+		else
+			$email = 1;
+	}
+	if (isset($_POST['password']) && $_POST['password'] != "" && isset($_POST['confirm-password']) && $_POST['confirm-password'] != "")
+	{
+		if ($_POST['password'] != $_POST['confirm-password'])
+			$errors['password'] = "Les mots de passe ne correspondent pas";
+		else
+			$password = 1;
+	}
+	if (empty($errors) && ($name || $email || $password))
+	{
+		if ($name) {
+			$req1 = $pdo->prepare('UPDATE User SET name = :name WHERE id = :id');
+			$req1->execute([
 				'name' => $_POST['name'],
 				'id' => $user_id
 			]);
-			$request = $pdo->prepare('SELECT * FROM User WHERE id = :id');
-			$request->execute(['id' => $user_id]);
-			$user = $request->fetch();
-			$_SESSION['auth'] = $user;
-			$_SESSION['success'] = "Votre nom a bien été mis à jour";
-			header('Location: account.php');
-			exit();
 		}
-		if (isset($_POST['email']) && $_POST['email'] != "")
-		{
-			if ($_POST['email'] != $_POST['confirm-email'])
-			{
-				$_SESSION['danger'] = "Les nouveaux emails ne correspondent pas";
-				// header('Location: account.php');
-				// exit();
-			}
+		if ($email) {
+			$req2 = $pdo->prepare('UPDATE User SET email = :email WHERE id = :id');
+			$req2->execute([
+				'email' => $_POST['email'],
+				'id' => $user_id
+			]);
 		}
-		if (isset($_POST['password']) && $_POST['password'] != "")
-			echo "PASSWORD<br/>";
+		if ($password) {
+			$new_password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+			$req3 = $pdo->prepare('UPDATE User SET password = :password WHERE id = :id');
+			$req3->execute([
+				'password' => $new_password,
+				'id' => $user_id
+			]);
+		}
+		update_user($user_id);
+		$_SESSION['success'] = "Vos informations ont bien été mis à jour";
+		header('Location: account.php');
+		exit();
 	}
+}
 ?>
+<?php if (!empty($errors)): ?>
+	<div class="danger">
+		<p>Le formulaire n'est pas rempli correctement</p>
+		<?php foreach($errors as $error):?>
+			<li><?=$error;?></li>
+		<?php endforeach;?>
+	</div>
+<?php 	endif; ?>
 
-<!-- if (!empty($_POST))
-{
-if (empty($_POST['password']) || $_POST['password'] != $_POST['confirm-password']) {
-$_SESSION['danger'] = "Les mots de passes ne correspondent pas";
-}
-else {
-$user_id = $_SESSION['auth']->id;
-$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-require_once 'inc/db.php';
-$req = $pdo->prepare('UPDATE User SET password = ?');
-$req->execute([$password]);
-$_SESSION['success'] = "Votre mot de passe a bien été mis à jour";
-}
-}
-?> -->
-<!--precedemment a mettre dans home.php-->
-<!-- <?php var_dump($_SESSION['auth']);?> -->
 <h1>Informations</h1>
 Nom: <?= $_SESSION['auth']->name; ?><br/>
 Username: <?= $_SESSION['auth']->username; ?><br/>

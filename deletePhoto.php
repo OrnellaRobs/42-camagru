@@ -3,11 +3,33 @@ require 'inc/functions.php';
 check_session();
 logged_only();
 require 'inc/header.php';
-if (!empty($_POST) && isset($_POST['photo_path']))
+if (!empty($_POST) && isset($_POST['photo_path']) && isset($_POST['photo_id']) && isset($_POST['userid']))
 {
-	var_dump($_POST);
 	require './inc/db.php';
-	//KNOW THE ID 
+	//DELETE LIKE
+	$request = $pdo->prepare('SELECT photo_id FROM likephoto');
+	$request->execute();
+	$getPhotosLiked = $request->fetchAll(PDO::FETCH_COLUMN, 0);
+	foreach ($getPhotosLiked as $elem)
+	{
+		if ($elem == $_POST['photo_id'])
+		{
+			$req1 = $pdo->prepare('DELETE FROM likephoto WHERE photo_id = :photoid');
+			$req1->execute(['photoid' => $_POST['photo_id']]);
+		}
+	}
+	$request1 = $pdo->prepare('SELECT photo_id FROM comments WHERE photo_id = :photoID');
+	$request1->execute(['photoID' => $_POST['photo_id']]);
+	$getComments = $request1->fetchAll(PDO::FETCH_COLUMN, 0);
+	//DELETE COMMENTS
+	foreach ($getComments as $comments)
+	{
+		if ($comments == $_POST['photo_id'])
+		{
+			$req1 = $pdo->prepare('DELETE FROM comments WHERE photo_id = :photoid');
+			$req1->execute(['photoid' => $_POST['photo_id']]);
+		}
+	}
 	$req = $pdo->prepare('DELETE FROM photos where photo_path = :photopath');
 	$req->execute(['photopath' => $_POST['photo_path']]);
 	// header('Location: home.php');

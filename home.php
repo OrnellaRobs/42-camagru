@@ -35,23 +35,29 @@ logged_only();
 			if (isset($_GET['page']) && !empty($_GET['page']) && ctype_digit($_GET['page']))
 			{
 				if ($_GET['page'] > $count_pages)
-					$current = $count_pages;
+				$current = $count_pages;
 				else
-					$current = $_GET['page'];
+				$current = $_GET['page'];
 			}
 			else
-				$current = 1;
+			$current = 1;
 			$start = ($current - 1) * $photo_per_page;
 
-			$req = $pdo->prepare('SELECT photo_path FROM photos WHERE user_id = ? ORDER BY date_photo DESC LIMIT '.$start.','.$photo_per_page.'');
-			$req->execute([$userid]);
-			$result = $req->fetchAll(PDO::FETCH_COLUMN, 0);
-			foreach ($result as $elem)
+			// $req = $pdo->prepare('SELECT photo_path FROM photos WHERE user_id = ? ORDER BY date_photo DESC LIMIT '.$start.','.$photo_per_page.'');
+			// $req->execute([$userid]);
+			// $result = $req->fetchAll(PDO::FETCH_COLUMN, 0);
+
+			$req1 = $pdo->prepare('SELECT * FROM photos WHERE user_id = ? ORDER BY date_photo DESC LIMIT '.$start.','.$photo_per_page.'');
+			$req1->execute([$userid]);
+			$getID = $req1->fetchAll();
+			// var_dump($getID);
+			// echo $getID[1]->photo_type;
+			foreach ($getID as $elem)
 			{
-				echo '<div class="photo-user">';
-				echo '<img src="'.$elem.'" height="200px" />';
-				echo "<input type='button' value='Supprimer' onClick='deletePhoto(\"$elem\", \"$userid\");'>";
-				echo '</div>';
+					echo '<div class="photo-user">';
+					echo '<img src="'.$elem->photo_path.'" height="200px" />';
+					echo "<input type='button' value='Supprimer' onClick='deletePhoto(\"$elem->photo_path\", \"$elem->photo_id\", \"$userid\");'>";
+					echo '</div>';
 			}
 		}
 		catch (PDOException $e)
@@ -61,7 +67,7 @@ logged_only();
 		for ($i=1; $i<=$count_pages; $i++) {
 			echo '<a href="home.php?page='.$i.'">'.$i.'</a> ';
 			if ($i < $count_pages)
-				echo "-";
+			echo "-";
 		}
 		?>
 	</div>

@@ -13,6 +13,9 @@ height = 0;
 function getFilter(num)
 {
 	filter = num;
+	sendbutton.disabled = false;
+	if (upload == 0)
+		startbutton.disabled = false;
 }
 function isInArray(extensions, extension) {
 	return extensions.indexOf(extension.toLowerCase()) > -1;
@@ -31,11 +34,14 @@ function get_img_upload(img)
 		{
 			upload = 0;
 			alert("Le fichier sélectionné n'est pas une image");
+			startbutton.disabled = false;
 		}
 		else {
 			upload = 1;
 			img_upload = img;
+			startbutton.disabled = true;
 		}
+		console.log(upload);
 	}
 	else
 	upload = 0;

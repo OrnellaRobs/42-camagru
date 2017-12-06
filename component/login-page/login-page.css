@@ -3,7 +3,6 @@
 	justify-content: space-between;
 	flex-direction: column;
 	align-items: center;
-	height: 90%;
 }
 .connect-msg {
 	margin-top: 10px;
@@ -70,6 +69,7 @@
 	color: white;
 	height: 25px;
 	width: 230px;
-	/*border: 2px solid red;*/
+	border: 2px solid red;
 	border-radius: 15px;
+	margin-top: 60px;
 }

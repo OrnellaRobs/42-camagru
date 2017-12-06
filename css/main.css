@@ -1,5 +1,4 @@
 
-
 *, html, body {
 	margin: 0;
 	box-sizing: border-box;
@@ -8,47 +7,18 @@
 html {
 	height: 100%;
 }
+
 body {
 	position: relative;
 	min-height: 100%;
 }
 
-.all-page {
+.page {
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	height: 100vh;
-}
-
-.header {
-	display: flex;
-	justify-content: center;
-	background-color: rgb(81, 202, 188);
-	height: 60px;
-}
-
-.user-input {
-	text-decoration: none;
-	margin: 16px;
-	margin-right: 20px;
-	border: none;
-	background-color: rgb(81, 202, 188);
-	color: white;
-	font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
-	font-weight: 100;
-	font-size: 24px;
-}
-
-.footer {
-	display: flex;
-	justify-content: center;
 	align-items: center;
-	background-color: black;
-	height: 50px;
-	width: 100%;
-	color: white;
-	font-size: 14px;
-	bottom: 0;
 }
 
 .success {

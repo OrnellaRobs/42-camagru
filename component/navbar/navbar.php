@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>CAMAGRU</title>
-	<link rel="stylesheet" type="text/css" href="./css/header.css">
-	<link rel="stylesheet" type="text/css" href="./css/home.css">
-	<link rel="stylesheet" type="text/css" href="./css/index.css">
-</head>
-<body>
-	<div class="page">
+<div class="page">
 	<div class="header">
 		<?php if (($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/index.php" || (($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/forget.php" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/gallery.php") && !isset($_SESSION['auth'])))):?>
 			<a class="user-input" href="./register.php">S'Inscrire</a>
@@ -32,8 +22,8 @@
 		<?php endif;?>
 		<!-- <?php if (isset($_SESSION['auth']) && ($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/home.php" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/gallery.php")): ?>
 
-	<?php endif;?> -->
-</div>
+		<?php endif;?> -->
+	</div>
 <?php
 if (isset($_SESSION['success'])):?>
 <div class="success">

@@ -1,10 +1,9 @@
 <?php
 // require 'header.php'
-include './database.php';
+// include './database.php';
 
-// function create_database() {
-//----> CREATE_DATABASE <----
-if (isset($_POST['create'])) {
+function create_database() {
+	include './database.php';
 	try {
 		$dbh = new PDO("mysql:host=localhost", $DB_USER, $DB_PASSWORD);
 		//set the PDO error mode to exception
@@ -59,7 +58,7 @@ if (isset($_POST['create'])) {
 		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "CREATE TABLE photos (
 			user_id INT NOT NULL,
-		 	photo_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+			photo_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 			date_photo DateTime DEFAULT CURRENT_TIMESTAMP,
 			photo_type VARCHAR(4) NOT NULL,
 			filter INT NOT NULL,
@@ -106,23 +105,33 @@ if (isset($_POST['create'])) {
 		echo "Error Creation Like Comments!:\t".$e->getMessage()."\n";
 	}
 }
-// if (isset($_POST['re-create'])) {
-//
-// }
-//
-// if (isset($_POST['delete'])) {
-// 	try {
-// 		$dbhost = 'localhost';
-// 		$connect = mysql_connect($dbhost, $DB_USER, $DB_PASSWORD);
-// 		$mysql = 'DROP DATABASE camagru';
-// 		if (mysql_query($sql, $connect))
-// 		echo "Database deleted successfully";
-// 	}
-// 	catch (PDOException $e)
-// 	{
-// 		echo "Error Deleting Database".$e->getMessage()."\n";
-// 	}
-// }
+
+function delete_database() {
+	include './database.php';
+	try {
+		$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sql = "DROP DATABASE camagru";
+		$dbh->exec($sql);
+		echo "<script type= 'text/javascript'>alert('Database Deleted Successfully');</script>";
+	}
+	catch (PDOException $e)
+	{
+		echo "Error Deleting Database:\t".$e->getMessage()."\n";
+	}
+}
+//----> CREATE_DATABASE <----
+if (isset($_POST['create'])) {
+	create_database();
+}
+if (isset($_POST['re-create'])) {
+	delete_database();
+	create_database();
+}
+
+if (isset($_POST['delete'])) {
+	delete_database();
+}
 
 ?>
 <!DOCTYPE html>
@@ -132,10 +141,10 @@ if (isset($_POST['create'])) {
 	<link rel="stylesheet" type="text/css" href="../../Camagru/Config/setup.css">
 </head>
 <body>
-		<form method="post">
-			<input type="submit" name="create" value="Create" />
-			<input type="submit" name="re-create" value="Re-Create" />
-			<input type="submit" name="delete" value="Delete" />
-		</form>
+	<form method="post">
+		<input type="submit" name="create" value="Create" />
+		<input type="submit" name="re-create" value="Re-Create" />
+		<input type="submit" name="delete" value="Delete" />
+	</form>
 </body>
 </html>

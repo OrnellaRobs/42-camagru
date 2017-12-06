@@ -24,7 +24,6 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 }
 
 ?>
-
 <?php require 'inc/header.php'; ?>
 <div class="all-page-login">
 	<div class="connect-msg">
@@ -39,7 +38,7 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 			<input class="login-submit" type="submit" value="Se Connecter"><br/>
 		</form>
 	</div>
-	<a class="forget-password" href="forget.php">J'ai oublié mon mot de passe ?</>
+	<a class="forget-password" href="forget.php">J'ai oublié mon mot de passe ?</a>
 
 	</div>
 	<?php require 'inc/footer.php'; ?>

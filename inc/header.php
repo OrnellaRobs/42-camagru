@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/index.css">
 </head>
 <body>
+	<div class="page">
 	<div class="header">
 		<?php if (($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/index.php" || (($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/forget.php" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/gallery.php") && !isset($_SESSION['auth'])))):?>
 			<a class="user-input" href="./register.php">S'Inscrire</a>

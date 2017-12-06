@@ -1,3 +1,5 @@
+
+
 *, html, body {
 	margin: 0;
 	box-sizing: border-box;
@@ -39,7 +41,6 @@ body {
 
 .footer {
 	display: flex;
-	position: absolute;
 	justify-content: center;
 	align-items: center;
 	background-color: black;

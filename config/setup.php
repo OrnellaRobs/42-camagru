@@ -6,103 +6,89 @@ function create_database() {
 	include './database.php';
 	try {
 		$dbh = new PDO("mysql:host=localhost", $DB_USER, $DB_PASSWORD);
-		//set the PDO error mode to exception
 		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		//User exec() and not query because no results are returned
-		//Creating connection for MySql
-		// $val = $dbh->query('SELECT 1 FROM camagru');
-		// echo "'test'";
-		// echo $val . '<br/>';
-		// if ($val === FALSE)
+		$sql = "CREATE DATABASE IF NOT EXISTS camagru";
+		$dbh->exec($sql);
+		// echo "<script type= 'text/javascript'>alert('Database Created Successfully');</script>";
+		//----> CREATE_TABLE USER <----
+		// try {
+			$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+			$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$sql = "CREATE TABLE IF NOT EXISTS User (
+				id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+				name VARCHAR(255) NOT NULL,
+				username VARCHAR(255) NOT NULL,
+				password VARCHAR(255) NOT NULL,
+				email VARCHAR(255) NOT NULL,
+				confirmation_token varchar(60) NULL,
+				confirmation_at DateTime NULL,
+				reset_token VARCHAR(60) NULL,
+				reset_at DateTime NULL,
+				mail_comments INT NOT NULL
+			)";
+			$dbh->exec($sql);
+			// echo "<script type= 'text/javascript'>alert('Table User Created Successfully');</script>";
+		// }
+		// catch (PDOException $e)
 		// {
-
-		$sql = "CREATE DATABASE camagru";
-		$dbh->exec($sql);
-		echo "<script type= 'text/javascript'>alert('Database Created Successfully');</script>";
+		// 	echo "Error Creation Table User!:\t".$e->getMessage()."\n";
 		// }
-		// else {
-		// 	echo "Database already exists<br/>";
+		//----> CREATE_TABLE PHOTOS<----
+		// try {
+			$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+			$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$sql = "CREATE TABLE IF NOT EXISTS photos (
+				user_id INT NOT NULL,
+				photo_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+				date_photo DateTime DEFAULT CURRENT_TIMESTAMP,
+				photo_type VARCHAR(4) NOT NULL,
+				filter INT NOT NULL,
+				photo_path VARCHAR(255) NOT NULL
+			)";
+			$dbh->exec($sql);
+			// echo "<script type= 'text/javascript'>alert('Table Photos Created Successfully');</script>";
 		// }
-
+		// catch (PDOException $e)
+		// {
+		// 	echo "Error Creation Table Photos!:\t".$e->getMessage()."\n";
+		// }
+		//----> CREATE_TABLE COMMENTS<----
+		// try {
+			$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+			$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$sql = "CREATE TABLE IF NOT EXISTS comments (
+				usercomment_id INT NOT NULL,
+				photo_id INT NOT NULL,
+				date_comment DateTime DEFAULT CURRENT_TIMESTAMP,
+				comment varchar(255) NOT NULL
+			)";
+			$dbh->exec($sql);
+			// echo "<script type= 'text/javascript'>alert('Table Comments Created Successfully');</script>";
+		// }
+		// catch (PDOException $e)
+		// {
+		// 	echo "Error Creation Table Comments!:\t".$e->getMessage()."\n";
+		// }
+		//----> CREATE_TABLE LIKE<----
+		// try {
+			$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+			$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$sql = "CREATE TABLE IF NOT EXISTS likePhoto (
+				userlike_id INT NOT NULL,
+				date_like DateTime DEFAULT CURRENT_TIMESTAMP,
+				photo_id INT NOT NULL
+			)";
+			$dbh->exec($sql);
+			// echo "<script type= 'text/javascript'>alert('Table Like Created Successfully');</script>";
+		// }
+		// catch (PDOException $e)
+		// {
+		// 	echo "Error Creation Like Comments!:\t".$e->getMessage()."\n";
+		// }
 	}
 	catch (PDOException $e)
 	{
-		echo "Error Creation Database:\t".$e->getMessage()."\n";
-	}
-	//----> CREATE_TABLE USER <----
-	try {
-		$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "CREATE TABLE User (
-			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-			name VARCHAR(255) NOT NULL,
-			username VARCHAR(255) NOT NULL,
-			password VARCHAR(255) NOT NULL,
-			email VARCHAR(255) NOT NULL,
-			confirmation_token varchar(60) NULL,
-			confirmation_at DateTime NULL,
-			reset_token VARCHAR(60) NULL,
-			reset_at DateTime NULL,
-			mail_comments INT NOT NULL
-		)";
-		$dbh->exec($sql);
-		echo "<script type= 'text/javascript'>alert('Table User Created Successfully');</script>";
-	}
-	catch (PDOException $e)
-	{
-		echo "Error Creation Table User!:\t".$e->getMessage()."\n";
-	}
-	//----> CREATE_TABLE PHOTOS<----
-	try {
-		$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "CREATE TABLE photos (
-			user_id INT NOT NULL,
-			photo_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-			date_photo DateTime DEFAULT CURRENT_TIMESTAMP,
-			photo_type VARCHAR(4) NOT NULL,
-			filter INT NOT NULL,
-			photo_path VARCHAR(255) NOT NULL
-		)";
-		$dbh->exec($sql);
-		echo "<script type= 'text/javascript'>alert('Table Photos Created Successfully');</script>";
-	}
-	catch (PDOException $e)
-	{
-		echo "Error Creation Table Photos!:\t".$e->getMessage()."\n";
-	}
-	//----> CREATE_TABLE COMMENTS<----
-	try {
-		$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "CREATE TABLE comments (
-			usercomment_id INT NOT NULL,
-			photo_id INT NOT NULL,
-			date_comment DateTime DEFAULT CURRENT_TIMESTAMP,
-			comment varchar(255) NOT NULL
-		)";
-		$dbh->exec($sql);
-		echo "<script type= 'text/javascript'>alert('Table Comments Created Successfully');</script>";
-	}
-	catch (PDOException $e)
-	{
-		echo "Error Creation Table Comments!:\t".$e->getMessage()."\n";
-	}
-	//----> CREATE_TABLE LIKE<----
-	try {
-		$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "CREATE TABLE likePhoto (
-			userlike_id INT NOT NULL,
-			date_like DateTime DEFAULT CURRENT_TIMESTAMP,
-			photo_id INT NOT NULL
-		)";
-		$dbh->exec($sql);
-		echo "<script type= 'text/javascript'>alert('Table Like Created Successfully');</script>";
-	}
-	catch (PDOException $e)
-	{
-		echo "Error Creation Like Comments!:\t".$e->getMessage()."\n";
+		echo "<script type= 'text/javascript'>alert('Problem creating Database');</script>";
 	}
 }
 
@@ -111,7 +97,7 @@ function delete_database() {
 	try {
 		$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "DROP DATABASE camagru";
+		$sql = "DROP DATABASE IF EXISTS $DB_NAME";
 		$dbh->exec($sql);
 		echo "<script type= 'text/javascript'>alert('Database Deleted Successfully');</script>";
 	}

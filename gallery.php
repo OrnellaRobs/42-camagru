@@ -5,8 +5,8 @@ check_session();
 
 require 'inc/header.php';
 require './inc/db.php';
-$photo_per_page = 6;
-$request = $pdo->prepare('SELECT * FROM photos ORDER BY date_photo DESC');
+$photo_per_page = 5;
+$request = $pdo->prepare('SELECT * FROM photos ORDER BY date_photo');
 $request->execute();
 $get_all = $request->fetchAll();
 $count_photos = count($get_all);

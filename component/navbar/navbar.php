@@ -24,8 +24,7 @@
 
 		<?php endif;?> -->
 	</div>
-<?php
-if (isset($_SESSION['success'])):?>
+<?php if (isset($_SESSION['success'])):?>
 <div class="success">
 	<?= $_SESSION['success'] ?>
 </div>

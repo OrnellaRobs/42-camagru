@@ -1,5 +1,5 @@
 <?php
-require 'inc/functions.php';
+require '../../inc/functions.php';
 check_session();
 check_already_login();
 if (!empty($_POST) && !empty($_POST['email']))
@@ -38,7 +38,8 @@ if (!empty($_POST) && !empty($_POST['email']))
 ?>
 
 
-<?php require 'inc/header.php'; ?>
+<?php require '../header/header.php'; ?>
+<?php require '../navbar/navbar.php'; ?>
 
 <h1>Mot de passe oublié</h1>
 
@@ -46,4 +47,4 @@ if (!empty($_POST) && !empty($_POST['email']))
 	<input class="input-login" type="email" name="email" placeholder="Email"/><br/>
 	<input class="login-submit" type="submit" value="Valider"><br/>
 </form>
-<?php require 'inc/footer.php'; ?>
+<?php require '../footer/footer.php'; ?>

@@ -39,6 +39,6 @@ if (isset($_GET['id']) && isset($_GET['token'])):
 	<input class="login-submit" type="submit" value="Changer mon mot de passe"><br/>
 </form>
 <?php else:?>
-	<?php header('Location: ./../../index.php'); ?>
+	<!-- <?php header('Location: ./../../index.php'); ?> -->
 <?php endif;?>
 <?php require_once dirname(__FILE__) . '/../footer/footer.php'; ?>

@@ -22,7 +22,6 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 	else
 	$_SESSION['danger'] = "Identifiant/Email ou mot de passe inccorects";
 }
-
 ?>
 <?php require dirname(__FILE__) . '/../header/header.php'; ?>
 <?php require dirname(__FILE__) . '/../navbar/navbar.php'; ?>

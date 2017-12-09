@@ -61,12 +61,14 @@ if (isset($_SESSION['auth']))
 				echo '</div>';
 			}
 		}
-		echo "<br/><br/>";
+		// echo "<br/><br/>";
+		echo '<div class="pagination">';
 		for ($i=1; $i<=$count_pages; $i++) {
 			echo '<a href="gallery.php?page='.$i.'">'.$i.'</a> ';
 			if ($i < $count_pages)
 				echo "-";
 		}
+		echo '</div>';
 		?>
 	</div>
 <script type="text/javascript" src="set-gallery.js"></script>

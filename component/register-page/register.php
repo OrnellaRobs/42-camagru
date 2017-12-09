@@ -55,7 +55,7 @@ if (!empty($_POST))
 		'Reply-To: no-reply@camagru.fr' . "\r\n" .
 		'X-Mailer: PHP/' . phpversion();
 		$objet = "Confirmation d'Inscription";
-		$content = "Afin de finaliser ton inscription, il te suffit de cliquer sur ce lien:\n\nhttp://localhost:8080/Camagru-Grafik-Art/confirm.php?id=$user_id&token=$token";
+		$content = "Afin de finaliser ton inscription, il te suffit de cliquer sur ce lien:\n\nhttp://localhost:8080/Camagru-Grafik-Art/component/register-page/confirm.php?id=$user_id&token=$token";
 		if (mail($_POST['email'], $objet, $content, $entetes))
 		{
 			$_SESSION['success'] = "Un email de confirmation a été envoyé pour valider le compte";

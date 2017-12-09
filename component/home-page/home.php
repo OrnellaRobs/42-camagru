@@ -65,11 +65,13 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 		{
 			echo "fail";
 		}
+		echo '<div class="pagination">';
 		for ($i=1; $i<=$count_pages; $i++) {
 			echo '<a href="home.php?page='.$i.'">'.$i.'</a> ';
 			if ($i < $count_pages)
 			echo "-";
 		}
+		echo '</div>';
 		?>
 	</div>
 </form>

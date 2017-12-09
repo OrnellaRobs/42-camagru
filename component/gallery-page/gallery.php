@@ -43,7 +43,7 @@ if (isset($_SESSION['auth']))
 		foreach ($result as $elem)
 		{
 			echo '<div class="">';
-			echo '<img src="../../'.$elem->photo_path.'" height="200px" />';
+			echo '<img src="../'.$elem->photo_path.'" height="200px" />';
 			$liked = false;
 			if (isset($_SESSION['auth']))
 			{

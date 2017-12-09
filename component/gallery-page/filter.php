@@ -41,7 +41,7 @@ if (!empty($_GET) && isset($_GET['filter']))
 	$allPhotoWithFilter = $req->fetchAll();
 	foreach($allPhotoWithFilter as $filter) {
 		// echo '<div class="">';
-		echo '<img src="../../'.$filter->photo_path.'" height="200px" />';
+		echo '<img src="../'.$filter->photo_path.'" height="200px" />';
 		$liked = false;
 		if (isset($_SESSION['auth']))
 		{

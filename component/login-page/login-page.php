@@ -13,10 +13,9 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 	$user = $req->fetch();
 	if ($user && password_verify($_POST['password'], $user->password))
 	{
-		session_start();
 		$_SESSION['auth'] = $user;
 		$_SESSION['success'] = "Vous êtes maintenant connecté";
-		header('Location: ../home-page/home.php');
+		// header('Location: ../home-page/home.php');
 		exit();
 	}
 	else

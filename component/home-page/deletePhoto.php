@@ -1,11 +1,12 @@
 <?php
-require 'inc/functions.php';
+require_once dirname(__FILE__) . '/../../inc/functions.php';
 check_session();
 logged_only();
-require 'inc/header.php';
+require_once dirname(__FILE__) . '/../header/header.php';
+require_once dirname(__FILE__) . '/../navbar/navbar.php';
 if (!empty($_POST) && isset($_POST['photo_path']) && isset($_POST['photo_id']) && isset($_POST['userid']))
 {
-	require './inc/db.php';
+	require_once dirname(__FILE__) . '/../../inc/db.php';
 	//DELETE LIKE
 	$request = $pdo->prepare('SELECT photo_id FROM likephoto');
 	$request->execute();
@@ -32,8 +33,7 @@ if (!empty($_POST) && isset($_POST['photo_path']) && isset($_POST['photo_id']) &
 	}
 	$req = $pdo->prepare('DELETE FROM photos where photo_path = :photopath');
 	$req->execute(['photopath' => $_POST['photo_path']]);
-	// header('Location: home.php');
 }
 ?>
-<?php require 'inc/footer.php'; ?>
+<?php require_once dirname(__FILE__) . '/../footer/footer.php';?>
 ?>

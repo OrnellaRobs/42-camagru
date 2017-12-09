@@ -16,7 +16,7 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 		session_start();
 		$_SESSION['auth'] = $user;
 		$_SESSION['success'] = "Vous êtes maintenant connecté";
-		header('Location: home.php');
+		header('Location: ../home-page/home.php');
 		exit();
 	}
 	else
@@ -28,7 +28,7 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 <div class="all-page-login">
 	<div class="connect-msg">
 		Connecte-Toi
-		<center><img src="images/arrow2.png" width="80px"/></center>
+		<center><img src="../../images/arrow2.png" width="80px"/></center>
 	</div>
 	<div class="background-login">
 		<form class="form-login" action="" method="post">
@@ -38,6 +38,6 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 			<input class="login-submit" type="submit" value="Se Connecter"><br/>
 		</form>
 	</div>
-	<a class="forget-password" href="forget.php">J'ai oublié mon mot de passe ?</a>
+	<a class="forget-password" href="../forgetPassword-page/forget.php">J'ai oublié mon mot de passe ?</a>
 </div>
 <?php require dirname(__FILE__) . '/../footer/footer.php'; ?>

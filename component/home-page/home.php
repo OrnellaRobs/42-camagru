@@ -1,10 +1,11 @@
 <?php
-require 'inc/functions.php';
+require_once dirname(__FILE__) . '/../../inc/functions.php';
 check_session();
 logged_only();
-
+require_once dirname(__FILE__) . '/../header/header.php';
+require_once dirname(__FILE__) . '/../navbar/navbar.php';
 ?>
-<?php require 'inc/header.php'; ?>
+
 <h1>Bonjour <?= $_SESSION['auth']->name; ?></h1>
 <form class="container" action="" method="POST" enctype="multipart/form-data">
 	<div class="wrapper-filter-webcam">
@@ -21,7 +22,7 @@ logged_only();
 	</div>
 	<div class="wrapper-user-photo">
 		<?php
-		require './inc/db.php';
+		require_once dirname(__FILE__) . '/../../inc/db.php';
 		try
 		{
 			$userid = $_SESSION['auth']->id;
@@ -76,4 +77,4 @@ logged_only();
 <!-- <img src="http://placekitten.com/g/320/261" id="photo" alt="photo"> -->
 <script type="text/javascript" src="./webcam.js"></script>
 <script type="text/javascript" src="./deletePhoto.js"></script>
-<?php require 'inc/footer.php'; ?>
+<?php require_once dirname(__FILE__) . '/../footer/footer.php';?>

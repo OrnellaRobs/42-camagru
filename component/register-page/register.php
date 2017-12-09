@@ -1,11 +1,11 @@
 <?php
-require 'inc/functions.php';
+require_once dirname(__FILE__) . '/../../inc/functions.php';
 check_session();
 check_already_login();
 if (!empty($_POST))
 {
 	$errors = array();
-	require_once './inc/db.php';
+	require_once dirname(__FILE__) . '/../../inc/db.php';
 	if (empty($_POST['username']) || !preg_match('/^[a-zA-Z0-9_]+$/', $_POST['username']) || strlen($_POST['username']) < 6) {
 		$str = (strlen($_POST['username']) < 6) ? "L'identifiant doit avoir au moins 6 caractères" : "L'identifiant n'est pas valide";
 		$errors['username'] = $str;
@@ -59,7 +59,7 @@ if (!empty($_POST))
 		if (mail($_POST['email'], $objet, $content, $entetes))
 		{
 			$_SESSION['success'] = "Un email de confirmation a été envoyé pour valider le compte";
-			header('Location: index.php');
+			header('Location: ../../index.php');
 			exit();
 		}
 		else {
@@ -68,7 +68,11 @@ if (!empty($_POST))
 	}
 }
 ?>
-<?php require 'inc/header.php'; ?>
+<?php
+require_once dirname(__FILE__) . '/../header/header.php';
+require_once dirname(__FILE__) . '/../navbar/navbar.php';
+?>
+
 <?php	if (!empty($errors)): ?>
 	<div class="danger">
 		<p>Le formulaire n'est pas rempli correctement</p>
@@ -85,4 +89,4 @@ if (!empty($_POST))
 	<input class="input-register" type="email" name="email" placeholder="Email"/><br />
 	<input class="register-submit" type="submit" name="submit" value="S'Inscrire!">
 </form>
-<?php require 'inc/footer.php'; ?>
+<?php require_once dirname(__FILE__) . '/../footer/footer.php';?>

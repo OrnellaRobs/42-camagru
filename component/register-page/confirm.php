@@ -1,7 +1,7 @@
 <?php
 $user_id = $_GET['id'];
 $token = $_GET['token'];
-require './inc/db.php';
+require_once dirname(__FILE__) . '/../../inc/db.php';
 $req = $pdo->prepare('SELECT * from User WHERE id = ?');
 $req->execute([$user_id]);
 $user = $req->fetch();
@@ -12,10 +12,10 @@ if ($user && $user->confirmation_token == $token)
 	$req->execute([$user_id]);
 	$_SESSION['success'] = "Votre compte a bien été validé";
 	$_SESSION['auth'] = $user;
-	header('Location: home.php');
+	header('Location: ../home-page/home.php');
 }
 else {
 	$_SESSION['danger'] = "Ce token n'est plus valide";
-	header('Location: index.php');
+	header('Location: ../../index.php');
 }
 ?>

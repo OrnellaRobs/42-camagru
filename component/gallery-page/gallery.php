@@ -31,9 +31,9 @@ if (isset($_SESSION['auth']))
 }
 ?>
 <h1>Afficher selon les filtres :</h1>
-<a href="filter.php?filter=1"><img src="./images/DONUT.png" width="100px"></a>
-<a href="filter.php?filter=2"><img src="./images/pizza.png" width="100px"></a>
-<a href="filter.php?filter=3"><img src="./images/POW.png" width="100px"></a><br/>
+<a href="filter.php?filter=1"><img src="../../images/DONUT.png" width="100px"></a>
+<a href="filter.php?filter=2"><img src="../../images/pizza.png" width="100px"></a>
+<a href="filter.php?filter=3"><img src="../../images/POW.png" width="100px"></a><br/>
 	<h1>Les photos des autres utilisateurs</h1>
 	<div class="wrapper-user-photo">
 		<?php
@@ -43,7 +43,7 @@ if (isset($_SESSION['auth']))
 		foreach ($result as $elem)
 		{
 			echo '<div class="">';
-			echo '<img src="../'.$elem->photo_path.'" height="200px" />';
+			echo '<img src="'.$elem->photo_path.'" height="200px" />';
 			$liked = false;
 			if (isset($_SESSION['auth']))
 			{

@@ -6,9 +6,9 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 require_once dirname(__FILE__) . '/../../inc/db.php';
 ?>
 <h1>Afficher selon les filtres :</h1>
-<a href="filter.php?filter=1"><img src="./images/DONUT.png" width="100px"></a>
-<a href="filter.php?filter=2"><img src="./images/pizza.png" width="100px"></a>
-<a href="filter.php?filter=3"><img src="./images/POW.png" width="100px"></a><br/>
+<a href="filter.php?filter=1"><img src="../../images/DONUT.png" width="100px"></a>
+<a href="filter.php?filter=2"><img src="../../images/pizza.png" width="100px"></a>
+<a href="filter.php?filter=3"><img src="../../images/POW.png" width="100px"></a><br/>
 <?php
 if (!empty($_GET) && isset($_GET['filter']))
 {
@@ -41,7 +41,7 @@ if (!empty($_GET) && isset($_GET['filter']))
 	$allPhotoWithFilter = $req->fetchAll();
 	foreach($allPhotoWithFilter as $filter) {
 		// echo '<div class="">';
-		echo '<img src="../'.$filter->photo_path.'" height="200px" />';
+		echo '<img src="'.$filter->photo_path.'" height="200px" />';
 		$liked = false;
 		if (isset($_SESSION['auth']))
 		{

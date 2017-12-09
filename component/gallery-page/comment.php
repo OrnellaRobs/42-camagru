@@ -1,9 +1,9 @@
 <?php
-require 'inc/functions.php';
+require_once dirname(__FILE__) . '/../../inc/functions.php';
 check_session();
 logged_only();
-require 'inc/header.php';
-require './inc/db.php';
+require_once dirname(__FILE__) . '/../header/header.php';
+require_once dirname(__FILE__) . '/../../inc/db.php';
 
 if (!empty($_GET) && isset($_GET['url']) && isset($_GET['photoid']))
 {
@@ -74,4 +74,4 @@ if (!empty($_POST))
 		echo '</div>';
 	}
 	?>
-	<?php require 'inc/footer.php'; ?>
+	<?php require_once dirname(__FILE__) . '/../footer/footer.php';?>

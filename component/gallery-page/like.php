@@ -1,13 +1,11 @@
 <?php
-
-require 'inc/functions.php';
+require_once dirname(__FILE__) . '/../../inc/functions.php';
 check_session();
 logged_only();
-require 'inc/header.php';
-
+require_once dirname(__FILE__) . '/../header/header.php';
+require_once dirname(__FILE__) . '/../../inc/db.php';
 if (!empty($_POST) && isset($_POST['photoid']) && isset($_POST['like']))
 {
-	require_once './inc/db.php';
 	$user_id = $_SESSION['auth']->id;
 	if ($_POST['like'] == 1)
 	{
@@ -27,4 +25,4 @@ if (!empty($_POST) && isset($_POST['photoid']) && isset($_POST['like']))
 	}
 }
 ?>
-	<?php require 'inc/footer.php'; ?>
+<?php require_once dirname(__FILE__) . '/../footer/footer.php';?>

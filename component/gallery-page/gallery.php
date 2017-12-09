@@ -1,10 +1,9 @@
 <?php
-require 'inc/functions.php';
+require_once dirname(__FILE__) . '/../../inc/functions.php';
 check_session();
-// logged_only();
+require_once dirname(__FILE__) . '/../header/header.php';
+require_once dirname(__FILE__) . '/../../inc/db.php';
 
-require 'inc/header.php';
-require './inc/db.php';
 $photo_per_page = 5;
 $request = $pdo->prepare('SELECT * FROM photos ORDER BY date_photo');
 $request->execute();
@@ -43,7 +42,7 @@ if (isset($_SESSION['auth']))
 		foreach ($result as $elem)
 		{
 			echo '<div class="">';
-			echo '<img src="'.$elem->photo_path.'" height="200px" />';
+			echo '<img src="../../'.$elem->photo_path.'" height="200px" />';
 			$liked = false;
 			if (isset($_SESSION['auth']))
 			{
@@ -54,10 +53,10 @@ if (isset($_SESSION['auth']))
 					}
 				}
 				if ($liked == true)
-				echo "<img class='liked' src='images/heart-3.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
+				echo "<img class='liked' src='../../images/heart-3.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
 				else
-				echo "<img class='unliked' src='images/heart-4.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
-				echo "<a href='comment.php?url=$elem->photo_path&photoid=$elem->photo_id'><img src='images/comment.png' width='40px'></a>";
+				echo "<img class='unliked' src='../../images/heart-4.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
+				echo "<a href='comment.php?url=$elem->photo_path&photoid=$elem->photo_id'><img src='../../images/comment.png' width='40px'></a>";
 				echo '</div>';
 			}
 		}
@@ -70,4 +69,4 @@ if (isset($_SESSION['auth']))
 		?>
 	</div>
 <script type="text/javascript" src="set-gallery.js"></script>
-<?php require 'inc/footer.php'; ?>
+<?php require_once dirname(__FILE__) . '/../footer/footer.php';?>

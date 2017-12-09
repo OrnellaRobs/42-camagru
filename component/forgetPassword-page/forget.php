@@ -1,11 +1,11 @@
 <?php
-require '../../inc/functions.php';
+require_once dirname(__FILE__) . '/../../inc/functions.php';
 check_session();
 check_already_login();
 if (!empty($_POST) && !empty($_POST['email']))
 {
-	require_once 'inc/db.php';
-	require_once 'inc/functions.php';
+	require_once dirname(__FILE__) . '/../../inc/db.php';
+	require_once dirname(__FILE__) . '/../../inc/functions.php';
 	$req = $pdo->prepare('SELECT * from User WHERE email = ? AND confirmation_at IS NOT NULL');
 	$req->execute([$_POST['email']]);
 	$user = $req->fetch();
@@ -37,9 +37,10 @@ if (!empty($_POST) && !empty($_POST['email']))
 }
 ?>
 
-
-<?php require '../header/header.php'; ?>
-<?php require '../navbar/navbar.php'; ?>
+<?php
+require_once dirname(__FILE__) .  '/../header/header.php';
+require_once dirname(__FILE__) . '/../navbar/navbar.php';
+?>
 
 <h1>Mot de passe oublié</h1>
 
@@ -47,4 +48,4 @@ if (!empty($_POST) && !empty($_POST['email']))
 	<input class="input-login" type="email" name="email" placeholder="Email"/><br/>
 	<input class="login-submit" type="submit" value="Valider"><br/>
 </form>
-<?php require '../footer/footer.php'; ?>
+<?php require_once dirname(__FILE__) . '/../footer/footer.php'; ?>

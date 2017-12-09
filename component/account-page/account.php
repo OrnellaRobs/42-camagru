@@ -1,13 +1,13 @@
 <?php
-require 'inc/functions.php';
+require_once dirname(__FILE__) . '/../../inc/functions.php';
 check_session();
 logged_only();
-require 'inc/header.php';
-require 'inc/db.php';
+require_once dirname(__FILE__) . '/../header/header.php';
+require_once dirname(__FILE__) . '/../../inc/db.php';
 $user_id = $_SESSION['auth']->id;
 
 function update_user($user_id) {
-	require 'inc/db.php';
+	require dirname(__FILE__) . '/../../inc/db.php';
 	$request = $pdo->prepare('SELECT * FROM User WHERE id = :id');
 	$request->execute(['id' => $user_id]);
 	$user = $request->fetch();
@@ -145,4 +145,4 @@ Email: <?= $_SESSION['auth']->email; ?><br/>
 </div>
 	<input class="login-submit" type="submit" value="Sauvergarder les modifications"><br/>
 </form>
-<?php require 'inc/footer.php'; ?>
+<?php require dirname(__FILE__) . '/../footer/footer.php'?>

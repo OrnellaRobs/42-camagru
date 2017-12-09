@@ -2,6 +2,7 @@
 require_once dirname(__FILE__) . '/../../inc/functions.php';
 check_session();
 require_once dirname(__FILE__) . '/../header/header.php';
+require_once dirname(__FILE__) . '/../navbar/navbar.php';
 require_once dirname(__FILE__) . '/../../inc/db.php';
 
 $photo_per_page = 5;
@@ -30,9 +31,9 @@ if (isset($_SESSION['auth']))
 }
 ?>
 <h1>Afficher selon les filtres :</h1>
-<a href="filter.php?filter=1"><img src="./images/DONUT.png" width="100px"></a>
-<a href="filter.php?filter=2"><img src="./images/pizza.png" width="100px"></a>
-<a href="filter.php?filter=3"><img src="./images/POW.png" width="100px"></a><br/>
+<a href="filter.php?filter=1"><img src="../../images/DONUT.png" width="100px"></a>
+<a href="filter.php?filter=2"><img src="../../images/pizza.png" width="100px"></a>
+<a href="filter.php?filter=3"><img src="../../images/POW.png" width="100px"></a><br/>
 	<h1>Les photos des autres utilisateurs</h1>
 	<div class="wrapper-user-photo">
 		<?php
@@ -42,7 +43,7 @@ if (isset($_SESSION['auth']))
 		foreach ($result as $elem)
 		{
 			echo '<div class="">';
-			echo '<img src="../../'.$elem->photo_path.'" height="200px" />';
+			echo '<img src="'.$elem->photo_path.'" height="200px" />';
 			$liked = false;
 			if (isset($_SESSION['auth']))
 			{
@@ -60,12 +61,14 @@ if (isset($_SESSION['auth']))
 				echo '</div>';
 			}
 		}
-		echo "<br/><br/>";
+		// echo "<br/><br/>";
+		echo '<div class="pagination">';
 		for ($i=1; $i<=$count_pages; $i++) {
 			echo '<a href="gallery.php?page='.$i.'">'.$i.'</a> ';
 			if ($i < $count_pages)
 				echo "-";
 		}
+		echo '</div>';
 		?>
 	</div>
 <script type="text/javascript" src="set-gallery.js"></script>

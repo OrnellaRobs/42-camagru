@@ -27,6 +27,7 @@ if (isset($_GET['id']) && isset($_GET['token'])):
 ?>
 
 <?php require dirname(__FILE__) . '/../header/header.php'; ?>
+<?php require dirname(__FILE__) . '/../navbar/navbar.php'; ?>
 <h1>REINITIALISER MON MOT DE PASSE</h1>
 
 <form action="" method="post">

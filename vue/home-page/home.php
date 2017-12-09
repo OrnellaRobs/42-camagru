@@ -1,19 +1,20 @@
 <?php
-require 'inc/functions.php';
+require_once dirname(__FILE__) . '/../../inc/functions.php';
 check_session();
 logged_only();
-
+require_once dirname(__FILE__) . '/../header/header.php';
+require_once dirname(__FILE__) . '/../navbar/navbar.php';
 ?>
-<?php require 'inc/header.php'; ?>
+
 <h1>Bonjour <?= $_SESSION['auth']->name; ?></h1>
 <form class="container" action="" method="POST" enctype="multipart/form-data">
 	<div class="wrapper-filter-webcam">
 		<label><input id="1" type="radio" name="filter" value="1" onClick="getFilter(1);"></label>
-		<img src="images/donut.png" title="donut.png" width="60px"/>
+		<img src="../../images/donut.png" title="donut.png" width="60px"/>
 		<label><input id="2" type="radio" name="filter" value="2" onClick="getFilter(2);"></label>
-		<img src="images/pizza.png" title="pizza.png" width="80px"/>
+		<img src="../../images/pizza.png" title="pizza.png" width="80px"/>
 		<label><input id="3" type="radio" name="filter" value="3" onClick="getFilter(3);"/></label>
-		<img src="images/pow.png" title="pow.png" width="60px"/>
+		<img src="../../images/pow.png" title="pow.png" width="60px"/>
 		<video id="video" class="webcam-live"></video>
 		<label><input type="file" name="MAX_FILE_SIZE" value=50000 name="img" onchange="get_img_upload(this)"/></label>
 		<button id="sendbutton" disabled>Envoyer la photo</button>
@@ -21,7 +22,7 @@ logged_only();
 	</div>
 	<div class="wrapper-user-photo">
 		<?php
-		require './inc/db.php';
+		require_once dirname(__FILE__) . '/../../inc/db.php';
 		try
 		{
 			$userid = $_SESSION['auth']->id;
@@ -64,11 +65,13 @@ logged_only();
 		{
 			echo "fail";
 		}
+		echo '<div class="pagination">';
 		for ($i=1; $i<=$count_pages; $i++) {
 			echo '<a href="home.php?page='.$i.'">'.$i.'</a> ';
 			if ($i < $count_pages)
 			echo "-";
 		}
+		echo '</div>';
 		?>
 	</div>
 </form>
@@ -76,4 +79,4 @@ logged_only();
 <!-- <img src="http://placekitten.com/g/320/261" id="photo" alt="photo"> -->
 <script type="text/javascript" src="./webcam.js"></script>
 <script type="text/javascript" src="./deletePhoto.js"></script>
-<?php require 'inc/footer.php'; ?>
+<?php require_once dirname(__FILE__) . '/../footer/footer.php';?>

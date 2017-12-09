@@ -3,6 +3,7 @@ require_once dirname(__FILE__) . '/../../inc/functions.php';
 check_session();
 logged_only();
 require_once dirname(__FILE__) . '/../header/header.php';
+require_once dirname(__FILE__) . '/../navbar/navbar.php';
 require_once dirname(__FILE__) . '/../../inc/db.php';
 if (!empty($_POST) && isset($_POST['photoid']) && isset($_POST['like']))
 {

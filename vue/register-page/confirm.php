@@ -1,7 +1,7 @@
 <?php
 $user_id = $_GET['id'];
 $token = $_GET['token'];
-require './inc/db.php';
+require '../../inc/db.php';
 $req = $pdo->prepare('SELECT * from User WHERE id = ?');
 $req->execute([$user_id]);
 $user = $req->fetch();

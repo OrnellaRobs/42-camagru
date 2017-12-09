@@ -1,3 +1,3 @@
 <?php
 
-require_once './component/login-page/login-page.php';
+require_once './vue/login-page/login-page.php';

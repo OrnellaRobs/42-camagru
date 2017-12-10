@@ -15,7 +15,7 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 	{
 		$_SESSION['auth'] = $user;
 		$_SESSION['success'] = "Vous êtes maintenant connecté";
-		header('Location: ./home.php');
+		header('Location: /Camagru-Grafik-Art/vue/home-page/home.php');
 		exit();
 	}
 	else

@@ -10,7 +10,7 @@
 		<?php if ($_SERVER['REQUEST_URI'] != "/Camagru-Grafik-Art/vue/gallery-page/gallery.php" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/vue/gallery-page/gallery.php"):?>
 		<a class="user-input" href="/Camagru-Grafik-Art/vue/gallery-page/gallery.php">Galerie</a>
 		<?php endif;?>
-		<?php if (isset($_SESSION['auth']) && $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/vue/gallery-page/gallery.php"):?>
+		<?php if (isset($_SESSION['auth']) && ($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/vue/gallery-page/gallery.php" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/vue/account-page/account.php")):?>
 		<a class="user-input" href="/Camagru-Grafik-Art/vue/home-page/home.php">Accueil</a>
 		<?php endif;?>
 		<?php if ($_SERVER['REQUEST_URI'] == "/camagru-grafik-art"): ?>

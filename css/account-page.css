@@ -1,17 +1,82 @@
-.user-info {
-	display: flex;
+.hashtag-msg {
+	font-family: Brush Script MT, cursive;
+	font-size: 50px;
+	text-align: center;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+
+.user {
+	display: inline-flex;
 	justify-content: center;
+	align-items: center;
+}
+
+.user-info {
+	display: inline-flex;
+	justify-content: initial;
+	align-items: center;
 	flex-direction: column;
+	background-image: url(https://i.pinimg.com/736x/70/23/17/7023171f5e9f9f9979997f9dcf10f398--ideas-scrapbooking-brahma.jpg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 412px;
+	width: 344px;
+	margin-right: 100px;
+	/*border: 2px solid red;*/
+}
+
+.info {
+	font-family: New Century Schoolbook, serif;
+	font-size: 18px;
 }
 
 .change-user-info {
-	display: flex;
+	display: inline-flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	background-color: rgba(255,255,255,0.9);
-	width: 700px;
-	height: 700px;
+	background-color: rgba(255,255,255,0.4);
+	width: 361px;
+	height: 500px;
+	padding: 0 20px 0 20px;
 	/*font-size: 14px;*/
+	/*border: 2px solid red;*/
+}
+
+.wrapper {
+	display: flex;
+}
+.wrapper-modifier {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	/*background-image: url(https://www.printed.com/images/products/landing/instagram/instagram-photo-style-prints-3.jpg);*/
+	background-image: url(/Camagru-Grafik-Art/images/photo.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 650px;
+	width: 650px;
+	/*border-radius: 1000px;*/
+}
+
+.text {
+	font-family: New Century Schoolbook, serif;
+	font-size: 18px;
+}
+
+.input-change {
+	border: 0.5px solid grey;
+	height: 27px;
+	font-size: 14px;
+	color: black;
+	width: 350px;
+	margin: 2px;
+	text-align: center;
+}
+
+.option-mail-comment {
+	/*border: 1px solid grey;*/
+	margin: 10px 0 10px 0;
 }

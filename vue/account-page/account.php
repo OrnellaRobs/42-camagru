@@ -24,9 +24,9 @@ if (!empty($_POST))
 	if (isset($_POST['name']) && $_POST['name'] != "" && isset($_POST['confirm-name']) && $_POST['confirm-name'] != "")
 	{
 		if ($_POST['name'] != $_POST['confirm-name'])
-			$errors['name'] = "Les noms ne correspondent pas";
+		$errors['name'] = "Les noms ne correspondent pas";
 		else
-			$name = 1;
+		$name = 1;
 	}
 	if (isset($_POST['email']) && $_POST['email'] != "" && isset($_POST['confirm-email']) && $_POST['confirm-email'] != "")
 	{
@@ -34,18 +34,18 @@ if (!empty($_POST))
 		$req->execute([$_POST['email']]);
 		$user = $req->fetch();
 		if ($user)
-			$errors['email-exist'] = "Cet email est déjà pris";
+		$errors['email-exist'] = "Cet email est déjà pris";
 		else if ($_POST['email'] != $_POST['confirm-email'])
-			$errors['email'] = "Les emails ne correspondent pas";
+		$errors['email'] = "Les emails ne correspondent pas";
 		else
-			$email = 1;
+		$email = 1;
 	}
 	if (isset($_POST['password']) && $_POST['password'] != "" && isset($_POST['confirm-password']) && $_POST['confirm-password'] != "")
 	{
 		if ($_POST['password'] != $_POST['confirm-password'])
-			$errors['password'] = "Les mots de passe ne correspondent pas";
+		$errors['password'] = "Les mots de passe ne correspondent pas";
 		else
-			$password = 1;
+		$password = 1;
 	}
 	if (isset($_POST['mail-comments']) && $_POST['mail-comments'] != "")
 	{
@@ -59,7 +59,7 @@ if (!empty($_POST))
 			$errors['mail-comments'] = $str;
 		}
 		else
-			$mail_comments = 1;
+		$mail_comments = 1;
 	}
 	if (empty($errors) && ($name || $email || $password || $mail_comments))
 	{
@@ -109,41 +109,59 @@ if (!empty($_POST))
 		<?php endforeach;?>
 	</div>
 <?php 	endif; ?>
-<div class="user-info">
-<h1>Informations</h1><br/>
-Nom: <?= $_SESSION['auth']->name; ?><br/>
-Username: <?= $_SESSION['auth']->username; ?><br/>
-Email: <?= $_SESSION['auth']->email; ?><br/>
+<div class="wrapper">
+	<div class="user">
+	<div class="user-info">
+		<!-- <h1>Informations</h1><br/> -->
+		<span class="hashtag-msg">#AboutMe</span>
+		<span class="info">
+		<h1>Nom</h1>
+		<?= $_SESSION['auth']->name; ?><br/>
+		<h1>Username</h1>
+		<?= $_SESSION['auth']->username; ?><br/>
+		<h1>Email</h1>
+		<?= $_SESSION['auth']->email; ?><br/>
+	</span>
+	</div>
 </div>
-<form class="change-user-info" action="" method="post">
-	<h1>Modifier mon nom</h1>
-	<div class="form-group">
-		<input class="input-register" type="text" name="name" placeholder="Nouveau nom"/>
+	<div class="wrapper-modifier">
+	<form class="change-user-info" action="" method="post">
+		<h1>Modifier mon compte:</h1>
+		<span class="text">Nom</span>
+		<div class="form-group">
+			<input class="input-change" type="text" name="name" placeholder="Nouveau nom"/>
+		</div>
+		<div class="form-group">
+			<input class="input-change" type="text" name="confirm-name" placeholder="Confirmation du nouveau nom"/>
+		</div>
+		<span class="text">Email</span>
+		<div class="form-group">
+			<input class="input-change" type="email" name="email" placeholder="Changer mon email"/>
+		</div>
+		<div class="form-group">
+			<input class="input-change" type="email" name="confirm-email" placeholder="Confirmation du nouveau email"/>
+		</div>
+		<span class="text">Mot de passe</span>
+		<div class="form-group">
+			<input class="input-change" type="password" name="password" placeholder="Changer de mot de passe"/>
+		</div>
+		<div class="form-group">
+			<input class="input-change" type="password" name="confirm-password" placeholder="Confirmation du nouveau mot de passe"/>
+		</div>
+		<span class="text">Option Commentaires</span>
+		<div class="option-mail-comment">
+			<div class="form-group">
+				<label><input id="1" type="radio" name="mail-comments" value="1"> Oui, je souhaite recevoir un mail lorsqu'un utilisateur a commenté une de mes photos</label>
+				<!-- <label><input id="1" type="radio" name="mail-comments" value="1">Recevoir un mail lorsqu'un utilisateur a commenté une de mes photos</label> -->
+			</div>
+		</br>
+		<div class="form-group">
+			<label><input id="2" type="radio" name="mail-comments" value="0"> Non, je ne souhaite pas recevoir de mail lorsqu'un utilisateur a commenté une de mes photos</label>
+		</div>
 	</div>
-	<div class="form-group">
-		<input class="input-register" type="text" name="confirm-name" placeholder="Confirmation du nouveau nom"/>
-	</div>
-	<h1>Modifier mon email</h1>
-	<div class="form-group">
-		<input class="input-register" type="email" name="email" placeholder="Changer mon email"/>
-	</div>
-	<div class="form-group">
-		<input class="input-register" type="email" name="confirm-email" placeholder="Confirmation du nouveau email"/>
-	</div>
-	<h1>Changer mon mot de passe</h1>
-	<div class="form-group">
-		<input class="input-register" type="password" name="password" placeholder="Changer de mot de passe"/>
-	</div>
-	<div class="form-group">
-		<input class="input-register" type="password" name="confirm-password" placeholder="Confirmation du nouveau mot de passe"/>
-	</div>
-	<h1>Modifier les options des commentaires</h1>
-	<div class="form-group">
-	<label><input id="1" type="radio" name="mail-comments" value="1"> Oui, je souhaite recevoir un mail lorsqu'un utilisateur a commenté une de mes photos</label>
-</div>
-<div class="form-group">
-	<label><input id="2" type="radio" name="mail-comments" value="0"> Non, je ne souhaite pas recevoir de mail lorsqu'un utilisateur a commenté une de mes photos</label>
-</div>
+
 	<input class="login-submit" type="submit" value="Sauvergarder les modifications"><br/>
 </form>
+</div>
+</div>
 <?php require dirname(__FILE__) . '/../footer/footer.php'?>

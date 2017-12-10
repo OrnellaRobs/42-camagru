@@ -43,7 +43,7 @@ if (!empty($_GET) && isset($_GET['filter']))
 	$allPhotoWithFilter = $req->fetchAll();
 	echo '<div class="allPhotos">';
 	foreach($allPhotoWithFilter as $filter) {
-		// echo '<div class="">';
+		echo '<div class="wrapper-photo">';
 		echo '<img src="'.$filter->photo_path.'" height="200px" />';
 		$liked = false;
 		if (isset($_SESSION['auth']))
@@ -54,13 +54,15 @@ if (!empty($_GET) && isset($_GET['filter']))
 					break;
 				}
 			}
+			echo '<div class="like-and-comment">';
 			if ($liked == true)
 			echo "<img class='liked' src='../../images/heart-3.png' width='23px' onClick='toggle(this,\"$filter->photo_id\");'>";
 			else
 			echo "<img class='unliked' src='../../images/heart-4.png' width='23px' onClick='toggle(this,\"$filter->photo_id\");'>";
 			echo "<a href='comment.php?url=$filter->photo_path&photoid=$filter->photo_id'><img src='../../images/comment.png' width='40px'></a>";
-			// echo '</div>';
+			echo '</div>';
 		}
+		echo '</div>';
 	}
 	echo '</div>';
 	echo '<div class="pagination">';

@@ -9,12 +9,14 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 <h1>Bonjour <?= $_SESSION['auth']->name; ?></h1>
 <form class="container" action="" method="POST" enctype="multipart/form-data">
 	<div class="wrapper-filter-webcam">
+		<div class="wrapper-filter">
 		<label><input id="1" type="radio" name="filter" value="1" onClick="getFilter(1);"></label>
 		<img src="../../images/donut.png" title="donut.png" width="60px"/>
 		<label><input id="2" type="radio" name="filter" value="2" onClick="getFilter(2);"></label>
 		<img src="../../images/pizza.png" title="pizza.png" width="80px"/>
 		<label><input id="3" type="radio" name="filter" value="3" onClick="getFilter(3);"/></label>
 		<img src="../../images/pow.png" title="pow.png" width="60px"/>
+	</div>
 		<video id="video" class="webcam-live"></video>
 		<label><input type="file" name="MAX_FILE_SIZE" value=50000 name="img" onchange="get_img_upload(this)"/></label>
 		<button id="sendbutton" disabled>Envoyer la photo</button>

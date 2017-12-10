@@ -59,7 +59,7 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 			foreach ($getID as $elem)
 			{
 					echo '<div class="photo-user">';
-					echo '<img src="'.$elem->photo_path.'" height="200px" />';
+					echo '<img class="each-photo" src="'.$elem->photo_path.'" height="200px" />';
 					echo "<input type='button' value='Supprimer' onClick='deletePhoto(\"$elem->photo_path\", \"$elem->photo_id\", \"$userid\");'>";
 					echo '</div>';
 			}

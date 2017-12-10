@@ -22,8 +22,8 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 	$_SESSION['danger'] = "Identifiant/Email ou mot de passe inccorects";
 }
 ?>
-<?php require '../header/header.php'; ?>
-<?php require '../navbar/navbar.php'; ?>
+<?php require dirname(__FILE__) . '/../header/header.php'; ?>
+<?php require dirname(__FILE__) . '/../navbar/navbar.php'; ?>
 <div class="all-page-login">
 	<div class="connect-msg">
 		Connecte-Toi
@@ -37,6 +37,6 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 			<input class="login-submit" type="submit" value="Se Connecter"><br/>
 		</form>
 	</div>
-	<a class="forget-password" href="../forgetPassword-page/forget.php">J'ai oublié mon mot de passe ?</a>
+	<a class="forget-password" href="/Camagru-Grafik-Art/vue/forgetPassword-page/forget.php">J'ai oublié mon mot de passe ?</a>
 </div>
-<?php require '../footer/footer.php'; ?>
+<?php require dirname(__FILE__) . '/../footer/footer.php'; ?>

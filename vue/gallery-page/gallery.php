@@ -44,7 +44,8 @@ if (isset($_SESSION['auth']))
 		echo '<div class="allPhotos">';
 		foreach ($result as $elem)
 		{
-			echo '<img src="'.$elem->photo_path.'" height="200px" />';
+			echo '<div class="wrapper-photo">';
+			echo '<img class="each-photo" src="'.$elem->photo_path.'" height="200px" />';
 			$liked = false;
 			if (isset($_SESSION['auth']))
 			{
@@ -54,17 +55,20 @@ if (isset($_SESSION['auth']))
 						break;
 					}
 				}
+				echo '<div class="like-and-comment">';
 				if ($liked == true)
-				echo "<img class='liked' src='../../images/heart-3.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
+					echo "<img class='liked' src='/Camagru-Grafik-Art/images/heart-3.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
 				else
-				echo "<img class='unliked' src='../../images/heart-4.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
-				echo "<a href='comment.php?url=$elem->photo_path&photoid=$elem->photo_id'><img src='../../images/comment.png' width='40px'></a>";
+					echo "<img class='unliked' src='/Camagru-Grafik-Art/images/heart-4.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
+				echo "<a href='comment.php?url=$elem->photo_path&photoid=$elem->photo_id'><img src='/Camagru-Grafik-Art/images/comment.png' width='40px'></a>";
+				echo '</div>';
 			}
+			echo '</div>';
 		}
 		echo '</div>';
 		echo '<div class="pagination">';
 		for ($i=1; $i<=$count_pages; $i++) {
-			echo '<a href="gallery.php?page='.$i.'">'.$i.'</a> ';
+			echo '<a href="gallery.php?page='.$i.'">'.$i.'</a>';
 			if ($i < $count_pages)
 				echo "-";
 		}

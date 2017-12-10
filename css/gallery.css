@@ -1,6 +1,5 @@
 .filter {
 	display: flex;
-
 }
 
 .allPhotos {
@@ -8,4 +7,22 @@
 	align-items: flex-end;
 	flex-wrap: wrap;
 	justify-content: center;
+}
+
+.wrapper-photo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.each-photo {
+	margin: 15px;
+	box-shadow: 4px -2px 10px 0px grey;
+}
+
+.like-and-comment {
+	/*display: flex;
+	align-items: flex-end;*/
+}
+.pagination {
+	/*text-decoration:line-through;*/
 }

@@ -1,8 +1,9 @@
 .wrapper-filter-webcam {
-	border: 2px solid red;
+	/*border: 2px solid grey;*/
 	display: inline-flex;
 	flex-direction: column;
 	align-items: center;
+	background-color: #FAFAFA;
 }
 
 .wrapper-filter {
@@ -14,6 +15,7 @@
 .filter-img {
 	margin: 10px;
 }
+
 .photo-user {
 	display: inline-flex;
 	flex-direction: column;
@@ -33,7 +35,7 @@
 }
 
 .wrapper-user-photo {
-	border: 2px solid red;
+	border: 2px solid #FAFAFA;
 	display: inline-flex;
 	align-items: center;
 	flex-wrap: wrap;

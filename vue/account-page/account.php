@@ -126,7 +126,7 @@ if (!empty($_POST))
 </div>
 	<div class="wrapper-modifier">
 	<form class="change-user-info" action="" method="post">
-		<h1>Modifier mon compte:</h1>
+		<h1>Modifier mon compte</h1>
 		<span class="text">Nom</span>
 		<div class="form-group">
 			<input class="input-change" type="text" name="name" placeholder="Nouveau nom"/>

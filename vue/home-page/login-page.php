@@ -37,6 +37,6 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 			<input class="login-submit" type="submit" value="Se Connecter"><br/>
 		</form>
 	</div>
-	<a class="forget-password" href="/Camagru-Grafik-Art/vue/forgetPassword-page/forget.php">J'ai oublié mon mot de passe ?</a>
+	<a class="forget-password" href="/Camagru-Grafik-Art/vue/forgetPassword-page/forget.php">Mot de passe oublié</a>
 </div>
 <?php require dirname(__FILE__) . '/../footer/footer.php'; ?>

@@ -31,18 +31,19 @@ if (isset($_SESSION['auth']))
 }
 ?>
 <h1>Afficher selon les filtres :</h1>
+<div class="filter">
 <a href="filter.php?filter=1"><img src="../../images/DONUT.png" width="100px"></a>
 <a href="filter.php?filter=2"><img src="../../images/pizza.png" width="100px"></a>
 <a href="filter.php?filter=3"><img src="../../images/POW.png" width="100px"></a><br/>
+</div>
 	<h1>Les photos des autres utilisateurs</h1>
-	<!-- <div class="wrapper-user-photo"> -->
 		<?php
 		$req = $pdo->prepare('SELECT * FROM photos ORDER BY date_photo DESC LIMIT '.$start.','.$photo_per_page.'');
 		$req->execute();
 		$result = $req->fetchAll();
+		echo '<div class="allPhotos">';
 		foreach ($result as $elem)
 		{
-			echo '<div class="">';
 			echo '<img src="'.$elem->photo_path.'" height="200px" />';
 			$liked = false;
 			if (isset($_SESSION['auth']))
@@ -58,10 +59,9 @@ if (isset($_SESSION['auth']))
 				else
 				echo "<img class='unliked' src='../../images/heart-4.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
 				echo "<a href='comment.php?url=$elem->photo_path&photoid=$elem->photo_id'><img src='../../images/comment.png' width='40px'></a>";
-				echo '</div>';
 			}
 		}
-		// echo "<br/><br/>";
+		echo '</div>';
 		echo '<div class="pagination">';
 		for ($i=1; $i<=$count_pages; $i++) {
 			echo '<a href="gallery.php?page='.$i.'">'.$i.'</a> ';
@@ -70,6 +70,5 @@ if (isset($_SESSION['auth']))
 		}
 		echo '</div>';
 		?>
-	</div>
 <script type="text/javascript" src="set-gallery.js"></script>
 <?php require_once dirname(__FILE__) . '/../footer/footer.php';?>

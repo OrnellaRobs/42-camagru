@@ -1,0 +1,11 @@
+.filter {
+	display: flex;
+
+}
+
+.allPhotos {
+	display: flex;
+	align-items: flex-end;
+	flex-wrap: wrap;
+	justify-content: center;
+}

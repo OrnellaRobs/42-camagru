@@ -36,7 +36,7 @@ body {
 	text-align-last: center;
 }
 
-.danger{
+.danger {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -50,4 +50,14 @@ body {
 	text-align: justify;
 	-moz-text-align-last: center;
 	text-align-last: center;
+}
+
+.title-msg {
+	margin-top: 10px;
+	font-size: 62px;
+	font-family: New Century Schoolbook, serif;
+	font-variant: small-caps;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }

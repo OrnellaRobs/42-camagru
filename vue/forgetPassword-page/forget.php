@@ -42,8 +42,11 @@ require_once dirname(__FILE__) .  '/../header/header.php';
 require_once dirname(__FILE__) . '/../navbar/navbar.php';
 ?>
 
-<h1>Mot de passe oublié</h1>
-
+<!-- <h1>Mot de passe oublié</h1> -->
+<div class="title-msg">
+Tu as oublié ton mot de passe?
+<center><img src="/Camagru-Grafik-Art/images/arrow2.png" width="80px"/></center>
+</div>
 <form class="form-login" action="" method="post">
 	<input class="input-login" type="email" name="email" placeholder="Email"/><br/>
 	<input class="login-submit" type="submit" value="Valider"><br/>

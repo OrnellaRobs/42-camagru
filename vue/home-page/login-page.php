@@ -25,13 +25,13 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 <?php require dirname(__FILE__) . '/../header/header.php'; ?>
 <?php require dirname(__FILE__) . '/../navbar/navbar.php'; ?>
 <div class="all-page-login">
-	<div class="connect-msg">
+	<div class="title-msg">
 		Connecte-Toi
-		<center><img src="../../images/arrow2.png" width="80px"/></center>
+		<center><img src="/Camagru-Grafik-Art/images/arrow2.png" width="80px"/></center>
 	</div>
 	<div class="background-login">
 		<form class="form-login" action="" method="post">
-			<img id="img-login" src="images/logo.png" width="90px;"/>
+			<img id="img-login" src="/Camagru-Grafik-Art/images/logo.png" width="90px;"/>
 			<input class="input-login" type="text" name="username" title="identifiant" placeholder="Identifiant"/><br/>
 			<input class="input-login" type="password" name="password" title="password" placeholder="Mot de Passe"/><br/>
 			<input class="login-submit" type="submit" value="Se Connecter"><br/>

@@ -81,12 +81,20 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 		<?php endforeach;?>
 	</div>
 <?php 	endif; ?>
-<form method="post">
-	<input class="input-register" type="text" name="name" placeholder="Nom Complet"/><br/>
-	<input class="input-register" type="text" name="username" placeholder="Identifiant"/><br/>
-	<input class="input-register" type="password" name="password" placeholder="Mot de Passe" /><br/>
-	<input class="input-register" type="password" name="password-confirm" placeholder="Confirmation du mot de passe"/><br/>
-	<input class="input-register" type="email" name="email" placeholder="Email"/><br />
-	<input class="register-submit" type="submit" name="submit" value="S'Inscrire!">
-</form>
+<div class="title-msg">
+	Rejoins-Nous et Inscris-Toi!
+	<center><img src="/Camagru-Grafik-Art/images/arrow2.png" width="80px"/></center>
+</div>
+<div class="register-page-background">
+	<div class="register-form">
+	<form method="post">
+		<input class="input-register" type="text" name="name" placeholder="Nom Complet"/><br/>
+		<input class="input-register" type="text" name="username" placeholder="Identifiant"/><br/>
+		<input class="input-register" type="password" name="password" placeholder="Mot de Passe" /><br/>
+		<input class="input-register" type="password" name="password-confirm" placeholder="Confirmation du mot de passe"/><br/>
+		<input class="input-register" type="email" name="email" placeholder="Email"/><br />
+		<input class="register-submit" type="submit" name="submit" value="S'Inscrire!">
+	</form>
+</div>
+</div>
 <?php require_once dirname(__FILE__) . '/../footer/footer.php';?>

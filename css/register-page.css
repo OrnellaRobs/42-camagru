@@ -1,0 +1,40 @@
+.register-page-background {
+	background-image: url("/Camagru-Grafik-Art/images/collage.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: center;
+	width: 70vw;
+	height: 70vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.register-form {
+	background-color: rgba(255,255,255,0.9);
+	width: 400px;
+	height: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;a
+}
+
+.input-register {
+	border: 0.5px solid black;
+	height: 27px;
+	font-size: 14px;
+	color: black;
+	width: 250px;
+	margin: 2px;
+	text-align: center;
+}
+
+.register-submit {
+	text-align: center;
+	padding: 5px 10px;
+	border: none;
+	height: 30px;
+	width: 254px;
+	background-color: rgb(81, 202, 188);
+	font-size: 16px;
+}

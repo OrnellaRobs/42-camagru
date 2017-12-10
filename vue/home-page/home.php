@@ -53,6 +53,7 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 			$getID = $req1->fetchAll();
 			// var_dump($getID);
 			// echo $getID[1]->photo_type;
+			echo '<div class="allPhotos">';
 			foreach ($getID as $elem)
 			{
 					echo '<div class="photo-user">';
@@ -60,6 +61,7 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 					echo "<input type='button' value='Supprimer' onClick='deletePhoto(\"$elem->photo_path\", \"$elem->photo_id\", \"$userid\");'>";
 					echo '</div>';
 			}
+			echo '</div>';
 		}
 		catch (PDOException $e)
 		{

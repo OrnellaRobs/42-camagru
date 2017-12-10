@@ -4,15 +4,6 @@
 	flex-direction: column;
 	align-items: center;
 }
-.connect-msg {
-	margin-top: 10px;
-	font-size: 62px;
-	font-family: New Century Schoolbook, serif;
-	font-variant: small-caps;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
 
 .background-login {
 	display: flex;

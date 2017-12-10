@@ -60,7 +60,8 @@ if (!empty($_POST))
 		<p>
 			Votre commentaire :
 		</p>
-		<label for="commentaire">Message</label> : <input type="text" name="commentaire" id="commentaire" /><br />
+		<!-- <label for="commentaire">Commentaire</br></label> -->
+		<input class="comment" type="text" name="commentaire" id="commentaire" /><br />
 		<input type="submit" value="Envoyer" />
 	</form>
 	<h1>Autres commentaires sur cette photo: </h1>
@@ -70,7 +71,7 @@ if (!empty($_POST))
 	$allComments = $req->fetchAll(PDO::FETCH_COLUMN, 0);
 	foreach($allComments as $Comments)
 	{
-		echo '<div class="">';
+		echo '<div class="each-comment">';
 		echo $Comments . "<br/>";
 		echo '</div>';
 	}

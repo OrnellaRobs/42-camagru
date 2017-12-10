@@ -19,7 +19,7 @@
 .photo-user {
 	display: inline-flex;
 	flex-direction: column;
-	/*background-color: blue;*/
+	margin: 0 5px;
 }
 
 .choose-filter {

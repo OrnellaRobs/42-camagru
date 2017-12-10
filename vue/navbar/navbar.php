@@ -1,6 +1,6 @@
 <div class="page">
 	<div class="header">
-		<?php if (($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/index.php" || (($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/vue/forgetPassword-page/forget.php" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/vue/gallery-page/gallery.php") && !isset($_SESSION['auth'])))):?>
+		<?php if (($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/index.php" || (($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/vue/forgetPassword-page/forget.php" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/vue/gallery-page/gallery.php" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/vue/home-page/login-page.php") && !isset($_SESSION['auth'])))):?>
 			<a class="user-input" href="/Camagru-Grafik-Art/vue/register-page/register.php">S'Inscrire</a>
 		<?php endif;?>
 		<?php if (isset($_SESSION['auth'])): ?>

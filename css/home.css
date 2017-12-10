@@ -7,7 +7,12 @@
 
 .wrapper-filter {
 	display: flex;
+	align-items: flex-end;
 	margin-top: 20px;
+}
+
+.filter-img {
+	margin: 10px;
 }
 .photo-user {
 	display: inline-flex;

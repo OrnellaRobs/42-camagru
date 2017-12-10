@@ -109,33 +109,33 @@ if (!empty($_POST))
 		<?php endforeach;?>
 	</div>
 <?php 	endif; ?>
-
-<h1>Informations</h1>
+<div class="user-info">
+<h1>Informations</h1><br/>
 Nom: <?= $_SESSION['auth']->name; ?><br/>
 Username: <?= $_SESSION['auth']->username; ?><br/>
 Email: <?= $_SESSION['auth']->email; ?><br/>
-
-<form action="" method="post">
+</div>
+<form class="change-user-info" action="" method="post">
 	<h1>Modifier mon nom</h1>
 	<div class="form-group">
-		<input type="text" name="name" placeholder="Nouveau nom"/>
+		<input class="input-register" type="text" name="name" placeholder="Nouveau nom"/>
 	</div>
 	<div class="form-group">
-		<input type="text" name="confirm-name" placeholder="Confirmation du nouveau nom"/>
+		<input class="input-register" type="text" name="confirm-name" placeholder="Confirmation du nouveau nom"/>
 	</div>
 	<h1>Modifier mon email</h1>
 	<div class="form-group">
-		<input type="email" name="email" placeholder="Changer mon email"/>
+		<input class="input-register" type="email" name="email" placeholder="Changer mon email"/>
 	</div>
 	<div class="form-group">
-		<input type="email" name="confirm-email" placeholder="Confirmation du nouveau email"/>
+		<input class="input-register" type="email" name="confirm-email" placeholder="Confirmation du nouveau email"/>
 	</div>
 	<h1>Changer mon mot de passe</h1>
 	<div class="form-group">
-		<input type="password" name="password" placeholder="Changer de mot de passe"/>
+		<input class="input-register" type="password" name="password" placeholder="Changer de mot de passe"/>
 	</div>
 	<div class="form-group">
-		<input type="password" name="confirm-password" placeholder="Confirmation du nouveau mot de passe"/>
+		<input class="input-register" type="password" name="confirm-password" placeholder="Confirmation du nouveau mot de passe"/>
 	</div>
 	<h1>Modifier les options des commentaires</h1>
 	<div class="form-group">

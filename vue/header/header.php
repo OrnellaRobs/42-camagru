@@ -12,6 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="/Camagru-Grafik-Art/css/gallery.css">
 	<link rel="stylesheet" type="text/css" href="/Camagru-Grafik-Art/css/account-page.css">
 	<link rel="stylesheet" type="text/css" href="/Camagru-Grafik-Art/css/comment-page.css">
+	<link rel="stylesheet" type="text/css" href="/Camagru-Grafik-Art/css/forgetPassword-page.css">
 
 </head>
 <body>

@@ -11,7 +11,7 @@ require_once dirname(__FILE__) . '/../../inc/db.php';
 	<center style="position:relative;">
 		<img class="logo" src="/Camagru-Grafik-Art/images/logo.png" width="90px;"/>
 		<center style="position:absolute; top: -41px; left: 79px;">
-			<img class="comment" src="/Camagru-Grafik-Art/images/comment-page.png" style="width: auto;">
+			<img src="/Camagru-Grafik-Art/images/comment-page.png" style="width: auto;height: 70px;">
 		</center>
 	</center>
 
@@ -67,16 +67,11 @@ if (!empty($_POST))
 	}
 	?>
 	<form method="post" action="">
-		<p>
-			Votre commentaire :
-		</p>
-		<!-- <label for="commentaire">Commentaire</br></label> -->
-		<input class="comment" type="text" name="commentaire" id="commentaire" />
-		<input class="comment" type="text" name="comOK" id="commentaire" />
-
-		<input type="submit" value="ok" />
-
-		<input type="submit" value="Envoyer" />
+		<img src="/Camagru-Grafik-Art/images/comment-page.png" width="40px;"/>
+		<div class="wrapper-form-comment">
+		<textarea class="comment" name="commentaire" id="commentaire" rows="5" cols="50"></textarea>
+		<input class="comment-submit" type="submit" value="Envoyer" />
+	</div>
 	</form>
 	<h1>Autres commentaires sur cette photo: </h1>
 	<div class="all-Comments">

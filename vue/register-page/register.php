@@ -72,15 +72,6 @@ if (!empty($_POST))
 require_once dirname(__FILE__) . '/../header/header.php';
 require_once dirname(__FILE__) . '/../navbar/navbar.php';
 ?>
-
-<?php	if (!empty($errors)): ?>
-	<div class="danger">
-		<p>Le formulaire n'est pas rempli correctement</p>
-		<?php foreach($errors as $error):?>
-			<li><?=$error;?></li>
-		<?php endforeach;?>
-	</div>
-<?php 	endif; ?>
 <div class="title-msg">
 	<center>Rejoins-Nous et Inscris-Toi!</center>
 	<center><img src="/Camagru-Grafik-Art/images/arrow2.png" width="80px"/></center>
@@ -88,6 +79,14 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 
 <div class="register-page-background">
 	<div class="register-form">
+		<?php	if (!empty($errors)): ?>
+			<div class="danger">
+				<p>Le formulaire n'est pas rempli correctement</p>
+				<?php foreach($errors as $error):?>
+					<li><?=$error;?></li>
+				<?php endforeach;?>
+			</div>
+		<?php 	endif; ?>
 		<div class="hashtag-msg">
 			#JoinCamagru
 		</div>

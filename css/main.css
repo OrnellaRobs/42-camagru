@@ -34,6 +34,7 @@ body {
 	text-align: justify;
 	-moz-text-align-last: center;
 	text-align-last: center;
+	padding: 28px;
 }
 
 .danger {
@@ -50,6 +51,7 @@ body {
 	text-align: justify;
 	-moz-text-align-last: center;
 	text-align-last: center;
+	padding: 28px;
 }
 
 .title-msg {

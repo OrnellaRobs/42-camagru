@@ -6,7 +6,11 @@ require_once dirname(__FILE__) . '/../header/header.php';
 require_once dirname(__FILE__) . '/../navbar/navbar.php';
 ?>
 
-<h1>Bonjour <?= $_SESSION['auth']->name; ?></h1>
+<!-- <h1>Bonjour <?= $_SESSION['auth']->name; ?></h1> -->
+<div class="title">
+	<center><img id="img-login" src="/Camagru-Grafik-Art/images/logo.png" width="90px;"/></center>
+		<center><img id="img-login" src="/Camagru-Grafik-Art/images/camagru.jpg" width="280px;"/></center>
+</div>
 <form class="container" action="" method="POST" enctype="multipart/form-data">
 	<div class="wrapper-filter-webcam">
 		<div class="wrapper-filter">
@@ -60,7 +64,7 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 			{
 					echo '<div class="photo-user">';
 					echo '<img class="each-photo" src="'.$elem->photo_path.'" height="200px" />';
-					echo "<input type='button' value='Supprimer' onClick='deletePhoto(\"$elem->photo_path\", \"$elem->photo_id\", \"$userid\");'>";
+					echo "<input class='input-delete' type='button' value='Supprimer' onClick='deletePhoto(\"$elem->photo_path\", \"$elem->photo_id\", \"$userid\");'>";
 					echo '</div>';
 			}
 			echo '</div>';

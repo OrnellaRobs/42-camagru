@@ -3,12 +3,22 @@
 	height: 70px;
 }
 
+.all-Comments {
+}
 .each-comment {
 	display: flex;
 	justify-content: center;
-
+	margin: 5px;
 	padding: 10px 0;
 	width: 520px;
 	/*height: 100px;*/
 	border: 1px solid #E6E6E6;
 }
+
+.logo {
+	position: relative;
+}
+.comment {
+	position: absolute;
+	/*top: -5px;
+	left: -5px;*/

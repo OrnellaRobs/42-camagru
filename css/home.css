@@ -1,9 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+
+.title {
+	font-size : 48px;
+	font-family: 'Abril Fatface', cursive;
+}
+
 .wrapper-filter-webcam {
-	/*border: 2px solid grey;*/
 	display: inline-flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: #FAFAFA;
+	/*background-color: #FAFAFA;*/
+	box-shadow: 0px 0px 10px 0px grey;
 }
 
 .wrapper-filter {
@@ -35,7 +44,6 @@
 }
 
 .wrapper-user-photo {
-	border: 2px solid #FAFAFA;
 	display: inline-flex;
 	align-items: center;
 	flex-wrap: wrap;
@@ -44,4 +52,16 @@
 
 .container {
 	display: flex;
+	padding: 0 60px;
+}
+
+.input-delete {
+	font-size: 14px;
+	border-radius: 31px;
+	width: 154px;
+	height: 35px;
+	margin: 0 auto;
+	border: none;
+	background: none;
+	background-color: #F2F2F2;
 }

@@ -5,11 +5,14 @@ require_once dirname(__FILE__) . '/../header/header.php';
 require_once dirname(__FILE__) . '/../navbar/navbar.php';
 require_once dirname(__FILE__) . '/../../inc/db.php';
 ?>
-<h1>Afficher selon les filtres :</h1>
+<div class="title">
+	<center><img id="img-login" src="/Camagru-Grafik-Art/images/logo.png" width="90px;"/></center>
+	<center><img id="img-login" src="/Camagru-Grafik-Art/images/gallery-by-filter.jpg" width="190px;"/></center>
+</div>
 <div class="filter">
-<a href="filter.php?filter=1"><img src="../../images/DONUT.png" width="100px"></a>
-<a href="filter.php?filter=2"><img src="../../images/pizza.png" width="100px"></a>
-<a href="filter.php?filter=3"><img src="../../images/POW.png" width="100px"></a><br/>
+<a href="filter.php?filter=1"><img src="../../images/DONUT.png" width="200px"></a>
+<a href="filter.php?filter=2"><img src="../../images/pizza.png" width="200px"></a>
+<a href="filter.php?filter=3"><img src="../../images/POW.png" width="200px"></a><br/>
 </div>
 <?php
 if (!empty($_GET) && isset($_GET['filter']))

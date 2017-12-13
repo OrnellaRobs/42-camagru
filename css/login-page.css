@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Barlow');
+
 .all-page-login {
 	display: flex;
 	justify-content: space-between;
@@ -57,8 +59,11 @@
 	text-align: center;
 	background-color: black;
 	color: white;
-	height: 25px;
+	line-height: 25px;
 	width: 230px;
-	border-radius: 15px;
+	height: 36px;
+	padding-top: 5px;
+	border-radius: 100px;
 	margin: 20px;
+	font-family: Arial, Helvetica, sans-serif;
 }

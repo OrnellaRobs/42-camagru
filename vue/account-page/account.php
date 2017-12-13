@@ -101,14 +101,10 @@ if (!empty($_POST))
 	}
 }
 ?>
-<?php if (!empty($errors)): ?>
-	<div class="danger">
-		<p>Le formulaire n'est pas rempli correctement</p>
-		<?php foreach($errors as $error):?>
-			<li><?=$error;?></li>
-		<?php endforeach;?>
-	</div>
-<?php 	endif; ?>
+<div class="title">
+	<center><img id="img-login" src="/Camagru-Grafik-Art/images/logo.png" width="90px;"/></center>
+	<center><img id="img-login" src="/Camagru-Grafik-Art/images/account.jpg" width="160px;"/></center>
+</div>
 <div class="wrapper">
 	<div class="user">
 	<div class="user-info">
@@ -125,6 +121,14 @@ if (!empty($_POST))
 	</div>
 </div>
 	<div class="wrapper-modifier">
+		<?php if (!empty($errors)): ?>
+			<div class="danger">
+				<p>Le formulaire n'est pas rempli correctement</p>
+				<?php foreach($errors as $error):?>
+					<li><?=$error;?></li>
+				<?php endforeach;?>
+			</div>
+		<?php 	endif; ?>
 	<form class="change-user-info" action="" method="post">
 		<h1>Modifier mon compte</h1>
 		<span class="text">Nom</span>

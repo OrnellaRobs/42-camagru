@@ -7,15 +7,14 @@ require_once dirname(__FILE__) . '/../header/header.php';
 require_once dirname(__FILE__) . '/../navbar/navbar.php';
 require_once dirname(__FILE__) . '/../../inc/db.php';
 ?>
-<div class="title">
+<div class="baba">
+<div class="wrapper-picture-commented">
 	<center style="position:relative;">
-		<img class="logo" src="/Camagru-Grafik-Art/images/logo.png" width="90px;"/>
-		<center style="position:absolute; top: -41px; left: 79px;">
+		<img class="logo" src="/Camagru-Grafik-Art/images/logo.png" style="width:90px;margin-bottom:30px;"/>
+		<center style="position:absolute; top: -41px; left: 57%;">
 			<img src="/Camagru-Grafik-Art/images/comment-page.png" style="width: auto;height: 70px;">
 		</center>
 	</center>
-
-</div>
 <?php
 if (!empty($_GET) && isset($_GET['url']) && isset($_GET['photoid']))
 {
@@ -69,12 +68,14 @@ if (!empty($_POST))
 	<form method="post" action="">
 		<img src="/Camagru-Grafik-Art/images/comment-page.png" width="40px;"/>
 		<div class="wrapper-form-comment">
-		<textarea class="comment" name="commentaire" id="commentaire" rows="5" cols="50"></textarea>
+		<textarea class="comment" name="commentaire" id="commentaire" rows="4" cols="50"></textarea>
 		<input class="comment-submit" type="submit" value="Envoyer" />
 	</div>
 	</form>
-	<h1>Autres commentaires sur cette photo: </h1>
-	<div class="all-Comments">
+</div>
+	<div class="all-comments">
+		<img class="wrapper-title-comment"src="/Camagru-Grafik-Art/images/others-comments.jpg" style="width: 400px;">
+		<div class="pol">
 	<?php
 	$req = $pdo->prepare('SELECT comment FROM comments WHERE photo_id = :photoid');
 	$req->execute(['photoid' => $_GET['photoid']]);
@@ -86,5 +87,7 @@ if (!empty($_POST))
 		echo '</div>';
 	}
 	?>
+</div>
+</div>
 </div>
 	<?php require_once dirname(__FILE__) . '/../footer/footer.php';?>

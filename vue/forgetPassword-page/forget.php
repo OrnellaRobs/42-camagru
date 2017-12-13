@@ -44,11 +44,21 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 
 <!-- <h1>Mot de passe oublié</h1> -->
 <div class="title-msg">
-Tu as oublié ton mot de passe?
-<center><img src="/Camagru-Grafik-Art/images/arrow2.png" width="80px"/></center>
+	<center>Tu as oublié ton mot de passe?</center>
+	<center><img src="/Camagru-Grafik-Art/images/arrow2.png" width="80px"/></center>
 </div>
-<form class="form-login" action="" method="post">
-	<input class="input-login" type="email" name="email" placeholder="Email"/><br/>
-	<input class="login-submit" type="submit" value="Valider"><br/>
-</form>
+<div class="photo-frame">
+	<div class="hashtag-msg-forget">
+		#ItsOkay
+	</div>
+	<div class="photo"></div>
+	<div class="message">
+		Pas de panique! Renseignes l'email que tu utilises pour te connecter afin de recevoir un lien te permettant de réinitialiser ton mot de passe ;-)
+
+	</div>
+	<form class="form" action="" method="post">
+		<input class="forget-input" type="email" name="email" placeholder="Email"/><br/>
+		<input class="forget-submit" type="submit" value="Valider"><br/>
+	</form>
+</div>
 <?php require_once dirname(__FILE__) . '/../footer/footer.php'; ?>

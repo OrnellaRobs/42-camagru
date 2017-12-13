@@ -88,7 +88,7 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 
 <div class="register-page-background">
 	<div class="register-form">
-		<div class="hashtag-msg-register">
+		<div class="hashtag-msg">
 			#JoinCamagru
 		</div>
 	<form method="post">

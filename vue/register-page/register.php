@@ -82,11 +82,15 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 	</div>
 <?php 	endif; ?>
 <div class="title-msg">
-	Rejoins-Nous et Inscris-Toi!
+	<center>Rejoins-Nous et Inscris-Toi!</center>
 	<center><img src="/Camagru-Grafik-Art/images/arrow2.png" width="80px"/></center>
 </div>
+
 <div class="register-page-background">
 	<div class="register-form">
+		<div class="hashtag-msg-register">
+			#JoinCamagru
+		</div>
 	<form method="post">
 		<input class="input-register" type="text" name="name" placeholder="Nom Complet"/><br/>
 		<input class="input-register" type="text" name="username" placeholder="Identifiant"/><br/>

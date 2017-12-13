@@ -11,12 +11,13 @@
 }
 
 .register-form {
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	background-color: rgba(255,255,255,0.9);
 	width: 400px;
 	height: 400px;
 	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .input-register {
@@ -37,4 +38,10 @@
 	width: 254px;
 	background-color: rgb(81, 202, 188);
 	font-size: 16px;
+}
+
+.hashtag-msg-register {
+	font-family: Brush Script MT, cursive;
+	font-size: 55px;
+	padding-bottom: 20px;
 }

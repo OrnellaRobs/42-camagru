@@ -36,7 +36,7 @@ if (isset($_SESSION['auth']))
 <a href="filter.php?filter=2"><img src="../../images/pizza.png" width="100px"></a>
 <a href="filter.php?filter=3"><img src="../../images/POW.png" width="100px"></a><br/>
 </div>
-	<h1>Les photos des autres utilisateurs</h1>
+	<h1><center>Les photos des autres utilisateurs</center></h1>
 		<?php
 		$req = $pdo->prepare('SELECT * FROM photos ORDER BY date_photo DESC LIMIT '.$start.','.$photo_per_page.'');
 		$req->execute();

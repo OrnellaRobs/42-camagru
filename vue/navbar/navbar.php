@@ -14,10 +14,10 @@
 		<?php if (isset($_SESSION['auth'])):?>
 		<a class="user-input" href="/Camagru-Grafik-Art/vue/home-page/home.php">Accueil</a>
 		<?php endif;?>
-		<?php if ($_SERVER['REQUEST_URI'] == "/camagru-grafik-art"): ?>
+		<?php if (!isset($_SESSION['auth']) && $_SERVER['REQUEST_URI'] != "/Camagru-Grafik-Art/vue/register-page/register.php"): ?>
 		<a class="user-input" href="/Camagru-Grafik-Art/vue/register-page/register.php">S'Inscrire</a>
 		<?php endif;?>
-		<?php if ($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/vue/register-page/register.php" || $_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/vue/forgetPassword-page/forget.php" || ($_SERVER['REQUEST_URI'] == "/Camagru-Grafik-Art/vue/gallery-page/gallery.php" && !isset($_SESSION['auth']))):  ?>
+		<?php if (!isset($_SESSION['auth']) && $_SERVER['REQUEST_URI'] != "/Camagru-Grafik-Art/index.php" && $_SERVER['REQUEST_URI'] != "/Camagru-Grafik-Art/vue/home-page/login-page.php"):  ?>
 		<a class="user-input" href="/Camagru-Grafik-Art/index.php">Se Connecter</a>
 		<?php endif;?>
 	</div>

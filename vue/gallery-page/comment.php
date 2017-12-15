@@ -89,8 +89,8 @@ if (!empty($_POST) && isset($_POST['commentaire']) && $_POST['commentaire'] != "
 		echo '</div>';
 		echo '<div class="each-comment-info">';
 		echo $Comments->usercomment_username . " le " . $Comments->date_comment;
-		// if ($Comments->usercomment_id === $_SESSION['auth']->id)
-		// 	echo "<img class='delete-comment' src='/Camagru-Grafik-Art/images/delete-comment.png' width='18px' onClick='deleteComment(\"$Comments->comment_id\");'>";
+		if ($Comments->usercomment_id === $_SESSION['auth']->id)
+			echo "<img class='delete-comment' src='/Camagru-Grafik-Art/images/delete-comment.png' width='18px' onClick='deleteComment(\"$Comments->comment_id\");'>";
 		echo '</div>';
 	}
 	?>

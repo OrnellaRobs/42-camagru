@@ -36,4 +36,3 @@ if (!empty($_POST) && isset($_POST['photo_path']) && isset($_POST['photo_id']) &
 }
 ?>
 <?php require_once dirname(__FILE__) . '/../footer/footer.php';?>
-?>

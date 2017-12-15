@@ -24,28 +24,21 @@ if (!empty($_POST))
 	if (isset($_POST['name']) && $_POST['name'] != "" && isset($_POST['confirm-name']) && $_POST['confirm-name'] != "")
 	{
 		if ($_POST['name'] != $_POST['confirm-name'])
-		$errors['name'] = "Les noms ne correspondent pas";
+			$errors['name'] = "Les noms ne correspondent pas";
 		else
-		$name = 1;
+			$name = 1;
 	}
 	if (isset($_POST['email']) && $_POST['email'] != "" && isset($_POST['confirm-email']) && $_POST['confirm-email'] != "")
 	{
-		$req = $pdo->prepare('SELECT id FROM User WHERE email = ?');
-		$req->execute([$_POST['email']]);
-		$user = $req->fetch();
-		if ($user)
-		$errors['email-exist'] = "Cet email est déjà pris";
-		else if ($_POST['email'] != $_POST['confirm-email'])
-		$errors['email'] = "Les emails ne correspondent pas";
-		else
-		$email = 1;
+		$errors = check_email($_POST['email'], $_POST['confirm-email'], $errors);
+		if (!isset($errors['email']))
+			$email = 1;
 	}
 	if (isset($_POST['password']) && $_POST['password'] != "" && isset($_POST['confirm-password']) && $_POST['confirm-password'] != "")
 	{
-		if ($_POST['password'] != $_POST['confirm-password'])
-		$errors['password'] = "Les mots de passe ne correspondent pas";
-		else
-		$password = 1;
+		$errors = check_password($_POST['password'], $_POST['confirm-password'], $errors);
+		if (!isset($errors['password']))
+			$password = 1;
 	}
 	if (isset($_POST['mail-comments']) && $_POST['mail-comments'] != "")
 	{
@@ -59,7 +52,7 @@ if (!empty($_POST))
 			$errors['mail-comments'] = $str;
 		}
 		else
-		$mail_comments = 1;
+			$mail_comments = 1;
 	}
 	if (empty($errors) && ($name || $email || $password || $mail_comments))
 	{

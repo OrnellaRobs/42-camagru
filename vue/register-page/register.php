@@ -5,37 +5,10 @@ check_already_login();
 if (!empty($_POST))
 {
 	$errors = array();
-	require_once dirname(__FILE__) . '/../../inc/db.php';
-	if (empty($_POST['username']) || !preg_match('/^[a-zA-Z0-9_]+$/', $_POST['username']) || strlen($_POST['username']) < 6) {
-		$str = (strlen($_POST['username']) < 6) ? "L'identifiant doit avoir au moins 6 caractères" : "L'identifiant n'est pas valide";
-		$errors['username'] = $str;
-	}
-	else {
-		$req = $pdo->prepare('SELECT id FROM User WHERE username = ?');
-		$req->execute([$_POST['username']]);
-		$user = $req->fetch();
-		if ($user)
-		{
-			$errors['username'] = 'Cet identifiant est déjà pris';
-		}
-	}
-	if (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-		$errors['email'] = "L'e-mail n'est pas valide";
-	}
-	else {
-		$req = $pdo->prepare('SELECT id FROM User WHERE email = ?');
-		$req->execute([$_POST['email']]);
-		$user = $req->fetch();
-		if ($user)
-		{
-			$errors['email'] = 'Cet e-mail est déjà pris';
-		}
-	}
-	if (empty($_POST['password']) || $_POST['password'] != $_POST['password-confirm'] || strlen($_POST['password']) < 4 || !password_check_alphanum($_POST['password'])) {
-		$str = (strlen($_POST['password']) < 4) ? "Le mot de passe doit avoir au moins 4 caractères dont des chiffres et des lettres" : "Le mot de passe n'est pas valide";
-		$str = (!password_check_alphanum($_POST['password'])) ? "Le mot de passe doit contenir des lettres ainsi que des chiffres" : $str;
-		$errors['password'] = $str;
-	}
+	require dirname(__FILE__) . '/../../inc/db.php';
+	$errors = check_username($_POST['username'], $errors);
+	$errors = check_email($_POST['email'], $_POST['email-confirm'], $errors);
+	$errors = check_password($_POST['password'], $_POST['password-confirm'], $errors);
 	if (empty($errors)) {
 		$req = $pdo->prepare("INSERT INTO User SET name = :name, username = :username, password = :password, email = :email, confirmation_token = :token, mail_comments = :mail_comments");
 		$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
@@ -95,7 +68,8 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 		<input class="input-register" type="text" name="username" placeholder="Identifiant"/><br/>
 		<input class="input-register" type="password" name="password" placeholder="Mot de Passe" /><br/>
 		<input class="input-register" type="password" name="password-confirm" placeholder="Confirmation du mot de passe"/><br/>
-		<input class="input-register" type="email" name="email" placeholder="Email"/><br />
+		<input class="input-register" type="email" name="email" placeholder="Email"/><br/>
+		<input class="input-register" type="email" name="email-confirm" placeholder="Confirmation de l'email"/><br/>
 		<input class="register-submit" type="submit" name="submit" value="S'Inscrire!">
 	</form>
 </div>

@@ -82,4 +82,5 @@ if (isset($_SESSION['auth']))
 		}
 		echo '</div>';
 		?>
+<script type="text/javascript" src="./set-gallery.js"></script>		
 <?php require_once dirname(__FILE__) . '/../footer/footer.php';?>

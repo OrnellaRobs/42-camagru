@@ -20,14 +20,15 @@ if (!empty($_GET) && isset($_GET['url']) && isset($_GET['photoid']))
 {
 	echo '<img src= "'. $_GET["url"] .'">';
 }
-if (!empty($_POST))
+if (!empty($_POST) && isset($_POST['commentaire']) && $_POST['commentaire'] != "")
 {
 	$userid = $_SESSION['auth']->id;
 	$username = $_SESSION['auth']->username;
-	$req = $pdo->prepare('INSERT INTO comments SET usercomment_id = :userid, photo_id = :photoid,
+	$req = $pdo->prepare('INSERT INTO comments SET usercomment_id = :userid, usercomment_username = :username, photo_id = :photoid,
 		date_comment = NOW() , comment = :commentaire');
 		$req->execute([
 			'userid' => $userid,
+			'username' => $username,
 			'photoid' => $_GET['photoid'],
 			'commentaire' => $_POST['commentaire']
 		]);
@@ -77,17 +78,24 @@ if (!empty($_POST))
 		<img class="wrapper-title-comment"src="/Camagru-Grafik-Art/images/others-comments.jpg" style="width: 400px;">
 		<div class="pol">
 	<?php
-	$req = $pdo->prepare('SELECT comment FROM comments WHERE photo_id = :photoid');
+	$req = $pdo->prepare('SELECT * FROM comments WHERE photo_id = :photoid');
 	$req->execute(['photoid' => $_GET['photoid']]);
-	$allComments = $req->fetchAll(PDO::FETCH_COLUMN, 0);
+	$allComments = $req->fetchAll();
+	// var_dump($allComments);
 	foreach($allComments as $Comments)
 	{
 		echo '<div class="each-comment">';
-		echo $Comments . "<br/>";
+		echo "\"" . $Comments->comment . "\"";
+		echo '</div>';
+		echo '<div class="each-comment-info">';
+		echo $Comments->usercomment_username . " le " . $Comments->date_comment;
+		// if ($Comments->usercomment_id === $_SESSION['auth']->id)
+		// 	echo "<img class='delete-comment' src='/Camagru-Grafik-Art/images/delete-comment.png' width='18px' onClick='deleteComment(\"$Comments->comment_id\");'>";
 		echo '</div>';
 	}
 	?>
 </div>
 </div>
 </div>
+<script type="text/javascript" src="delete-comment.js"></script>
 	<?php require_once dirname(__FILE__) . '/../footer/footer.php';?>

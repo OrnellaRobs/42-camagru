@@ -63,15 +63,15 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 		<div class="hashtag-msg">
 			#JoinCamagru
 		</div>
-	<form method="post">
-		<input class="input-register" type="text" name="name" placeholder="Nom Complet"/><br/>
-		<input class="input-register" type="text" name="username" placeholder="Identifiant"/><br/>
-		<input class="input-register" type="password" name="password" placeholder="Mot de Passe" /><br/>
-		<input class="input-register" type="password" name="password-confirm" placeholder="Confirmation du mot de passe"/><br/>
-		<input class="input-register" type="email" name="email" placeholder="Email"/><br/>
-		<input class="input-register" type="email" name="email-confirm" placeholder="Confirmation de l'email"/><br/>
-		<input class="register-submit" type="submit" name="submit" value="S'Inscrire!">
-	</form>
-</div>
+		<form method="post">
+			<input class="input-register" type="text" name="name" placeholder="Nom Complet"/><br/>
+			<input class="input-register" type="text" name="username" placeholder="Identifiant"/><br/>
+			<input class="input-register" type="password" name="password" placeholder="Mot de Passe" /><br/>
+			<input class="input-register" type="password" name="password-confirm" placeholder="Confirmation du mot de passe"/><br/>
+			<input class="input-register" type="email" name="email" placeholder="Email"/><br/>
+			<input class="input-register" type="email" name="email-confirm" placeholder="Confirmation de l'email"/><br/>
+			<input class="register-submit" type="submit" name="submit" value="S'Inscrire!">
+		</form>
+	</div>
 </div>
 <?php require_once dirname(__FILE__) . '/../footer/footer.php';?>

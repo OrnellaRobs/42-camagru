@@ -57,7 +57,9 @@ function create_database() {
 			$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 			$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$sql = "CREATE TABLE IF NOT EXISTS comments (
+				comment_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 				usercomment_id INT NOT NULL,
+				usercomment_username VARCHAR(255) NOT NULL,
 				photo_id INT NOT NULL,
 				date_comment DateTime DEFAULT CURRENT_TIMESTAMP,
 				comment varchar(255) NOT NULL

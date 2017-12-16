@@ -105,7 +105,7 @@ function delete_database() {
 	}
 	catch (PDOException $e)
 	{
-		echo "Error Deleting Database:\t".$e->getMessage()."\n";
+
 	}
 }
 //----> CREATE_DATABASE <----

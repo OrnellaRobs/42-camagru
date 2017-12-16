@@ -3,13 +3,14 @@
 	justify-content: space-around;
 	width: 100%;
 	flex-wrap: wrap;
+	align-items: center;
 }
 
 .all-comments {
 	position: relative;
 	top: 50%;
-	transform: translateY(-50%);
-	max-height: 50%;
+	/* transform: translateY(-50%); */
+	max-height: 500px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -72,7 +73,7 @@ textarea {
 }
 
 .pol {
-	overflow-x: hidden;
+	overflow-x: scroll;
 }
 
 .wrapper-picture-commented {
@@ -86,5 +87,5 @@ textarea {
 	top: -50px;
 	left: 50%;
 	transform: translateX(-50%);
-	width: 100%;
+	/* width: 100%; */
 }

@@ -48,6 +48,7 @@
 	align-items: center;
 	flex-wrap: wrap;
 	justify-content: center;
+	flex-direction: column;
 }
 
 .container {

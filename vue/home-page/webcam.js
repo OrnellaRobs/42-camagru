@@ -5,7 +5,7 @@ canvas       = document.querySelector('#canvas'),
 photo        = document.querySelector('#photo'),
 startbutton  = document.querySelector('#startbutton'),
 sendbutton   = document.querySelector('#sendbutton'),
-filter       = 1,
+filter       = 0,
 img_upload,
 upload = 0,
 width = 520,
@@ -13,9 +13,11 @@ height = 0;
 function getFilter(num)
 {
 	filter = num;
-	sendbutton.disabled = false;
-	if (upload == 0)
+	// sendbutton.disabled = false;
+	// if (upload == 0)
 		startbutton.disabled = false;
+	if (upload == 1)
+		sendbutton.disabled = false;
 }
 function isInArray(extensions, extension) {
 	return extensions.indexOf(extension.toLowerCase()) > -1;
@@ -28,20 +30,24 @@ function get_img_upload(img)
 		var res = name.split('.');
 		var nb_elem = res.length;
 		var extension = res[nb_elem - 1];
-		var allowedExtensions = ["png", "jpg", "jpeg"];
+		var allowedExtensions = ["png", "jpg", "jpeg", "PNG", "JPG", "JPEG"];
 		console.log(extension);
 		if (!isInArray(allowedExtensions, extension))
 		{
 			upload = 0;
 			alert("Le fichier sélectionné n'est pas une image");
+			sendbutton.disabled = true;
 			startbutton.disabled = false;
+			console.log("IMG PAS OK");
 		}
 		else {
 			upload = 1;
 			img_upload = img;
-			startbutton.disabled = true;
+			if (filter != 0)
+				sendbutton.disabled = false;
+			console.log("IMG OK");
 		}
-		console.log(upload);
+		// console.log(upload);
 	}
 	else
 	upload = 0;
@@ -92,7 +98,7 @@ if (upload == 0)
 		}, false);
 		sendbutton.addEventListener('click', function(ev){
 			if (upload == 1)
-				sendData(img_upload, upload);
+				sendData_upload(img_upload, upload);
 			ev.preventDefault();
 		},false);
 		function takepicture() {
@@ -101,15 +107,15 @@ if (upload == 0)
 			canvas.getContext('2d').drawImage(video, 0, 0, width, height);
 			var data = canvas.toDataURL('image/png');
 			// photo.setAttribute('src', data);
-			sendData(data, upload);
+			sendData_webcam(data);
 		}
 	}
-	function sendData(data, upload)
+	function sendData_upload(data, upload)
 	{
 		var img_data;
-		console.log("OK");
 		if (upload == 1)
 		{
+			console.log("UPLOAD 1 ");
 			const reader = new FileReader();
 			const file = data.files[0];
 			reader.onload = function(upload) {
@@ -124,7 +130,11 @@ if (upload == 0)
 			};
 			reader.readAsDataURL(file);
 		}
-		else {
+	}
+
+	function sendData_webcam(data)
+	{
+			console.log("UPLOAD 0 ");
 			var xml = new XMLHttpRequest()
 			xml.open('POST', 'get-webcam-photo.php', true);
 			xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -132,5 +142,4 @@ if (upload == 0)
 			xml.onload = function () {
 				window.location.reload();
 			}
-		}
 	}

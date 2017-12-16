@@ -30,7 +30,7 @@ if (!empty($_POST) && isset($_POST['commentaire']) && $_POST['commentaire'] != "
 			'userid' => $userid,
 			'username' => $username,
 			'photoid' => $_GET['photoid'],
-			'commentaire' => $_POST['commentaire']
+			'commentaire' => htmlspecialchars($_POST['commentaire'])
 		]);
 		// //FIRST REQUEST TO KNOW THE OWNER OF THE PHOTO COMMENTED
 		$requser = $pdo->prepare('SELECT * FROM photos WHERE photo_id = :photoid');

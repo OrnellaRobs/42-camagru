@@ -59,7 +59,7 @@ if (!empty($_POST))
 		if ($name) {
 			$req1 = $pdo->prepare('UPDATE User SET name = :name WHERE id = :id');
 			$req1->execute([
-				'name' => $_POST['name'],
+				'name' => htmlspecialchars($_POST['name']),
 				'id' => $user_id
 			]);
 		}

@@ -58,8 +58,6 @@ function check_img_extension(img)
 	var start = length - 4;
 	var end = length;
 }
-// if (upload == 0)
-// {
 	navigator.getMedia = ( navigator.getUserMedia ||
 		navigator.webkitGetUserMedia ||
 		navigator.mozGetUserMedia ||
@@ -109,7 +107,6 @@ function check_img_extension(img)
 			// photo.setAttribute('src', data);
 			sendData_webcam(data);
 		}
-	// }
 	function sendData_upload(data, upload)
 	{
 		var img_data;

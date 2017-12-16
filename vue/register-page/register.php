@@ -14,8 +14,8 @@ if (!empty($_POST))
 		$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 		$token = str_random(60);
 		$req->execute([
-			'name' => $_POST['name'],
-			'username' => $_POST['username'],
+			'name' => htmlspecialchars($_POST['name']),
+			'username' => htmlspecialchars($_POST['username']),
 			'password'=> $password,
 			'email' => $_POST['email'],
 			'token' => $token,

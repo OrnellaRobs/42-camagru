@@ -48,6 +48,21 @@
 	align-items: flex-end;*/
 }
 
+#img-login {
+	margin-top: 20%;
+}
+
 .pagination {
 	margin: 10px 0;
+}
+
+@media screen and (max-width:600px)
+{
+	.filter {
+		flex-direction: column;
+	}
+	.allPhotos {
+		flex-direction: column;
+	}
+
 }

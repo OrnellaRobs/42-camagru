@@ -57,8 +57,9 @@
 	background-image: url(/camagru/images/photo.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
-	height: 650px;
-	width: 650px;
+	height: 600px;
+	width: 600px;
+	margin-bottom: 50px;
 	/*border-radius: 1000px;*/
 }
 
@@ -80,4 +81,49 @@
 .option-mail-comment {
 	/*border: 1px solid grey;*/
 	margin: 10px 0 10px 0;
+}
+
+@media screen and (max-width:1080px)
+{
+	.wrapper {
+		flex-direction: column;
+		justify-content: center;
+	}
+	.user-info {
+		margin: 0;
+	}
+}
+
+.validate-submit:hover {
+	background-color: rgba(81, 202, 188, 0.5);
+}
+
+.validate-submit {
+	margin: 5px 0;
+	padding: 3px 8px;
+	border: none;
+	height: 30px;
+	background-color: rgba(81, 202, 188, 0.8);
+	font-size: 16px;
+}
+
+@media screen and (max-width:360px)
+{
+	.input-change {
+		width: 100%;
+		height: 85%;
+	}
+	.validate-submit {
+		width: 70%;
+		font-size: 80%;
+		/* height: 85%; */
+	}
+}
+
+@media screen and (max-width:620px)
+{
+	.wrapper-modifier {
+		width: 100%;
+		height: 100%;
+	}
 }

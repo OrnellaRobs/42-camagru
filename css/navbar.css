@@ -30,6 +30,16 @@
 		height: 100%;
 	}
 	.user-input {
-		font-size: 100%;
+		font-size: 70%;
+	}
+}
+
+@media screen and (max-width:340px)
+{
+	.header {
+		height: 80%;
+	}
+	.user-input {
+		font-size: 40%;
 	}
 }

@@ -37,18 +37,19 @@
 
 .input-login {
 	border: 1px solid black;
-	margin: 2px 0;
+	margin: 5px 0;
 	width: 180px;
 	height: 30px;
 	font-size: 14px;
-	/* margin-top : 20px; */
 	text-align: center;
 }
 
 .login-submit:hover {
 	background-color: rgba(81, 202, 188, 0.5);
 }
+
 .login-submit {
+	margin: 5px 0;
 	padding: 3px 8px;
 	border: none;
 	height: 30px;

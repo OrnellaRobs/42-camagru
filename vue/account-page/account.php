@@ -157,7 +157,7 @@ if (!empty($_POST))
 		</div>
 	</div>
 
-	<input class="login-submit" type="submit" value="Sauvergarder les modifications"><br/>
+	<input class="validate-submit" type="submit" value="Sauvergarder les modifications"><br/>
 </form>
 </div>
 </div>

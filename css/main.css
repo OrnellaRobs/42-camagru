@@ -69,6 +69,11 @@ body {
 	font-size:55px;
 	padding-bottom: 20px;
 }
+@media screen and (max-width:900px) {
+	.title-msg {
+		font-size: 250%;
+	}
+}
 
 @media screen and (max-width:636px) {
 	.success {

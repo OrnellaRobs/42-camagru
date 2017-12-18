@@ -95,30 +95,27 @@ textarea {
 }
 
 .img-to-comment {
-	max-width: 100%;
-	height:auto;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	/* max-width: 100%;
+	height:auto; */
 	/* text-align:center; */
-	border: 2px solid blue;
+	/* border: 2px solid blue; */
 }
 
 @media screen and (max-width:600px)
 {
-	.img-to-comment {
+	.wrapper-picture-commented {
 		width: 90%;
 	}
-	.all-comments {
+	.all-comments, .comment{
 		width: 90%;
 	}
 	.pol {
 		width: 95%;
 	}
-	.each-comment {
+	.each-comment-info, .wrapper-title-comment, .each-comment{
 		width: 85%;
-	}
-	.each-comment-info {
-		width: 85%;
-	}
-	.wrapper-title-comment {
-		width: 80%;
 	}
 }

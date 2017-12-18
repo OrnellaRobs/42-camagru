@@ -72,3 +72,12 @@
 		flex-direction: column;
 	}
 }
+
+@media screen and (max-width:600px) {
+	.wrapper-filter-webcam {
+		width: 100%;
+	}
+	.webcam-live {
+		width: 95%;
+	}
+}

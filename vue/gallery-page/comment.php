@@ -18,7 +18,7 @@ require_once dirname(__FILE__) . '/../../inc/db.php';
 <?php
 if (!empty($_GET) && isset($_GET['url']) && isset($_GET['photoid']))
 {
-	echo '<img src= "'. $_GET["url"] .'">';
+	echo '<img class="img-to-comment" src= "'. $_GET["url"] .'">';
 }
 if (!empty($_POST) && isset($_POST['commentaire']) && $_POST['commentaire'] != "")
 {
@@ -66,7 +66,7 @@ if (!empty($_POST) && isset($_POST['commentaire']) && $_POST['commentaire'] != "
 		exit();
 	}
 	?>
-	<form method="post" action="">
+	<form class="wrapper-comment" method="post" action="">
 		<img src="/camagru/images/comment-page.png" width="40px;"/>
 		<div class="wrapper-form-comment">
 		<textarea class="comment" name="commentaire" id="commentaire" rows="4" cols="50"></textarea>
@@ -75,7 +75,7 @@ if (!empty($_POST) && isset($_POST['commentaire']) && $_POST['commentaire'] != "
 	</form>
 </div>
 	<div class="all-comments">
-		<img class="wrapper-title-comment"src="/camagru/images/others-comments.jpg" style="width: 400px;">
+		<img class="wrapper-title-comment"src="/camagru/images/others-comments.jpg">
 		<div class="pol">
 	<?php
 	$req = $pdo->prepare('SELECT * FROM comments WHERE photo_id = :photoid');

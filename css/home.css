@@ -68,13 +68,7 @@
 }
 
 @media screen and (max-width:900px) {
-	.wrapper-filter-webcam {
-		display: flex;
-		width: 100%;
-	}
-	.wrapper-user-photo {
-		display: flex;
-		width: 100%;
-		
+	.container {
+		flex-direction: column;
 	}
 }

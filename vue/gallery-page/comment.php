@@ -10,9 +10,9 @@ require_once dirname(__FILE__) . '/../../inc/db.php';
 <div class="baba">
 <div class="wrapper-picture-commented">
 	<center style="position:relative;">
-		<img class="logo" src="/Camagru-Grafik-Art/images/logo.png" style="width:90px;margin-bottom:30px;"/>
+		<img class="logo" src="/camagru/images/logo.png" style="width:90px;margin-bottom:30px;"/>
 		<center style="position:absolute; top: -41px; left: 57%;">
-			<img src="/Camagru-Grafik-Art/images/comment-page.png" style="width: auto;height: 70px;">
+			<img src="/camagru/images/comment-page.png" style="width: auto;height: 70px;">
 		</center>
 	</center>
 <?php
@@ -56,7 +56,7 @@ if (!empty($_POST) && isset($_POST['commentaire']) && $_POST['commentaire'] != "
 			'Reply-To: no-reply@camagru.fr' . "\r\n" .
 			'X-Mailer: PHP/' . phpversion();
 			$url_without_dot = str_replace('.', '', $_GET['url']);
-			$urlphoto = "localhost:8080/Camagru-Grafik-Art".$url_without_dot;
+			$urlphoto = "localhost:8080/camagru".$url_without_dot;
 			$objet = "Nouveau Commentaire sous votre photo";
 			$content = "$username a commenté votre photo: « $commentaire »";
 			mail($getInfo[0]->email, $objet, $content, $entetes);
@@ -67,7 +67,7 @@ if (!empty($_POST) && isset($_POST['commentaire']) && $_POST['commentaire'] != "
 	}
 	?>
 	<form method="post" action="">
-		<img src="/Camagru-Grafik-Art/images/comment-page.png" width="40px;"/>
+		<img src="/camagru/images/comment-page.png" width="40px;"/>
 		<div class="wrapper-form-comment">
 		<textarea class="comment" name="commentaire" id="commentaire" rows="4" cols="50"></textarea>
 		<input class="comment-submit" type="submit" value="Envoyer" />
@@ -75,7 +75,7 @@ if (!empty($_POST) && isset($_POST['commentaire']) && $_POST['commentaire'] != "
 	</form>
 </div>
 	<div class="all-comments">
-		<img class="wrapper-title-comment"src="/Camagru-Grafik-Art/images/others-comments.jpg" style="width: 400px;">
+		<img class="wrapper-title-comment"src="/camagru/images/others-comments.jpg" style="width: 400px;">
 		<div class="pol">
 	<?php
 	$req = $pdo->prepare('SELECT * FROM comments WHERE photo_id = :photoid');
@@ -90,7 +90,7 @@ if (!empty($_POST) && isset($_POST['commentaire']) && $_POST['commentaire'] != "
 		echo '<div class="each-comment-info">';
 		echo $Comments->usercomment_username . " le " . $Comments->date_comment;
 		if ($Comments->usercomment_id === $_SESSION['auth']->id)
-			echo "<img class='delete-comment' src='/Camagru-Grafik-Art/images/delete-comment.png' width='18px' onClick='deleteComment(\"$Comments->comment_id\");'>";
+			echo "<img class='delete-comment' src='/camagru/images/delete-comment.png' width='18px' onClick='deleteComment(\"$Comments->comment_id\");'>";
 		echo '</div>';
 	}
 	?>

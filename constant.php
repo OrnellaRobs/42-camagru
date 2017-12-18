@@ -1,3 +1,3 @@
 <?php
 
-define(ROOT, '/camagru-grafik-art/vue/');
+define(ROOT, '/camagru/vue/');

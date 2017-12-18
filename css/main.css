@@ -66,6 +66,22 @@ body {
 
 .hashtag-msg {
 	font-family: Brush Script MT, cursive;
-	font-size: 55px;
+	font-size:55px;
 	padding-bottom: 20px;
+}
+
+@media screen and (max-width:636px) {
+	.success {
+		height: 100%;
+		font-size: 100%;
+		padding: 10px 0;
+	}
+	.danger {
+		height: 100%;
+		font-size: 100%;
+		padding: 10px 0;
+	}
+	.hashtag-msg {
+		font-size: 150%;
+	}
 }

@@ -95,8 +95,8 @@ if (!empty($_POST))
 }
 ?>
 <div class="title">
-	<center><img id="img-login" src="/Camagru-Grafik-Art/images/logo.png" width="90px;"/></center>
-	<center><img id="img-login" src="/Camagru-Grafik-Art/images/account.jpg" width="160px;"/></center>
+	<center><img id="img-login" src="/camagru/images/logo.png" width="90px;"/></center>
+	<center><img id="img-login" src="/camagru/images/account.jpg" width="160px;"/></center>
 </div>
 <div class="wrapper">
 	<div class="user">

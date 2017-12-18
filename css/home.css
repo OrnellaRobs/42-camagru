@@ -66,3 +66,15 @@
 	background: none;
 	background-color: #F2F2F2;
 }
+
+@media screen and (max-width:900px) {
+	.wrapper-filter-webcam {
+		display: flex;
+		width: 100%;
+	}
+	.wrapper-user-photo {
+		display: flex;
+		width: 100%;
+		
+	}
+}

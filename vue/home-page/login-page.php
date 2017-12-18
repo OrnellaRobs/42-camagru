@@ -15,7 +15,7 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 	{
 		$_SESSION['auth'] = $user;
 		$_SESSION['success'] = "Vous êtes maintenant connecté";
-		header('Location: /Camagru-Grafik-Art/vue/home-page/home.php');
+		header('Location: /camagru/vue/home-page/home.php');
 		exit();
 	}
 	else
@@ -26,17 +26,16 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 <?php require dirname(__FILE__) . '/../navbar/navbar.php'; ?>
 <div class="all-page-login">
 	<div class="title-msg">
-		Connecte-Toi
-		<center><img src="/Camagru-Grafik-Art/images/arrow2.png" width="80px"/></center>
+		<center>Connecte-Toi</center>
+		<center><img class="logo-img" src="/camagru/images/arrow2.png" width="80px"/></center>
 	</div>
 	<div class="background-login">
 		<form class="form-login" action="" method="post">
-			<img id="img-login" src="/Camagru-Grafik-Art/images/logo.png" width="90px;"/>
 			<input class="input-login" type="text" name="username" title="identifiant" placeholder="Identifiant"/><br/>
 			<input class="input-login" type="password" name="password" title="password" placeholder="Mot de Passe"/><br/>
 			<input class="login-submit" type="submit" value="Se Connecter"><br/>
 		</form>
 	</div>
-	<a class="forget-password" href="/Camagru-Grafik-Art/vue/forgetPassword-page/forget.php">Mot de passe oublié</a>
+	<a class="forget-password" href="/camagru/vue/forgetPassword-page/forget.php">Mot de passe oublié</a>
 </div>
 <?php require dirname(__FILE__) . '/../footer/footer.php'; ?>

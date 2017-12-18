@@ -2,20 +2,14 @@
 	<div class="wrapper-navbar">
 	<div class="header">
 		<?php if (isset($_SESSION['auth'])): ?>
-		<a class="user-input" href="/Camagru-Grafik-Art/vue/home-page/logout.php">Se Déconnecter</a>
-		<a class="user-input" href="/Camagru-Grafik-Art/vue/account-page/account.php">Compte</a>
+		<a class="user-input" href="/camagru/vue/home-page/logout.php">Se Déconnecter</a>
+		<a class="user-input" href="/camagru/vue/account-page/account.php">Compte</a>
+		<a class="user-input" href="/camagru/vue/home-page/home.php">Accueil</a>
 		<?php endif;?>
-		<?php if ($_SERVER['REQUEST_URI'] != "/Camagru-Grafik-Art/vue/gallery-page/gallery.php"):?>
-		<a class="user-input" href="/Camagru-Grafik-Art/vue/gallery-page/gallery.php">Galerie</a>
-		<?php endif;?>
-		<?php if (isset($_SESSION['auth']) && $_SERVER['REQUEST_URI'] != "/Camagru-Grafik-Art/vue/home-page/home.php"):?>
-		<a class="user-input" href="/Camagru-Grafik-Art/vue/home-page/home.php">Accueil</a>
-		<?php endif;?>
-		<?php if (!isset($_SESSION['auth']) && $_SERVER['REQUEST_URI'] != "/Camagru-Grafik-Art/vue/register-page/register.php"): ?>
-		<a class="user-input" href="/Camagru-Grafik-Art/vue/register-page/register.php">S'Inscrire</a>
-		<?php endif;?>
-		<?php if (!isset($_SESSION['auth']) && $_SERVER['REQUEST_URI'] != "/Camagru-Grafik-Art/index.php" && $_SERVER['REQUEST_URI'] != "/Camagru-Grafik-Art/vue/home-page/login-page.php"):  ?>
-		<a class="user-input" href="/Camagru-Grafik-Art/index.php">Se Connecter</a>
+		<a class="user-input" href="/camagru/vue/gallery-page/gallery.php">Galerie</a>
+		<?php if (!isset($_SESSION['auth'])): ?>
+		<a class="user-input" href="/camagru/vue/register-page/register.php">S'Inscrire</a>
+		<a class="user-input" href="/camagru/index.php">Se Connecter</a>
 		<?php endif;?>
 	</div>
 	<?php if (isset($_SESSION['success'])):?>

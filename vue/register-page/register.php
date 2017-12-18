@@ -28,7 +28,7 @@ if (!empty($_POST))
 		'Reply-To: no-reply@camagru.fr' . "\r\n" .
 		'X-Mailer: PHP/' . phpversion();
 		$objet = "Confirmation d'Inscription";
-		$content = "Afin de finaliser ton inscription, il te suffit de cliquer sur ce lien:\n\nhttp://localhost:8080/Camagru-Grafik-Art/vue/register-page/confirm.php?id=$user_id&token=$token";
+		$content = "Afin de finaliser ton inscription, il te suffit de cliquer sur ce lien:\n\nhttp://localhost:8080/camagru/vue/register-page/confirm.php?id=$user_id&token=$token";
 		if (mail($_POST['email'], $objet, $content, $entetes))
 		{
 			$_SESSION['success'] = "Un email de confirmation a été envoyé pour valider le compte";
@@ -47,11 +47,11 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 ?>
 <div class="title-msg">
 	<center>Rejoins-Nous et Inscris-Toi!</center>
-	<center><img src="/Camagru-Grafik-Art/images/arrow2.png" width="80px"/></center>
+	<center><img src="/camagru/images/arrow2.png" width="80px"/></center>
 </div>
 
 <div class="register-page-background">
-	<div class="register-form">
+	<div class="register-wrapper">
 		<?php	if (!empty($errors)): ?>
 			<div class="danger">
 				<p>Le formulaire n'est pas rempli correctement</p>
@@ -63,7 +63,7 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 		<div class="hashtag-msg">
 			#JoinCamagru
 		</div>
-		<form method="post">
+		<form class="register-form" method="post">
 			<input class="input-register" type="text" name="name" placeholder="Nom Complet"/><br/>
 			<input class="input-register" type="text" name="username" placeholder="Identifiant"/><br/>
 			<input class="input-register" type="password" name="password" placeholder="Mot de Passe" /><br/>

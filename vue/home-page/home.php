@@ -8,8 +8,8 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 
 <!-- <h1>Bonjour <?= $_SESSION['auth']->name; ?></h1> -->
 <div class="title">
-	<center><img id="img-login" src="/Camagru-Grafik-Art/images/logo.png" width="90px;"/></center>
-		<center><img id="img-login" src="/Camagru-Grafik-Art/images/camagru.jpg" width="280px;"/></center>
+	<center><img id="img-login" src="/camagru/images/logo.png" width="90px;"/></center>
+		<center><img id="img-login" src="/camagru/images/camagru.jpg" width="280px;"/></center>
 </div>
 <form class="container" action="" method="POST" enctype="multipart/form-data">
 	<div class="wrapper-filter-webcam">

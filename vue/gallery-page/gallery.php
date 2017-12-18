@@ -31,8 +31,8 @@ if (isset($_SESSION['auth']))
 }
 ?>
 <div class="title">
-	<center><img id="img-login" src="/Camagru-Grafik-Art/images/logo.png" width="90px;"/></center>
-	<center><img id="img-login" src="/Camagru-Grafik-Art/images/gallery.jpg" width="160px;"/></center>
+	<center><img id="img-login" src="/camagru/images/logo.png" width="90px;"/></center>
+	<center><img id="img-login" src="/camagru/images/gallery.jpg" width="160px;"/></center>
 </div>
 <div class="display-filter">
 <!-- <div class="head-msg"> -->
@@ -65,10 +65,10 @@ if (isset($_SESSION['auth']))
 				}
 				echo '<div class="like-and-comment">';
 				if ($liked == true)
-					echo "<img class='liked' src='/Camagru-Grafik-Art/images/heart-3.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
+					echo "<img class='liked' src='/camagru/images/heart-3.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
 				else
-					echo "<img class='unliked' src='/Camagru-Grafik-Art/images/heart-4.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
-				echo "<a href='comment.php?url=$elem->photo_path&photoid=$elem->photo_id'><img src='/Camagru-Grafik-Art/images/comment.png' width='40px'></a>";
+					echo "<img class='unliked' src='/camagru/images/heart-4.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
+				echo "<a href='comment.php?url=$elem->photo_path&photoid=$elem->photo_id'><img src='/camagru/images/comment.png' width='40px'></a>";
 				echo '</div>';
 			}
 			echo '</div>';
@@ -82,5 +82,5 @@ if (isset($_SESSION['auth']))
 		}
 		echo '</div>';
 		?>
-<script type="text/javascript" src="./set-gallery.js"></script>		
+<script type="text/javascript" src="./set-gallery.js"></script>
 <?php require_once dirname(__FILE__) . '/../footer/footer.php';?>

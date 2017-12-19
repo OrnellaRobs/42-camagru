@@ -16,7 +16,7 @@
 
 .allPhotos {
 	display: flex;
-	align-items: flex-end;
+	align-items: center;
 	flex-wrap: wrap;
 	justify-content: center;
 }

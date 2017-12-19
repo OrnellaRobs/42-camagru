@@ -13,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="/camagru/css/account-page.css">
 	<link rel="stylesheet" type="text/css" href="/camagru/css/comment-page.css">
 	<link rel="stylesheet" type="text/css" href="/camagru/css/forgetPassword-page.css">
+	<link rel="stylesheet" type="text/css" href="/camagru/css/delete-account.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>

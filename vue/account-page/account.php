@@ -156,7 +156,9 @@ if (!empty($_POST))
 			<label><input id="2" type="radio" name="mail-comments" value="0"> Non, je ne souhaite pas recevoir de mail lorsqu'un utilisateur a commenté une de mes photos</label>
 		</div>
 	</div>
-
+	<a href="./delete-account.php">
+   <input class="validate-submit" type="button" value="Supprimer compte"/>
+</a>
 	<input class="validate-submit" type="submit" value="Sauvergarder les modifications"><br/>
 </form>
 </div>

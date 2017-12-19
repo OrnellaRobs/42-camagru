@@ -29,6 +29,11 @@
 	display: inline-flex;
 	flex-direction: column;
 	margin: 0 5px;
+	transition: .5s
+}
+
+.photo-user:hover {
+	transform: scale(1.1);
 }
 
 .choose-filter {

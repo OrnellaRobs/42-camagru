@@ -13,8 +13,6 @@ height = 0;
 function getFilter(num)
 {
 	filter = num;
-	// sendbutton.disabled = false;
-	// if (upload == 0)
 		startbutton.disabled = false;
 	if (upload == 1)
 		sendbutton.disabled = false;
@@ -31,26 +29,22 @@ function get_img_upload(img)
 		var nb_elem = res.length;
 		var extension = res[nb_elem - 1];
 		var allowedExtensions = ["png", "jpg", "jpeg", "PNG", "JPG", "JPEG"];
-		console.log(extension);
 		if (!isInArray(allowedExtensions, extension))
 		{
 			upload = 0;
 			alert("Le fichier sélectionné n'est pas une image");
 			sendbutton.disabled = true;
 			startbutton.disabled = false;
-			console.log("IMG PAS OK");
 		}
 		else {
 			upload = 1;
 			img_upload = img;
 			if (filter != 0)
 				sendbutton.disabled = false;
-			console.log("IMG OK");
 		}
-		// console.log(upload);
 	}
 	else
-	upload = 0;
+		upload = 0;
 }
 function check_img_extension(img)
 {
@@ -58,15 +52,15 @@ function check_img_extension(img)
 	var start = length - 4;
 	var end = length;
 }
-	navigator.getMedia = ( navigator.getUserMedia ||
-		navigator.webkitGetUserMedia ||
-		navigator.mozGetUserMedia ||
-		navigator.msGetUserMedia);
-		navigator.getMedia(
-			{
-				video: true,
-				audio: false
-			},
+navigator.getMedia = ( navigator.getUserMedia ||
+						navigator.webkitGetUserMedia ||
+						navigator.mozGetUserMedia ||
+						navigator.msGetUserMedia);
+navigator.getMedia(
+{
+video: true,
+audio: false
+},
 			function(stream) {
 				if (navigator.mozGetUserMedia) {
 					video.mozSrcObject = stream;
@@ -112,7 +106,6 @@ function check_img_extension(img)
 		var img_data;
 		if (upload == 1)
 		{
-			console.log("UPLOAD 1 ");
 			const reader = new FileReader();
 			const file = data.files[0];
 			reader.onload = function(upload) {
@@ -131,7 +124,6 @@ function check_img_extension(img)
 
 	function sendData_webcam(data)
 	{
-			console.log("UPLOAD 0 ");
 			var xml = new XMLHttpRequest()
 			xml.open('POST', 'get-webcam-photo.php', true);
 			xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

@@ -1,5 +1,7 @@
 <?php
-session_start();
+require_once dirname(__FILE__) . '/../../inc/functions.php';
+check_session();
+logged_only();
 if (!empty($_POST) && isset($_POST['data']))
 {
 	// $directory = "/photos";

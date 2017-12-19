@@ -62,7 +62,7 @@ function create_database() {
 				usercomment_username VARCHAR(255) NOT NULL,
 				photo_id INT NOT NULL,
 				date_comment DateTime DEFAULT CURRENT_TIMESTAMP,
-				comment varchar(255) NOT NULL
+				comment LONGTEXT NOT NULL
 			)";
 			$dbh->exec($sql);
 			// echo "<script type= 'text/javascript'>alert('Table Comments Created Successfully');</script>";
@@ -96,7 +96,9 @@ function create_database() {
 
 function delete_database() {
 	include './database.php';
+	include '../inc/functions.php';
 	try {
+		check_if_session_already_started();
 		$dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "DROP DATABASE IF EXISTS $DB_NAME";

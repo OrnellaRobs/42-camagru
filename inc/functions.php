@@ -1,4 +1,10 @@
 <?php
+
+function check_if_session_already_started() {
+	check_session();
+	unset($_SESSION['auth']);
+}
+
 function debug($variable){
 	echo '<pre>'.print_r($variable, true).'</pre>';
 }

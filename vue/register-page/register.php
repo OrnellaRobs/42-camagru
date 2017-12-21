@@ -63,7 +63,7 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 		<div class="hashtag-msg">
 			#JoinCamagru
 		</div>
-		<form class="register-form" method="post">
+		<form method="post">
 			<input class="input-register" type="text" name="name" placeholder="Nom Complet"/><br/>
 			<input class="input-register" type="text" name="username" placeholder="Identifiant"/><br/>
 			<input class="input-register" type="password" name="password" placeholder="Mot de Passe" /><br/>

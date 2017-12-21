@@ -18,7 +18,7 @@ require_once dirname(__FILE__) . '/../../inc/db.php';
 <?php
 if (!empty($_GET) && isset($_GET['url']) && isset($_GET['photoid']))
 {
-	echo '<img class="img-to-comment" src= "'. $_GET["url"] .'">';
+	echo '<img class="img-to-comment" src= "'. $_GET["url"] .'" style="width: 600px;height: auto;">';
 }
 if (!empty($_POST) && isset($_POST['commentaire']) && $_POST['commentaire'] != "")
 {

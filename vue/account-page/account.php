@@ -157,9 +157,9 @@ if (!empty($_POST))
 		</div>
 	</div>
 	<a href="./delete-account.php">
-   <input class="validate-submit" type="button" value="Supprimer compte"/>
+   <input class="delete-account-submit" type="button" value="Supprimer compte"/>
 </a>
-	<input class="validate-submit" type="submit" value="Sauvergarder les modifications"><br/>
+	<input class="validate-change-submit" type="submit" value="Sauvergarder les modifications"><br/>
 </form>
 </div>
 </div>

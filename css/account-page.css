@@ -99,11 +99,21 @@
 	background-color: rgba(81, 202, 188, 0.5);
 }
 
-.validate-submit {
+.validate-change-submit {
 	margin: 5px 0;
-	padding: 3px 8px;
+	padding: 0 8px;
 	border: none;
-	height: 30px;
+	height: 25px;
+	background-color: rgba(81, 202, 188, 0.8);
+	font-size: 16px;
+	text-decoration: none;
+}
+
+.delete-account-submit {
+	margin: 5px 0;
+	padding: 0 8px;
+	border: none;
+	height: 25px;
 	background-color: rgba(81, 202, 188, 0.8);
 	font-size: 16px;
 	text-decoration: none;
@@ -115,9 +125,14 @@
 		width: 100%;
 		height: 85%;
 	}
-	.validate-submit {
-		width: 70%;
+	.validate-change-submit, .delete-account-submit {
 		font-size: 80%;
+	}
+	.validate-change-submit {
+		width: 70%;
+	}
+	.delete-account-submit {
+		width: 100%;
 	}
 }
 

@@ -39,10 +39,3 @@
 	background-color: rgb(81, 202, 188);
 	font-size: 16px;
 }
-
-.register-form {
-	display: flex;
-	flex-direction: column;
-	/* justify-content: center; */
-	align-items: center;
-}

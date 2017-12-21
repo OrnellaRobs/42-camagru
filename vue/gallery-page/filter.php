@@ -6,8 +6,8 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 require_once dirname(__FILE__) . '/../../inc/db.php';
 ?>
 <div class="title">
-	<center><img id="img-login" src="/camagru/images/logo.png" width="90px;"/></center>
-	<center><img id="img-login" src="/camagru/images/gallery-by-filter.jpg" width="190px;"/></center>
+	<center><img id="img-login" src="../../images/logo.png" width="90px;"/></center>
+	<center><img id="img-login" src="../../images/gallery-by-filter.jpg" width="190px;"/></center>
 </div>
 <div class="filter">
 <a href="filter.php?filter=1"><img src="../../images/DONUT.png" width="200px"></a>

@@ -45,7 +45,7 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 <!-- <h1>Mot de passe oublié</h1> -->
 <div class="title-msg">
 	<center>Tu as oublié ton mot de passe?</center>
-	<center><img src="/camagru/images/arrow2.png" width="80px"/></center>
+	<center><img src="../../images/arrow2.png" width="80px"/></center>
 </div>
 <div class="photo-frame">
 	<div class="hashtag-msg-forget">

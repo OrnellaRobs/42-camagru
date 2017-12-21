@@ -54,7 +54,7 @@ if (!empty($_POST) && isset($_POST['password']) && isset($_POST['confirm-passwor
 		unset($_SESSION['auth']);
 		session_destroy();
 		$_SESSION['success'] = "Votre compte a bien été supprimé";
-		header('Location: /camagru/vue/home-page/login-page.php');
+		header('Location: ../../index.php');
 		exit();
 	}
 	else {
@@ -64,8 +64,8 @@ if (!empty($_POST) && isset($_POST['password']) && isset($_POST['confirm-passwor
 }
 ?>
 <div class="title">
-	<center><img id="img-login" src="/camagru/images/logo.png" width="90px;"/></center>
-	<center><img id="img-login" src="/camagru/images/collage-1.jpg" width="160px;"/></center>
+	<center><img id="img-login" src="../../images/logo.png" width="90px;"/></center>
+	<center><img id="img-login" src="../../camagru/images/collage-1.jpg" width="160px;"/></center>
 </div>
 <form class="delete-account" action="" method="post">
 	<?php if (!empty($errors)): ?>

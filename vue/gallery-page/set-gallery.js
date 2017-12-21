@@ -3,12 +3,12 @@ function toggle(obj, photoid) {
 	console.log(obj);
 	if (obj.className == "liked") {
 		obj.className = "unliked";
-		obj.src = "/camagru/images/heart-4.png";
+		obj.src = "../../images/heart-4.png";
 		like = 0;
 	}
 	else {
 		obj.className = "liked";
-		obj.src = "/camagru/images/heart-3.png";
+		obj.src = "../../images/heart-3.png";
 		like = 1;
 	}
 	var xml = new XMLHttpRequest();

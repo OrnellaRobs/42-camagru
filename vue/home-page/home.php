@@ -8,8 +8,8 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 
 <!-- <h1>Bonjour <?= $_SESSION['auth']->name; ?></h1> -->
 <div class="title">
-	<center><img id="img-login" src="/camagru/images/logo.png" width="90px;"/></center>
-		<center><img id="img-login" src="/camagru/images/camagru.jpg" width="280px;"/></center>
+	<center><img id="img-login" src="../../images/logo.png" width="90px;"/></center>
+		<center><img id="img-login" src="../../images/camagru.jpg" width="280px;"/></center>
 </div>
 <form class="container" action="" method="POST" enctype="multipart/form-data">
 	<div class="wrapper-filter-webcam">
@@ -47,18 +47,12 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 				$current = $_GET['page'];
 			}
 			else
-			$current = 1;
+				$current = 1;
 			$start = ($current - 1) * $photo_per_page;
-
-			// $req = $pdo->prepare('SELECT photo_path FROM photos WHERE user_id = ? ORDER BY date_photo DESC LIMIT '.$start.','.$photo_per_page.'');
-			// $req->execute([$userid]);
-			// $result = $req->fetchAll(PDO::FETCH_COLUMN, 0);
-
 			$req1 = $pdo->prepare('SELECT * FROM photos WHERE user_id = ? ORDER BY date_photo DESC LIMIT '.$start.','.$photo_per_page.'');
 			$req1->execute([$userid]);
 			$getID = $req1->fetchAll();
-			// var_dump($getID);
-			// echo $getID[1]->photo_type;
+
 			echo '<div class="allPhotos">';
 			foreach ($getID as $elem)
 			{

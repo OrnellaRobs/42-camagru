@@ -128,7 +128,7 @@ if (isset($_POST['delete'])) {
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="../../Camagru/Config/setup.css">
+	<link rel="stylesheet" type="text/css" href="./setup.css">
 </head>
 <body>
 	<form method="post">

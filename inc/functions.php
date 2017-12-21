@@ -34,7 +34,7 @@ function str_random($length){
 function logged_only() {
 	if (!isset($_SESSION['auth'])) {
 		$_SESSION['danger'] = "Vous n'avez pas le droit d'accéder à cette page";
-		header('Location: /camagru/index.php');
+		header('Location: ../index.php');
 		exit();
 	}
 }
@@ -49,7 +49,7 @@ function check_already_login() {
 	if (isset($_SESSION['auth']))
 	{
 		$_SESSION['danger'] = "Vous êtes déjà connecté";
-		header('Location: /camagru/vue/home-page/home.php');
+		header('Location: ../vue/home-page/home.php');
 		exit();
 	}
 }

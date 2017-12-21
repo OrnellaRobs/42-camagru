@@ -1,3 +1,3 @@
 <?php
 
-define(ROOT, '/camagru/vue/');
+define(ROOT, '../vue/');

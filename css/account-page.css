@@ -55,7 +55,7 @@
 	align-items: center;
 	justify-content: center;
 	/*background-image: url(https://www.printed.com/images/products/landing/instagram/instagram-photo-style-prints-3.jpg);*/
-	background-image: url(/camagru/images/photo.jpg);
+	background-image: url(../images/photo.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	height: 600px;

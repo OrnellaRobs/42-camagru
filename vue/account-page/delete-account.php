@@ -65,7 +65,7 @@ if (!empty($_POST) && isset($_POST['password']) && isset($_POST['confirm-passwor
 ?>
 <div class="title">
 	<center><img id="img-login" src="../../images/logo.png" width="90px;"/></center>
-	<center><img id="img-login" src="../../camagru/images/collage-1.jpg" width="160px;"/></center>
+	<center><img id="img-login" src="../../images/collage-1.jpg" width="160px;"/></center>
 </div>
 <form class="delete-account" action="" method="post">
 	<?php if (!empty($errors)): ?>

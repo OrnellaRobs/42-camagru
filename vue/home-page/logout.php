@@ -4,5 +4,5 @@ check_session();
 logged_only();
 unset($_SESSION['auth']);
 $_SESSION['success'] = "Vous êtes maintenant déconnecté";
-header('Location: /camagru/vue/home-page/login-page.php');
+header('Location: ./login-page.php');
 ?>

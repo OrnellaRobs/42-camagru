@@ -4,7 +4,6 @@ check_session();
 logged_only();
 if (!empty($_POST) && isset($_POST['data']))
 {
-	// $directory = "/photos";
 	$user_name = $_SESSION['auth']->username;
 	$user_directory = "../photos/".$user_name . "/";
 	if (!file_exists($user_directory))
@@ -38,8 +37,6 @@ if (!empty($_POST) && isset($_POST['data']))
 		$destination = imagecreatefrompng("$filename");
 	else if ($type == "jpeg" || $type == "jpg")
 		$destination = imagecreatefromjpeg("$filename");
-	// else if ($type == "gif")
-	// 	$destination = imagecreatefromgif("$filename");
 	$largeur_destination = imagesx($destination);
 	$hauteur_destination = imagesy($destination);
 
@@ -63,4 +60,3 @@ if (!empty($_POST) && isset($_POST['data']))
 	]);
 }
 ?>
-<!--  -->

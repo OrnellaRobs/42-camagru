@@ -47,7 +47,7 @@ require_once dirname(__FILE__) . '/../navbar/navbar.php';
 ?>
 <div class="title-msg">
 	<center>Rejoins-Nous et Inscris-Toi!</center>
-	<center><img src="/camagru/images/arrow2.png" width="80px"/></center>
+	<center><img src="../../images/arrow2.png" width="80px"/></center>
 </div>
 
 <div class="register-page-background">

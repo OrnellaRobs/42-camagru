@@ -1,5 +1,22 @@
 <?php
 
+function delete_all_photos_and_directory($dirPath) {
+	if (is_dir($dirPath)) {
+		$objects = scandir($dirPath);
+		foreach ($objects as $object) {
+			if ($object != "." && $object !="..") {
+				if (filetype($dirPath . DIRECTORY_SEPARATOR . $object) == "dir") {
+					deleteDirectory($dirPath . DIRECTORY_SEPARATOR . $object);
+				} else {
+					unlink($dirPath . DIRECTORY_SEPARATOR . $object);
+				}
+			}
+		}
+		reset($objects);
+		rmdir($dirPath);
+	}
+}
+
 function check_if_session_already_started() {
 	check_session();
 	unset($_SESSION['auth']);
@@ -46,9 +63,9 @@ function password_check_alphanum($str)
 	while ($i < $size)
 	{
 		if ($str[$i] >= '0' && $str[$i] <= '9')
-			$num = 1;
+		$num = 1;
 		else if ($str[$i] >= 'A' && $str[$i] <= 'Z' || $str[$i] >= 'a' && $str[$i] <= 'z')
-			$alpha = 1;
+		$alpha = 1;
 		$i++;
 	}
 	return $alpha == 1 && $num == 1 ? true : false;
@@ -86,9 +103,9 @@ function check_email($email, $email_confirm, $errors)
 {
 	require dirname(__FILE__) . '/db.php';
 	if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL))
-		$errors['email'] = "L'e-mail n'est pas valide";
+	$errors['email'] = "L'e-mail n'est pas valide";
 	else if ($email != $email_confirm)
-		$errors['email'] = "Les emails ne correspondent pas";
+	$errors['email'] = "Les emails ne correspondent pas";
 	else {
 		$req = $pdo->prepare('SELECT id FROM User WHERE email = ?');
 		$req->execute([$email]);

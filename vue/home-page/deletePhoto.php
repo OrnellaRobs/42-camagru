@@ -31,8 +31,13 @@ if (!empty($_POST) && isset($_POST['photo_path']) && isset($_POST['photo_id']) &
 			$req1->execute(['photoid' => $_POST['photo_id']]);
 		}
 	}
-	$req = $pdo->prepare('DELETE FROM photos where photo_path = :photopath');
-	$req->execute(['photopath' => $_POST['photo_path']]);
+	//DELETE FROM DIRECTORY
+	unlink($_POST['photo_path']);
+	//DELETE PHOTO FROM DB
+
+
+	
+
 }
 ?>
 <?php require_once dirname(__FILE__) . '/../footer/footer.php';?>

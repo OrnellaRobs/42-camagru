@@ -88,7 +88,7 @@ if (!empty($_POST))
 			]);
 		}
 		update_user($user_id);
-		$_SESSION['success'] = "Vos informations ont bien été mis à jour";
+		$_SESSION['success'] = "Vos informations ont bien été mises à jour";
 		header('Location: account.php');
 		exit();
 	}

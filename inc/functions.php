@@ -93,7 +93,7 @@ function check_password($password, $password_confirm, $errors) {
 	require dirname(__FILE__) . '/db.php';
 	if (empty($password) || $password != $password_confirm || strlen($password) < 4 || !password_check_alphanum($password)) {
 		$str = (strlen($password) < 4) ? "Le mot de passe doit avoir au moins 4 caractères dont des chiffres et des lettres" : "Le mot de passe n'est pas valide";
-		$str = (!password_check_alphanum($password)) ? "Le mot de passe doit contenir des lettres ainsi que des chiffres" : $str;
+		$str = (!password_check_alphanum($password)) ? "Le mot de passe doit contenir des lettres ainsi que des chiffres. L'ensemble devra au minimum faire 4 caractéres" : $str;
 		$errors['password'] = $str;
 	}
 	return ($errors);

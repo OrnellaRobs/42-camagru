@@ -116,7 +116,6 @@ if (!empty($_POST))
 	<div class="wrapper-modifier">
 		<?php if (!empty($errors)): ?>
 			<div class="danger">
-				<p>Le formulaire n'est pas rempli correctement</p>
 				<?php foreach($errors as $error):?>
 					<li><?=$error;?></li>
 				<?php endforeach;?>

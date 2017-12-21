@@ -31,9 +31,11 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 	</div>
 	<div class="background-login">
 		<form class="form-login" action="" method="post">
+			<div class="wrapper-form">
 			<input class="input-login" type="text" name="username" title="identifiant" placeholder="Identifiant"/><br/>
 			<input class="input-login" type="password" name="password" title="password" placeholder="Mot de Passe"/><br/>
 			<input class="login-submit" type="submit" value="Se Connecter"><br/>
+		</div>
 		</form>
 	</div>
 	<a class="forget-password" href="/camagru/vue/forgetPassword-page/forget.php">Mot de passe oublié</a>

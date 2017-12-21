@@ -77,12 +77,10 @@ body {
 	.success {
 		height: 100%;
 		font-size: 100%;
-		padding: 10px 0;
 	}
 	.danger {
 		height: 100%;
 		font-size: 100%;
-		padding: 10px 0;
 	}
 	.hashtag-msg {
 		font-size: 150%;

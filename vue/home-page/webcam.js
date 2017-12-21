@@ -9,10 +9,12 @@ filter       = 0,
 img_upload,
 upload = 0,
 width = 520,
+error_webcam = 0;
 height = 0;
 function getFilter(num)
 {
 	filter = num;
+	if (error_webcam == 0)
 		startbutton.disabled = false;
 	if (upload == 1)
 		sendbutton.disabled = false;
@@ -71,7 +73,9 @@ audio: false
 				video.play();
 			},
 			function(err) {
-				console.log("An error occured! " + err);
+				// console.log("An error occured! " + err);
+				startbutton.disabled = true;
+				error_webcam = 1;
 			}
 		);
 		video.addEventListener('canplay', function(ev){

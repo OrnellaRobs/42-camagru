@@ -21,6 +21,7 @@ if (!empty($_POST))
 			'token' => $token,
 			'mail_comments' => 1
 		]);
+		$new_username = htmlspecialchars($_POST['name']);
 		$user_id = $pdo->lastInsertId();
 		$entetes =
 		'Content-type: text/html; charset=utf-8' . "\r\n" .
@@ -28,11 +29,19 @@ if (!empty($_POST))
 		'Reply-To: no-reply@camagru.fr' . "\r\n" .
 		'X-Mailer: PHP/' . phpversion();
 		$objet = "Confirmation d'Inscription";
-		$content = "Afin de finaliser ton inscription, il te suffit de cliquer sur ce lien:\n\nhttp://localhost:8080/camagru/vue/register-page/confirm.php?id=$user_id&token=$token";
+		$content = "
+		<h2><center>Merci pour ton inscription!</center></h2><br/><br/>
+
+		<center> Ton identifiant : <b> $new_username </b> </center><br/><br/>
+
+		<p>Afin de finaliser ton inscription, il te suffit de cliquer sur ce lien:\n\nhttp://localhost:8080/camagru/vue/register-page/confirm.php?id=$user_id&token=$token </p>
+		<br/><br/>
+		- L'équipe Camagru
+		";
 		if (mail($_POST['email'], $objet, $content, $entetes))
 		{
 			$_SESSION['success'] = "Un email de confirmation a été envoyé pour valider le compte";
-			header('Location: ../../index.php');
+			header('Location: ../home-page/login-page.php');
 			exit();
 		}
 		else {

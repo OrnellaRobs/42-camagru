@@ -15,7 +15,7 @@ if ($user && $user->confirmation_token == $token)
 	header('Location: ../home-page/home.php');
 }
 else {
-	$_SESSION['danger'] = "Ce token n'est plus valide";
-	header('Location: ../../index.php');
+	$_SESSION['danger'] = "Désolé, ce lien n'est plus valide";
+	header('Location: ../home-page/login-page.php');
 }
 ?>

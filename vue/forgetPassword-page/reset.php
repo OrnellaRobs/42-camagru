@@ -14,14 +14,14 @@ if (isset($_GET['id']) && isset($_GET['token'])):
 			session_start();
 			$_SESSION['success'] = "Votre mot de passe a bien été mis à jour";
 			$_SESSION['auth'] = $user;
-			header('Location: ./../home-page/home.php');
+			header('Location: ../home-page/home.php');
 			exit();
 		}
 	}
 	else {
 		session_start();
-		$_SESSION['danger'] = "Ce lien n'est pas valide";
-		header('Location: ./../../index.php');
+		$_SESSION['danger'] = "Désolé, ce lien n'est pas valide";
+		header('Location: ../home-page/home.php');
 		exit();
 	}
 ?>
@@ -40,6 +40,6 @@ if (isset($_GET['id']) && isset($_GET['token'])):
 	<input class="login-submit" type="submit" value="Changer mon mot de passe"><br/>
 </form>
 <?php else:?>
-	<!-- <?php header('Location: ./../../index.php'); ?> -->
+	<!-- <?php header('Location: ../home-page/login-page.php'); ?> -->
 <?php endif;?>
 <?php require_once dirname(__FILE__) . '/../footer/footer.php'; ?>

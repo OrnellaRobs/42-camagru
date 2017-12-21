@@ -90,6 +90,11 @@ textarea {
 	margin: 50px 0;
 }
 
+.display-img {
+	width: 600px;
+	height: auto;
+}
+
 .wrapper-title-comment {
 	width: 400px
 }
@@ -106,7 +111,7 @@ textarea {
 
 @media screen and (max-width:600px)
 {
-	.wrapper-picture-commented {
+	.wrapper-picture-commented, .display-img {
 		width: 90%;
 	}
 	.all-comments, .comment{

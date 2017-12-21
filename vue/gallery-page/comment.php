@@ -12,13 +12,13 @@ require_once dirname(__FILE__) . '/../../inc/db.php';
 	<center style="position:relative;">
 		<img class="logo" src="/camagru/images/logo.png" style="width:90px;margin-bottom:30px;"/>
 		<center style="position:absolute; top: -41px; left: 57%;">
-			<img src="/camagru/images/comment-page.png" style="width: auto;height: 70px;">
+			<img class="img-to-comment" src="/camagru/images/comment-page.png" style="width: auto;height: 70px;">
 		</center>
 	</center>
 <?php
 if (!empty($_GET) && isset($_GET['url']) && isset($_GET['photoid']))
 {
-	echo '<img class="img-to-comment" src= "'. $_GET["url"] .'" style="width: 600px;height: auto;">';
+	echo '<img class="display-img" src= "'. $_GET["url"] .'">';
 }
 if (!empty($_POST) && isset($_POST['commentaire']) && $_POST['commentaire'] != "")
 {

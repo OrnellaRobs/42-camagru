@@ -25,7 +25,7 @@
 	width: 100%;
 }
 
-@media screen and (max-width:563px) {
+@media screen and (max-width:600px) {
 	.header {
 		height: 100%;
 	}

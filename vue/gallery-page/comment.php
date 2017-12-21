@@ -7,7 +7,7 @@ require_once dirname(__FILE__) . '/../header/header.php';
 require_once dirname(__FILE__) . '/../navbar/navbar.php';
 require_once dirname(__FILE__) . '/../../inc/db.php';
 ?>
-<div class="baba">
+<div class="wrapper-comment-page">
 <div class="wrapper-picture-commented">
 	<center style="position:relative;">
 		<img class="logo" src="/camagru/images/logo.png" style="width:90px;margin-bottom:30px;"/>
@@ -74,9 +74,9 @@ if (!empty($_POST) && isset($_POST['commentaire']) && $_POST['commentaire'] != "
 	</div>
 	</form>
 </div>
-	<div class="all-comments">
+	<div class="wrapper-comment-section">
 		<img class="wrapper-title-comment"src="/camagru/images/others-comments.jpg">
-		<div class="pol">
+		<div class="all-comments">
 	<?php
 	$req = $pdo->prepare('SELECT * FROM comments WHERE photo_id = :photoid');
 	$req->execute(['photoid' => $_GET['photoid']]);

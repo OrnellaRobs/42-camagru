@@ -39,7 +39,7 @@
 	text-align: center;
 	background-color: rgba(255,255,255,0.4);
 	width: 361px;
-	height: 525px;
+	height: 620px;
 	padding: 0 20px 0 20px;
 	/* border: 2px solid red; */
 	/*font-size: 14px;*/
@@ -58,7 +58,7 @@
 	background-image: url(../images/photo.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
-	height: 600px;
+	height: 700px;
 	width: 600px;
 	margin-bottom: 50px;
 	/*border-radius: 1000px;*/
@@ -107,6 +107,7 @@
 	background-color: rgba(81, 202, 188, 0.8);
 	font-size: 16px;
 	text-decoration: none;
+	text-align: center;
 }
 
 .delete-account-submit {
@@ -126,10 +127,10 @@
 		height: 85%;
 	}
 	.validate-change-submit, .delete-account-submit {
-		font-size: 80%;
+		font-size: 60%;
 	}
 	.validate-change-submit {
-		width: 70%;
+		width: 80%;
 	}
 	.delete-account-submit {
 		width: 100%;

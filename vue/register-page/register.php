@@ -6,6 +6,7 @@ if (!empty($_POST))
 {
 	$errors = array();
 	require dirname(__FILE__) . '/../../inc/db.php';
+	$errors = check_name($_POST['name'], $errors);
 	$errors = check_username($_POST['username'], $errors);
 	$errors = check_email($_POST['email'], $_POST['email-confirm'], $errors);
 	$errors = check_password($_POST['password'], $_POST['password-confirm'], $errors);
@@ -21,7 +22,7 @@ if (!empty($_POST))
 			'token' => $token,
 			'mail_comments' => 1
 		]);
-		$new_username = htmlspecialchars($_POST['name']);
+		$new_username = htmlspecialchars($_POST['username']);
 		$user_id = $pdo->lastInsertId();
 		$entetes =
 		'Content-type: text/html; charset=utf-8' . "\r\n" .
@@ -36,7 +37,7 @@ if (!empty($_POST))
 
 		<p>Afin de finaliser ton inscription, il te suffit de cliquer sur ce lien:\n\nhttp://localhost:8080/camagru/vue/register-page/confirm.php?id=$user_id&token=$token </p>
 		<br/><br/>
-		- L'équipe Camagru
+		<center>- L'équipe Camagru</center>
 		";
 		if (mail($_POST['email'], $objet, $content, $entetes))
 		{

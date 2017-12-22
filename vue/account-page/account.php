@@ -15,6 +15,7 @@ function update_user($user_id) {
 	$_SESSION['auth'] = $user;
 }
 $name = 0;
+$username = 0;
 $email = 0;
 $password = 0;
 $mail_comments = 0;
@@ -24,9 +25,20 @@ if (!empty($_POST))
 	if (isset($_POST['name']) && $_POST['name'] != "" && isset($_POST['confirm-name']) && $_POST['confirm-name'] != "")
 	{
 		if ($_POST['name'] != $_POST['confirm-name'])
-			$errors['name'] = "Les noms ne correspondent pas";
+			$errors['username'] = "Les noms ne correspondent pas";
 		else
-			$name = 1;
+			$errors = check_name($_POST['name'], $errors);
+		if (!isset($errors['name']))
+		$name = 1;
+	}
+	if (isset($_POST['username']) && $_POST['username'] != "" && isset($_POST['confirm-username']) && $_POST['confirm-username'] != "")
+	{
+		if ($_POST['username'] != $_POST['confirm-username'])
+			$errors['username'] = "Les identifiants ne correspondent pas";
+		else
+			$errors = check_username($_POST['username'], $errors);
+		if (!isset($errors['username']))
+			$username = 1;
 	}
 	if (isset($_POST['email']) && $_POST['email'] != "" && isset($_POST['confirm-email']) && $_POST['confirm-email'] != "")
 	{
@@ -54,12 +66,20 @@ if (!empty($_POST))
 		else
 			$mail_comments = 1;
 	}
-	if (empty($errors) && ($name || $email || $password || $mail_comments))
+	if (empty($errors) && ($name || $username || $email || $password || $mail_comments))
 	{
-		if ($name) {
-			$req1 = $pdo->prepare('UPDATE User SET name = :name WHERE id = :id');
-			$req1->execute([
+		if ($name)
+		{
+			$req = $pdo->prepare('UPDATE User SET name = :name WHERE id = :id');
+			$req->execute([
 				'name' => htmlspecialchars($_POST['name']),
+				'id' => $user_id
+			]);
+		}
+		if ($username) {
+			$req1 = $pdo->prepare('UPDATE User SET username = :username WHERE id = :id');
+			$req1->execute([
+				'username' => htmlspecialchars($_POST['username']),
 				'id' => $user_id
 			]);
 		}
@@ -129,6 +149,13 @@ if (!empty($_POST))
 		</div>
 		<div class="form-group">
 			<input class="input-change" type="text" name="confirm-name" placeholder="Confirmation du nouveau nom"/>
+		</div>
+		<span class="text">Identifiant</span>
+		<div class="form-group">
+			<input class="input-change" type="text" name="username" placeholder="Nouveau identifiant"/>
+		</div>
+		<div class="form-group">
+			<input class="input-change" type="text" name="confirm-username" placeholder="Confirmation du nouveau identifiant"/>
 		</div>
 		<span class="text">Email</span>
 		<div class="form-group">

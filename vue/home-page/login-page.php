@@ -15,7 +15,7 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 	{
 		$_SESSION['auth'] = $user;
 		$_SESSION['success'] = "Vous êtes maintenant connecté";
-		header('Location: ./home.php');
+		header('Location: /camagru/vue/home-page/home.php');
 		exit();
 	}
 	else
@@ -38,6 +38,6 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password']))
 		</div>
 		</form>
 	</div>
-	<a class="forget-password" href="../forgetPassword-page/forget.php">Mot de passe oublié</a>
+	<a class="forget-password" href="/camagru/vue/forgetPassword-page/forget.php">Mot de passe oublié</a>
 </div>
 <?php require dirname(__FILE__) . '/../footer/footer.php'; ?>

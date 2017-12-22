@@ -58,7 +58,12 @@ if (!empty($_POST) && isset($_POST['commentaire']) && $_POST['commentaire'] != "
 			$url_without_dot = str_replace('.', '', $_GET['url']);
 			$urlphoto = "localhost:8080/camagru".$url_without_dot;
 			$objet = "Nouveau Commentaire sous votre photo";
-			$content = "$username a commenté votre photo: « $commentaire »";
+
+			$content = "
+			<h2><center>Nouveau commentaire sous votre photo!</center></h2><br/><br/>
+			<center> <b> $username </b> a commenté votre photo: « $commentaire »<br/><br/> </center>
+		 	Une fois connecté, il vous sera possible de voir tous les autres commentaires de cette photo : http://localhost:8080/camagru/vue/gallery-page/comment.php?url=".$reqanswer[0]->photo_path."&photoid=".$reqanswer[0]->photo_id."<br/><br/>
+			<center>- L'équipe Camagru</center>";
 			mail($getInfo[0]->email, $objet, $content, $entetes);
 		}
 		$_SESSION['success'] = "Commentaire envoyé!";

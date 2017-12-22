@@ -34,7 +34,7 @@ function str_random($length){
 function logged_only() {
 	if (!isset($_SESSION['auth'])) {
 		$_SESSION['danger'] = "Vous n'avez pas le droit d'accéder à cette page";
-		header('Location: ../index.php');
+		header('Location: /camagru/vue/home-page/login-page.php');
 		exit();
 	}
 }
@@ -49,7 +49,7 @@ function check_already_login() {
 	if (isset($_SESSION['auth']))
 	{
 		$_SESSION['danger'] = "Vous êtes déjà connecté";
-		header('Location: ../vue/home-page/home.php');
+		header('Location: /camagru/vue/home-page/home.php');
 		exit();
 	}
 }
@@ -69,6 +69,15 @@ function password_check_alphanum($str)
 		$i++;
 	}
 	return $alpha == 1 && $num == 1 ? true : false;
+}
+
+function check_name($name, $errors) {
+	if (empty($name) || !preg_match('/^[a-zA-Z ]+$/', $name) || strlen($name) < 2)
+	{
+		$str = (!preg_match('/^[a-zA-Z ]+$/', $name)) ? "Votre nom n'est pas valide" : "Votre nom est trop court. Il doit au minimum contenir 2 caractères";
+		$errors['name'] = $str;
+	}
+	return ($errors);
 }
 
 function check_username($username, $errors) {

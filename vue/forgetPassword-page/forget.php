@@ -22,7 +22,11 @@ if (!empty($_POST) && !empty($_POST['email']))
 		'Reply-To: no-reply@camagru.fr' . "\r\n" .
 		'X-Mailer: PHP/' . phpversion();
 		$objet = "Réinitialisation de votre mot de passe";
-		$content = "Afin de réinitialiser ton mot de passe, il te suffit de cliquer sur ce lien:\n\nhttp://localhost:8080/camagru/vue/forgetPassword-page/reset.php?id=$user_id&token=$reset_token";
+		$content = "
+		<h2><center>Réinitialisation du mot de passe</center></h2><br/><br/>
+		Afin de réinitialiser ton mot de passe, il te suffit de cliquer sur ce lien:\n\nhttp://localhost:8080/camagru/vue/forgetPassword-page/reset.php?id=$user_id&token=$reset_token
+		<br/><br/>
+		<center>- L'équipe Camagru</center>";
 		if (mail($_POST['email'], $objet, $content, $entetes))
 		{
 			$_SESSION['success'] = "Un email de confirmation a été envoyé pour valider le compte";

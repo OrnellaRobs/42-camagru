@@ -68,7 +68,7 @@ if (!empty($_GET) && isset($_GET['filter']))
 			$nb_comment = how_many_commented($filter->photo_id);
 			if ($nb_comment != 0)
 				echo "<span class='how-many-comment'>$nb_comment</span>";
-			echo "<a href='comment.php?url=$filter->photo_path&photoid=$filter->photo_id'><img src='../../images/comment.png' width='40px'></a>";
+			echo "<a href='comment.php?url=$filter->photo_path&photoid=$filter->photo_id'><img class='comment-logo' src='../../images/comment.png' width='40px'></a>";
 			echo '</div>';
 		}
 		echo '</div>';

@@ -10,12 +10,12 @@ if ($user && $user->confirmation_token == $token)
 {
 	$req = $pdo->prepare('UPDATE User SET confirmation_token = NULL, confirmation_at = NOW() WHERE id = ?');
 	$req->execute([$user_id]);
-	$_SESSION['success'] = "Votre compte a bien été validé";
-	$_SESSION['auth'] = $user;
-	header('Location: ../home-page/home.php');
+	$_SESSION['success'] = "Le compte a bien été validé. Tu peux désormaix te connecter!";
+	// $_SESSION['auth'] = $user;
 }
 else {
 	$_SESSION['danger'] = "Désolé, ce lien n'est plus valide";
-	header('Location: ../home-page/login-page.php');
 }
+header('Location: /camagru/vue/home-page/login-page.php');
+exit();
 ?>

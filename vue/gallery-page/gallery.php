@@ -35,16 +35,12 @@ if (isset($_SESSION['auth']))
 	<center><img id="img-login" src="../../images/gallery.jpg" width="160px;"/></center>
 </div>
 <div class="display-filter">
-<!-- <div class="head-msg"> -->
-	<!-- <h1>Afficher selon les filtres :</h1> -->
-<!-- </div> -->
 <div class="filter">
 <a href="filter.php?filter=1"><img src="../../images/DONUT.png" width="200px"></a>
 <a href="filter.php?filter=2"><img src="../../images/pizza.png" width="200px"></a>
 <a href="filter.php?filter=3"><img src="../../images/POW.png" width="200px"></a><br/>
 </div>
 </div>
-	<!-- <h1><center>Les photos des autres utilisateurs</center></h1> -->
 		<?php
 		$req = $pdo->prepare('SELECT * FROM photos ORDER BY date_photo DESC LIMIT '.$start.','.$photo_per_page.'');
 		$req->execute();

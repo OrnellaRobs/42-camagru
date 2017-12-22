@@ -62,9 +62,12 @@ if (!empty($_GET) && isset($_GET['filter']))
 			if ($nb_liked != 0)
 				echo "<span class='how-many-like'>$nb_liked</span>";
 			if ($liked == true)
-			echo "<img class='liked' src='../../images/heart-3.png' width='23px' onClick='toggle(this,\"$filter->photo_id\");'>";
+				echo "<img class='liked' src='../../images/heart-3.png' width='23px' onClick='toggle(this,\"$filter->photo_id\");'>";
 			else
-			echo "<img class='unliked' src='../../images/heart-4.png' width='23px' onClick='toggle(this,\"$filter->photo_id\");'>";
+				echo "<img class='unliked' src='../../images/heart-4.png' width='23px' onClick='toggle(this,\"$filter->photo_id\");'>";
+			$nb_comment = how_many_commented($filter->photo_id);
+			if ($nb_comment != 0)
+				echo "<span class='how-many-comment'>$nb_comment</span>";
 			echo "<a href='comment.php?url=$filter->photo_path&photoid=$filter->photo_id'><img src='../../images/comment.png' width='40px'></a>";
 			echo '</div>';
 		}

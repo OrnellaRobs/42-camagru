@@ -72,9 +72,10 @@ function password_check_alphanum($str)
 }
 
 function check_name($name, $errors) {
-	if (empty($name) || !preg_match('/^[a-zA-Z ]+$/', $name) || strlen($name) < 2)
+	if (empty($name) || !preg_match('/^[a-zA-Z ]+$/', $name) || strlen($name) < 2 || strlen($name) > 60)
 	{
 		$str = (!preg_match('/^[a-zA-Z ]+$/', $name)) ? "Votre nom n'est pas valide" : "Votre nom est trop court. Il doit au minimum contenir 2 caractères";
+		$str = (strlen($name) > 60) ? "Le nom est trop long. Entrer un nom de 60 caractères maximum." : $str;
 		$errors['name'] = $str;
 	}
 	return ($errors);
@@ -82,8 +83,9 @@ function check_name($name, $errors) {
 
 function check_username($username, $errors) {
 	require dirname(__FILE__) . '/db.php';
-	if (empty($username) || !preg_match('/^[a-zA-Z0-9_]+$/', $username) || strlen($username) < 6) {
+	if (empty($username) || !preg_match('/^[a-zA-Z0-9_]+$/', $username) || strlen($username) < 6 || strlen($name) > 30) {
 		$str = (strlen($username) < 6) ? "L'identifiant doit avoir au moins 6 caractères" : "L'identifiant n'est pas valide";
+			$str = (strlen($name) > 30) ? "L'identifiant est trop long. Entrer un identifiant de 30 caractères maximum." : $str;
 		$errors['username'] = $str;
 	}
 	else {
@@ -100,9 +102,10 @@ function check_username($username, $errors) {
 
 function check_password($password, $password_confirm, $errors) {
 	require dirname(__FILE__) . '/db.php';
-	if (empty($password) || $password != $password_confirm || strlen($password) < 4 || !password_check_alphanum($password)) {
+	if (empty($password) || $password != $password_confirm || strlen($password) < 4 || !password_check_alphanum($password) || strlen($password) > 255) {
 		$str = (strlen($password) < 4) ? "Le mot de passe doit avoir au moins 4 caractères dont des chiffres et des lettres" : "Le mot de passe n'est pas valide";
 		$str = (!password_check_alphanum($password)) ? "Le mot de passe doit contenir des lettres ainsi que des chiffres. L'ensemble devra au minimum faire 4 caractéres" : $str;
+		$str = (strlen($password) > 255) ? "Le mot de passe doit avoir au maximum 255 caractères." : $str;
 		$errors['password'] = $str;
 	}
 	return ($errors);
@@ -112,9 +115,11 @@ function check_email($email, $email_confirm, $errors)
 {
 	require dirname(__FILE__) . '/db.php';
 	if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL))
-	$errors['email'] = "L'e-mail n'est pas valide";
+		$errors['email'] = "L'e-mail n'est pas valide";
 	else if ($email != $email_confirm)
-	$errors['email'] = "Les emails ne correspondent pas";
+		$errors['email'] = "Les emails ne correspondent pas";
+	else if (strlen($email) > 255)
+		$errors['email'] = "L'email est trop long. L'adresse mail doit avoir au maximum 255 caractères.";
 	else {
 		$req = $pdo->prepare('SELECT id FROM User WHERE email = ?');
 		$req->execute([$email]);

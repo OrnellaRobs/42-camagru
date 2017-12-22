@@ -58,6 +58,9 @@ if (!empty($_GET) && isset($_GET['filter']))
 				}
 			}
 			echo '<div class="like-and-comment">';
+			$nb_liked = how_many_liked($filter->photo_id);
+			if ($nb_liked != 0)
+				echo "<span class='how-many-like'>$nb_liked</span>";
 			if ($liked == true)
 			echo "<img class='liked' src='../../images/heart-3.png' width='23px' onClick='toggle(this,\"$filter->photo_id\");'>";
 			else

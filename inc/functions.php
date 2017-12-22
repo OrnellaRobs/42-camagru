@@ -126,3 +126,19 @@ function check_email($email, $email_confirm, $errors)
 	}
 	return ($errors);
 }
+
+function how_many_liked($photoID) {
+	require dirname(__FILE__) . '/db.php';
+	$req = $pdo->prepare('SELECT photo_id FROM likephoto WHERE photo_id = ?');
+	$req->execute([$photoID]);
+	$result = $req->fetchAll();
+	return(count($result));
+}
+
+function how_many_commented($photoID) {
+	require dirname(__FILE__) . '/db.php';
+	$req = $pdo->prepare('SELECT photo_id FROM comments WHERE photo_id = ?');
+	$req->execute([$photoID]);
+	$result = $req->fetchAll();
+	return(count($result));
+}

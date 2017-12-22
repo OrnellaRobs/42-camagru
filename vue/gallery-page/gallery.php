@@ -64,11 +64,17 @@ if (isset($_SESSION['auth']))
 					}
 				}
 				echo '<div class="like-and-comment">';
+				$nb_liked = how_many_liked($elem->photo_id);
+				if ($nb_liked != 0)
+					echo "<span class='how-many-like'>$nb_liked</span>";
 				if ($liked == true)
 					echo "<img class='liked' src='../../images/heart-3.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
 				else
 					echo "<img class='unliked' src='../../images/heart-4.png' width='23px' onClick='toggle(this,\"$elem->photo_id\");'>";
-				echo "<a href='comment.php?url=$elem->photo_path&photoid=$elem->photo_id'><img src='../../images/comment.png' width='40px'></a>";
+				$nb_comment = how_many_commented($elem->photo_id);
+				if ($nb_comment != 0)
+					echo "<span class='how-many-comment'>$nb_comment</span>";
+				echo "<a href='comment.php?url=$elem->photo_path&photoid=$elem->photo_id'><img class='comment-logo' src='../../images/comment.png' width='40px'></a>";
 				echo '</div>';
 			}
 			echo '</div>';

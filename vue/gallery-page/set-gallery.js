@@ -15,4 +15,7 @@ function toggle(obj, photoid) {
 	xml.open('POST', 'like.php', true);
 	xml.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xml.send("photoid=" + photoid + "&like=" + like);
+	xml.onload = function () {
+		window.location.reload();
+	}
 }

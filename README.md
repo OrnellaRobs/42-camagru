@@ -1,4 +1,8 @@
-# 42-camagru
+# A 42's project - An instagram-like
+
+Subject pdf in english: https://github.com/OrnellaRobs/42-camagru/blob/master/camagru.en.pdf
+Subject pdf in french: https://github.com/OrnellaRobs/42-camagru/blob/master/camagru.fr.pdf
+
 ![login](https://user-images.githubusercontent.com/23618086/35680295-37886ea4-075a-11e8-8724-b3458a821fcc.png)
 ![register](https://user-images.githubusercontent.com/23618086/35680301-3bed96e0-075a-11e8-85ba-efff47a159cf.png)
 ![forgetpassword](https://user-images.githubusercontent.com/23618086/35680309-40ebc702-075a-11e8-963d-a8d6a4bbedd4.png)
